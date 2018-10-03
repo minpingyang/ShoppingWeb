@@ -19,10 +19,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
 
 	<!-- Javascript and CSS files -->
-	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<script type="text/javascript" src="../js/login.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
-	<script type="text/javascript" src="index.js"></script>
-
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 </head>
 
 <body>
@@ -57,11 +58,11 @@
 			</li>
 			
 			<li class="float-right">
-				<a href="#" style="text-decoration: none">View Cart</a>
+				<a href="cart.html" style="text-decoration: none">View Cart</a>
 			</li>
 			<li>
 				<div id="search-bar">
-					<form action="/index.js" method="get" class="float-right">
+					<form action="app.js" method="get" class="float-right">
 						<div id="search-input">
 							<input type="search" placeholder="Search" name="" required>
 							<button type="submit">Search</button>
@@ -72,18 +73,33 @@
 	    </ul>
 	</div>
 
-	<div id="slideshow">
-		<img src="shoe1.jpg" class="slideshow-imgs" id="img1" style="display: block">
-		<img src="shoe2.jpg" class="slideshow-imgs" id="img2">
-		<img src="shoe3.jpg" class="slideshow-imgs" id="img3">
-		<img src="shoe4.jpg" class="slideshow-imgs" id="img4">
+	<div id="body-content">
+		<h2>Log In</h2>
+		<hr>
 
-		<span class="dot activeDot" onclick=changePic(0)></span>
-		<span class="dot inactiveDot" onclick=changePic(1)></span>
-		<span class="dot inactiveDot" onclick=changePic(2)></span>
-		<span class="dot inactiveDot" onclick=changePic(3)></span>
+		<div id="information-content">
+			<div id="post-information-form">
+				<div id="form-content">
+					<form action="../js/login.js" id="register-form" method="post">
+						<div id="email">
+							<input type="email" size="40" name="email" placeholder="Email Address" class="form-input" required>
+						</div>
+
+						<div id="password">
+							<input type="password" size="40" name="password" placeholder="Password" class="form-input" required>
+						</div>
+
+						<div id="submit">
+							<button type="submit" id="log-in">Log In</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 	
+
 	<footer>
 		<p>Posted by: Hege Refsnes</p>
 		<p>Contact information: 

@@ -19,8 +19,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
 
 	<!-- Javascript and CSS files -->
-	<link rel="stylesheet" type="text/css" href="login.css">
-	<script type="text/javascript" src="login.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<script type="text/javascript" src="../js/register.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
@@ -62,7 +62,7 @@
 			</li>
 			<li>
 				<div id="search-bar">
-					<form action="/app.js" method="get" class="float-right">
+					<form action="app.js" method="get" class="float-right">
 						<div id="search-input">
 							<input type="search" placeholder="Search" name="" required>
 							<button type="submit">Search</button>
@@ -74,23 +74,35 @@
 	</div>
 
 	<div id="body-content">
-		<h2>Log In</h2>
+		<h2>Register</h2>
 		<hr>
 
 		<div id="information-content">
 			<div id="post-information-form">
 				<div id="form-content">
-					<form action="login.js" id="register-form" method="post">
-						<div id="email">
+					<form action="../js/register.js" id="register-form" method="post">
+						<div>
+							<input type="text" size="40" name="firstname" placeholder="First Name" class="form-input" required>
+						</div>
+							
+						<div>
+							<input type="text" size="40" name="lastname" placeholder="Last Name" class="form-input" required>
+						</div>
+
+						<div>
 							<input type="email" size="40" name="email" placeholder="Email Address" class="form-input" required>
 						</div>
 
-						<div id="password">
+						<div>
 							<input type="password" size="40" name="password" placeholder="Password" class="form-input" required>
 						</div>
 
+						<div id="confirm-password">
+							<input type="text" size="40" name="title" placeholder="Confirm Password" class="form-input" required>
+						</div>
+
 						<div id="submit">
-							<button type="submit" id="log-in">Log In</button>
+							<button type="submit" id="create-account">Create Account</button>
 						</div>
 						
 					</form>

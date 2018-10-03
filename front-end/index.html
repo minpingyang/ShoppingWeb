@@ -19,11 +19,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
 
 	<!-- Javascript and CSS files -->
-	<link rel="stylesheet" type="text/css" href="new.css">
-	<script type="text/javascript" src="new.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+	<script type="text/javascript" src="js/index.js"></script>
+
 </head>
 
 <body>
@@ -31,10 +30,10 @@
 	<div>
 		<ul id="nav1">
 			<li class="float-right">
-				<a href="login.html" style="text-decoration: none">Log In</a>
+				<a href="html/login.html" style="text-decoration: none">Log In</a>
 			</li>
 			<li class="float-right">
-				<a href="register.html" style="text-decoration: none">Register</a>
+				<a href="html/register.html" style="text-decoration: none">Register</a>
 			</li>
 		</ul>
 	</div>
@@ -42,19 +41,19 @@
 	<div>
 	    <ul id="nav2">
 	    	<li class="float-left">
-				<a href="new.html" style="text-decoration: none">New</a>
+				<a href="html/new.html" style="text-decoration: none">New</a>
 			</li>
 			<li class="float-left">
-				<a href="women.html" style="text-decoration: none">Women</a>
+				<a href="html/women.html" style="text-decoration: none">Women</a>
 			</li>
 			<li class="float-left">
-				<a href="men.html" style="text-decoration: none">Men</a>
+				<a href="html/men.html" style="text-decoration: none">Men</a>
 			</li>
 			<li class="float-left">
-				<a href="kids.html" style="text-decoration: none">Kids</a>
+				<a href="html/kids.html" style="text-decoration: none">Kids</a>
 			</li>
 			<li class="float-left">
-				<a href="brands.html" style="text-decoration: none">Brands</a>
+				<a href="html/brands.html" style="text-decoration: none">Brands</a>
 			</li>
 			
 			<li class="float-right">
@@ -62,7 +61,7 @@
 			</li>
 			<li>
 				<div id="search-bar">
-					<form action="/app.js" method="get" class="float-right">
+					<form action="/index.js" method="get" class="float-right">
 						<div id="search-input">
 							<input type="search" placeholder="Search" name="" required>
 							<button type="submit">Search</button>
@@ -73,13 +72,18 @@
 	    </ul>
 	</div>
 
-	<div id="body-content">
-		<h2>New</h2>
-		<hr>
-		
+	<div id="slideshow">
+		<img src="image/shoe1.jpg" class="slideshow-imgs" id="img1" style="display: block">
+		<img src="image/shoe2.jpg" class="slideshow-imgs" id="img2">
+		<img src="image/shoe3.jpg" class="slideshow-imgs" id="img3">
+		<img src="image/shoe4.jpg" class="slideshow-imgs" id="img4">
+
+		<span class="dot activeDot" onclick=changePic(0)></span>
+		<span class="dot inactiveDot" onclick=changePic(1)></span>
+		<span class="dot inactiveDot" onclick=changePic(2)></span>
+		<span class="dot inactiveDot" onclick=changePic(3)></span>
 	</div>
 	
-
 	<footer>
 		<p>Posted by: Hege Refsnes</p>
 		<p>Contact information: 
