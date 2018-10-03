@@ -87,6 +87,23 @@ input[type=search] {
 
 /*register form*/
 
+#body-content{
+	margin-bottom: 200px;
+}
+
+#body-content::after{
+	height: 1000px;
+	content: "";
+	background: url("../image/background.jpg");
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;  
+}
+
 h2{
 	padding-top: 30px;
 	text-align: center;
@@ -106,6 +123,7 @@ hr {
 }
 
 #post-information-form{
+	background-color: white;
 	border: 1px solid black;
 	margin-left: 10%;
 	margin-top: 50px;
@@ -134,13 +152,11 @@ hr {
 	border: 2px solid rgba(190, 163, 142, 1);
 }
 
-#confirm-password{
-	height: 100px;
-}
-
 #create-account{
+	margin-top: 40px;
 	width: 90%;
 	padding: 10px;
 	cursor: pointer;
 }
+
 

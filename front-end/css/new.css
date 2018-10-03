@@ -131,7 +131,7 @@ hr {
 
 #item-content::after{
 	content: "";
-	background: url(background.jpg);
+	background: url("../image/background.jpg");
 	opacity: 0.5;
 	top: 0;
 	left: 0;
