@@ -58,7 +58,7 @@ ul li a {
 }
 
 footer{
-	/*margin-top: 200px;*/
+	margin-top: 200px;
 	height: 150px;
 	clear: both;
 	background-color: #222;
@@ -87,7 +87,12 @@ input[type=search] {
 
 /*register form*/
 
+#body-content{
+	margin-bottom: 200px;
+}
+
 #body-content::after{
+	height: 1000px;
 	content: "";
 	background: url("../image/background.jpg");
 	opacity: 0.5;
