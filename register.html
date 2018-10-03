@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		GROUP PROJECT
+	</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
+
+	<!-- Javascript and CSS files -->
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<script type="text/javascript" src="register.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+</head>
+
+<body>
+
+	<div>
+		<ul id="nav1">
+			<li class="float-right">
+				<a href="login.html" style="text-decoration: none">Log In</a>
+			</li>
+			<li class="float-right">
+				<a href="register.html" style="text-decoration: none">Register</a>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+	    <ul id="nav2">
+	    	<li class="float-left">
+				<a href="new.html" style="text-decoration: none">New</a>
+			</li>
+			<li class="float-left">
+				<a href="women.html" style="text-decoration: none">Women</a>
+			</li>
+			<li class="float-left">
+				<a href="men.html" style="text-decoration: none">Men</a>
+			</li>
+			<li class="float-left">
+				<a href="kids.html" style="text-decoration: none">Kids</a>
+			</li>
+			<li class="float-left">
+				<a href="brands.html" style="text-decoration: none">Brands</a>
+			</li>
+			
+			<li class="float-right">
+				<a href="cart.html" style="text-decoration: none">View Cart</a>
+			</li>
+			<li>
+				<div id="search-bar">
+					<form action="/app.js" method="get" class="float-right">
+						<div id="search-input">
+							<input type="search" placeholder="Search" name="" required>
+							<button type="submit">Search</button>
+						</div>
+					</form>
+				</div>
+			</li>
+	    </ul>
+	</div>
+
+	<div id="body-content">
+		<h2>Register</h2>
+		<hr>
+
+		<div id="information-content">
+			<div id="post-information-form">
+				<div id="form-content">
+					<form action="register.js" id="register-form" method="post">
+						<div>
+							<input type="text" size="40" name="firstname" placeholder="First Name" class="form-input" required>
+						</div>
+							
+						<div>
+							<input type="text" size="40" name="lastname" placeholder="Last Name" class="form-input" required>
+						</div>
+
+						<div>
+							<input type="email" size="40" name="email" placeholder="Email Address" class="form-input" required>
+						</div>
+
+						<div>
+							<input type="password" size="40" name="password" placeholder="Password" class="form-input" required>
+						</div>
+
+						<div id="confirm-password">
+							<input type="text" size="40" name="title" placeholder="Confirm Password" class="form-input" required>
+						</div>
+
+						<div id="submit">
+							<button type="submit" id="create-account">Create Account</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<footer>
+		<p>Posted by: Hege Refsnes</p>
+		<p>Contact information: 
+			<a href="mailto:someone@example.com">someone@example.com</a>
+		</p>
+	</footer>
+
+</body>
+</html>
