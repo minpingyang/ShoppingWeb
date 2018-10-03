@@ -2,11 +2,11 @@ $(document).ready(function(e) {
 
 
 
-	$('#submit').button().click(
+	$('#create-account').click(
 		
 		function() {
 			console.log("register js called");
-		
+			console.log("location:"+window.location.pathname);
 			var firstName= $('#firstname').val();
 			var lastName = $('#lastname').val();
 			var password=  $('#password').val();
@@ -33,9 +33,26 @@ $(document).ready(function(e) {
 				return;
 			}
 			else{
+				// window.location="../index.html";
 				var data = {'firstName':firstName,'lastName':lastName,'password':password,'email':email};
 				console.log(data);
 				//do ajax here later
-		}
+				$.ajax({	
+					method:'POST',
+					// url: ipAddr+"/newUser",
+					data: data,
+    				//url: ipAddr+"/test",
+    				error: function(data,status) {
+    					alert("failed Register: " + status);
+    				},
+    				success: function(data,status){
+    					alert("succesful Register: " + status);
+						window.location.href = "../index.html";
+    				}
+    			});
+
+			}
+
 	});
+
 });
