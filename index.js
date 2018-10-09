@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 
 app.post('/register', async (req, res) => {
   console.log("register js called");
-  alert("register js called");
+  // alert("register js called");
   try {
     const client = await pool.connect();
     
@@ -49,7 +49,7 @@ app.post('/register', async (req, res) => {
     // console.log("all username:"+username);
     var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
     console.log(query_state);
-    alert(query_state);
+    // alert(query_state);
     var result = await client.query(query_state);   
    
     if (!result) {
