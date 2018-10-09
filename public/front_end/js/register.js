@@ -1,4 +1,4 @@
-import { lstat } from "fs";
+
 
 
 
@@ -72,12 +72,7 @@ $(document).ready(function(e) {
 				return;
 			}
 			else{
-				console.log("----------------");
-				console.log("firstName:"+firstName);
-				console.log("lastName:"+lastName);
-				console.log("ps:"+password);
-				console.log("c_ps:"+confirmPassword);
-				console.log("email"+email);
+				
 				
 				$.ajax({	
 					method:'POST',
@@ -93,7 +88,7 @@ $(document).ready(function(e) {
 				});
 				// window.location.href("../index.html");
 				// window.close();
-				// window.open("../index.html","_self");
+				window.open("../index.html","_self");
 				
 				
 
