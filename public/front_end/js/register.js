@@ -71,22 +71,28 @@ $(document).ready(function(e) {
 				return;
 			}
 			else{
-	
+				console.log("----------------");
+				console.log("firstName:"+firstName);
+				console.log("lastName:"+lastName);
+				console.log("ps:"+password);
+				console.log("c_ps:"+confirmPassword);
+				console.log("email"+email);
+
 				$.ajax({	
 					method:'POST',
 					url: appAddr+"/register",
 					data: JSON.stringify({
-						fname: firstname.text(),
-						lname: lastname.text(),
-						pword: password.text(),
-						emailadd: email.text()
+						fname: firstname,
+						lname: lastname,
+						pword: password,
+						emailadd: email
                 	}),
 	                contentType: "application/json",
 	                dataType: "json",
 				});
 				// window.location.href("../index.html");
 				// window.close();
-				window.open("../index.html","_self");
+				// window.open("../index.html","_self");
 				
 				
 
