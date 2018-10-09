@@ -45,8 +45,8 @@ $(document).ready(function(e) {
 		function() {
 			console.log("register js called");
 			console.log("location:"+window.location.pathname);
-			var firstName= $('#firstname').val();
-			var lastName = $('#lastname').val();
+			var firstName= $('#firstname').text();
+			var lastName = $('#lastname').text();
 			var password=  $('#password').val();
 			var email = $('#email').val();
 			var confirmPassword =  $('#confirm_password').val();
@@ -76,10 +76,10 @@ $(document).ready(function(e) {
 					method:'POST',
 					url: appAddr+"/register",
 					data: JSON.stringify({
-                    fname: firstname,
-                    lname: lastname,
-                    pword: password,
-                    emailadd: email
+						fname: firstname,
+						lname: lastname,
+						pword: password,
+						emailadd: email
                 	}),
 	                contentType: "application/json",
 	                dataType: "json",
