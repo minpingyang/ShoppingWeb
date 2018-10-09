@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var port = process.env.PORT || 3080;
-var DATABASE_URL ="postgres://bhylnewxetjsjd:192234775cb59b8cfb0225242db0f3a40d693ca6338d0c0141ea6fb45f243be8@ec2-23-23-253-106.compute-1.amazonaws.com:5432/d4dbtjd9snk1oc";
+var DATABASE_URL ="postgres://fgziyaczpjyghf:8bfdee6ef8f68d48dc35abaa5ea2ab738f816ee60bf3ff1e3a5193cafb5826ba@ec2-174-129-32-37.compute-1.amazonaws.com:5432/d549295uh1harg";
 var bodyParser = require ('body-parser');
 const path = require('path');
 const { Pool } = require('pg'); 
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 
 app.post('/register', async (req, res) => {
   console.log("register js called");
- 
+  alert("register js called");
   try {
     const client = await pool.connect();
     
@@ -45,9 +45,12 @@ app.post('/register', async (req, res) => {
     var lastname =req.body.lname;
     var pwd= req.body.pword;
     var email=req.body.emailadd;
-    console.log(firstname+","+lastname+","+pwd+","+"email");
+    
     // console.log("all username:"+username);
-    var result = await client.query("insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')");   
+    var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
+    console.log(query_state);
+    alert(query_state);
+    var result = await client.query(query_state);   
    
     if (!result) {
       return res.send('No data found');
