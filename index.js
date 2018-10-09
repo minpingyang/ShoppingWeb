@@ -33,6 +33,35 @@ app
   .set('view engine', 'ejs')
 app.use(bodyParser.json());
 
+
+
+app.post('/register', async (req, res) => {
+  console.log("register js called");
+ 
+  try {
+    const client = await pool.connect();
+    
+    var firstname= req.body.fname;
+    var lastname =req.body.lname;
+    var pwd= req.body.pword;
+    var email=req.body.emailadd;
+    console.log(firstname+","+lastname+","+pwd+","+"email");
+    // console.log("all username:"+username);
+    var result = await client.query("insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')");   
+   
+    if (!result) {
+      return res.send('No data found');
+      }else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
 // All existing tasks on database will be shown on the corresponding position at webpage, once webpage was refreshed. 
 
 // app.get('/db', async (req, res) => {

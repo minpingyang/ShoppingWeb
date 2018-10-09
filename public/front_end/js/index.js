@@ -21,3 +21,7 @@ function changePic(n) {
     // set the image corresponding to the dot on display
     slides[n].style.display = "block"; 
 }
+
+$(document).ready(function(e){
+
+});

@@ -97,7 +97,10 @@
 						</div>
 
 						<div>
-							<input type="password" size="40" id="password" placeholder="Password" class="form-input" required>
+							
+							<input type="password" size="40" id="password" placeholder="Password" autocomplete="none" class="form-input" required>
+							<p class="progress-label">Strength:</p>
+							<progress max="100" value="0" id="strength" style="width: 400px;">Complexity</progress>
 						</div>
 
 						<div>
@@ -105,7 +108,7 @@
 						</div>
 
 						<div id="submit">
-							<button type="submit" id="create-account">Create Account</button>
+							<button type="button" id="create-account">Create Account</button>
 						</div>
 						
 					</form>
@@ -113,7 +116,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<footer>
 		<p>Posted by: Hege Refsnes</p>

@@ -158,5 +158,10 @@ hr {
 	padding: 10px;
 	cursor: pointer;
 }
+.progress-label {
+	font-size:12px;
+    float: left;
+    margin-right: 1em;
+}
 
 

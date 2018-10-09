@@ -1,7 +1,45 @@
+
+
+
+
 $(document).ready(function(e) {
+	var appAddr="https://nwen304gropproject.herokuapp.com/";
+	$('#password').keyup(function () {
+		var password=  $('#password').val();
+		var strengthBar =document.getElementById("strength")
+		var strength=0;
 
-
-
+		if ((password.match(/[a-z]/)) && (password.match(/[A-Z]/))) {
+			strength+=1;
+		}
+		if (password.match(/.[,!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) {
+			strength+=1;
+		}
+		if (password.match(/[0-9]/)) {
+			strength+=1;
+		}
+		if (password.length>5) {
+			strength+=1;
+		}
+		switch(strength){
+			case 0:
+				strengthBar.value=20;
+				break;
+			case 1:
+				strengthBar.value=40;
+				break;
+			case 2:
+				strengthBar.value=60;
+				break;
+			case 3:
+				strengthBar.value=80;
+				break;
+			case 4:
+				strengthBar.value=100;
+				break;
+			
+		}
+	})
 	$('#create-account').click(
 		
 		function() {
@@ -33,23 +71,24 @@ $(document).ready(function(e) {
 				return;
 			}
 			else{
-				// window.location="../index.html";
-				var data = {'firstName':firstName,'lastName':lastName,'password':password,'email':email};
-				console.log(data);
-				//do ajax here later
+	
 				$.ajax({	
 					method:'POST',
-					// url: ipAddr+"/newUser",
-					data: data,
-    				//url: ipAddr+"/test",
-    				error: function(data,status) {
-    					alert("failed Register: " + status);
-    				},
-    				success: function(data,status){
-    					alert("succesful Register: " + status);
-						window.location.href = "../index.html";
-    				}
-    			});
+					url: appAddr+"/register",
+					data: JSON.stringify({
+                    fname: firstname,
+                    lname: lastname,
+                    pword: password,
+                    emailadd: email
+                	}),
+	                contentType: "application/json",
+	                dataType: "json",
+				});
+				// window.location.href("../index.html");
+				// window.close();
+				window.open("../index.html","_self");
+				
+				
 
 			}
 
