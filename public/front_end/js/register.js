@@ -46,7 +46,7 @@ $(document).ready(function(e) {
 			console.log("register js called");
 			console.log("location:"+window.location.pathname);
 			var firstName= $('#firstname').val()
-			var lastName = $('#lastname').value();
+			var lastName = $('#lastname').val();
 			var password=  $('#password').val();
 			var email = $('#email').val();
 			var confirmPassword =  $('#confirm_password').val();
