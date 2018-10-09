@@ -3,7 +3,7 @@
 
 
 $(document).ready(function(e) {
-	var appAddr="https://nwen304gropproject.herokuapp.com/";
+	var appAddr="https://nwen304gropproject.herokuapp.com";
 	$('#password').keyup(function () {
 		var password=  $('#password').val();
 		var strengthBar =document.getElementById("strength")
