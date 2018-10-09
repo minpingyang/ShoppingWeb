@@ -1,3 +1,4 @@
+import { lstat } from "fs";
 
 
 
@@ -77,13 +78,13 @@ $(document).ready(function(e) {
 				console.log("ps:"+password);
 				console.log("c_ps:"+confirmPassword);
 				console.log("email"+email);
-
+				
 				$.ajax({	
 					method:'POST',
 					url: appAddr+"/register",
 					data: JSON.stringify({
-						fname: firstname,
-						lname: lastname,
+						fname: firstName,
+						lname: lastName,
 						pword: password,
 						emailadd: email
                 	}),
