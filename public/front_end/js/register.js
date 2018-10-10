@@ -19,17 +19,17 @@ $(document).ready(function(e) {
 			console.log("email"+email);
 
 			if(email == null || email == undefined || email == ''){
-				alert("please enter a email address");
+				alert("Please enter an email address");
 				return;
 			}else if(firstName == null || firstName == undefined || firstName == ''||lastName == null || lastName == undefined || lastName == ''){
-				alert("please enter your full name");
+				alert("Please enter your full name");
 				return;
 			}else if(password == null || password == undefined || password == ''){
-				alert("please enter a password");
+				alert("Please enter a password");
 				return;
 			}
 			else if(password !== confirmPassword){
-				alert("Confirma Passwrod should be same");
+				alert("Passwords do not match");
 				return;
 			}
 			else{
