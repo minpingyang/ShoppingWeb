@@ -1,7 +1,7 @@
 $(document).ready(function(e) {
 
 
-
+	var appAddr="https://nwen304gropproject.herokuapp.com";
 	$('#submit').button().click(
 		
 		function() {
@@ -12,7 +12,7 @@ $(document).ready(function(e) {
 			var email = $('#email').val();
             console.log("email:"+email);
             console.log("ps"+password);
-            console.log("22222");
+			
 			if(email == null || email == undefined || email == ''){
                 alert("please enter a email address");
                 return;
@@ -21,9 +21,21 @@ $(document).ready(function(e) {
                 return;
             }
 			else{
-				var data = {'password':password,'email':email};
-				console.log(data);
-				//do ajax here later
-		}
+				$.ajax({	
+					method:'POST',
+					url: appAddr+"/login",
+					data: JSON.stringify({
+						pword: password,
+						emailadd: email
+                	}),
+	                contentType: "application/json",
+	                dataType: "json",
+				});
+				// window.location.href("../index.html");
+				// window.close();
+
+				window.open("../index.html","_self");
+				alert("Login Successfullly");
+			}
 	});
 });
