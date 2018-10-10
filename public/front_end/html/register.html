@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +25,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
@@ -31,44 +35,46 @@
 	<div>
 		<ul id="nav1">
 			<li class="float-right">
-				<a href="login.html" style="text-decoration: none">Log In</a>
+				<a href="login.html" style="text-decoration: none" class="nav-options">Log In</a>
 			</li>
 			<li class="float-right">
-				<a href="register.html" style="text-decoration: none">Register</a>
+				<a href="register.html" style="text-decoration: none" class="nav-options">Register</a>
 			</li>
 		</ul>
 	</div>
 
 	<div>
 	    <ul id="nav2">
-		    	<li class="float-left">
-				<a href="../index.html" style="text-decoration: none">Home</a>
+		    <li class="float-left">
+				<a href="../index.html" style="text-decoration: none" class="nav-options"><i class="fas fa-home"></i> Home</a>
 			</li>
-	    		<li class="float-left">
-				<a href="new.html" style="text-decoration: none">New</a>
-			</li>
-			<li class="float-left">
-				<a href="women.html" style="text-decoration: none">Women</a>
+	    	<li class="float-left">
+				<a href="new.html" style="text-decoration: none" class="nav-options"><i class="fas fa-plus"></i> New</a>
 			</li>
 			<li class="float-left">
-				<a href="men.html" style="text-decoration: none">Men</a>
+				<a href="women.html" style="text-decoration: none" class="nav-options"><i class="fas fa-female"></i> Women</a>
 			</li>
 			<li class="float-left">
-				<a href="kids.html" style="text-decoration: none">Kids</a>
+				<a href="men.html" style="text-decoration: none" class="nav-options"><i class="fas fa-male"></i> Men</a>
 			</li>
 			<li class="float-left">
-				<a href="brands.html" style="text-decoration: none">Brands</a>
+				<a href="kids.html" style="text-decoration: none" class="nav-options"><i class="fas fa-child"></i> Kids</a>
+			</li>
+			<li class="float-left">
+				<a href="brands.html" style="text-decoration: none" class="nav-options"><i class="fas fa-splotch"></i> Brands</a>
 			</li>
 			
 			<li class="float-right">
-				<a href="cart.html" style="text-decoration: none">View Cart</a>
+				<a href="#" style="text-decoration: none" class="nav-options"><i class="fas fa-shopping-cart"></i> View Cart</a>
 			</li>
 			<li>
 				<div id="search-bar">
-					<form action="app.js" method="get" class="float-right">
+					<form action="/index.js" method="get" class="float-right">
 						<div id="search-input">
 							<input type="search" placeholder="Search" name="" required>
-							<button type="submit">Search</button>
+							<button type="submit">
+								<i class="fas fa-search"></i>
+							</button>
 						</div>
 					</form>
 				</div>
@@ -116,14 +122,17 @@
 			</div>
 		</div>
 	</div>
-
+	
 
 	<footer>
-		<p>Posted by: Hege Refsnes</p>
-		<p>Contact information: 
-			<a href="mailto:someone@example.com">someone@example.com</a>
-		</p>
+		<div id="footer-content">
+			<p>Created by Darren Tong, Minping Yang, Tabitha Byrne</p>
+			<p>Contact information: 
+				<a href="mailto:tongdarr@myvuw.ac.nz">tongdarr@myvuw.ac.nz</a>
+			</p>
+		</div>
 	</footer>
 
 </body>
+
 </html>

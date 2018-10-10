@@ -14,10 +14,10 @@ $(document).ready(function(e) {
             console.log("ps"+password);
 			
 			if(email == null || email == undefined || email == ''){
-                alert("please enter a email address");
+                alert("Please enter an email address");
                 return;
 			}else if(password == null || password == undefined || password == ''){
-                alert("please enter password");
+                alert("Please enter a password");
                 return;
             }
 			else{
