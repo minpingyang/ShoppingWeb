@@ -23,7 +23,7 @@ $(document).ready(function(e) {
 			else{
 				$.ajax({	
 					method:'POST',
-					url: appAddr+"/login",
+					url: appAddr+"/html/login.html",
 					data: JSON.stringify({
 						pword: password,
 						emailadd: email

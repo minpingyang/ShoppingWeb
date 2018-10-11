@@ -66,7 +66,7 @@ app.post('/register', async (req, res) => {
 
 /* Login */
 
-app.post('/login', async (req, res) => {
+app.post('/html/login.html', async (req, res) => {
   console.log("login js called");
   // alert("register js called");
   try {
