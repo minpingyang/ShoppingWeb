@@ -28,7 +28,7 @@ next();
 });
 //
 app
-  .use (express.static(path.join(__dirname + '/public/front_end/index.html')))
+  .use (express.static(path.join(__dirname + '/public/front_end')))
   // .set('views', path.join(__dirname, 'views'))
   // .set('view engine', 'ejs')
 app.use(bodyParser.json());
@@ -232,7 +232,7 @@ app.post('/login', async (req, res) => {
 //   }
 // }); 
 
-app.get('/', (req, res) => res.render('pages/index'))
-	.listen(port, () => console.log('Listening on Heroku Server'))
+// app.get('/', (req, res) => res.render('pages/index'))
+// 	.listen(port, () => console.log('Listening on Heroku Server'))
 
 
