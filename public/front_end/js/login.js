@@ -2,7 +2,7 @@ $(document).ready(function(e) {
 
 
 	var appAddr="https://nwen304gropproject.herokuapp.com";
-	$('#submit').button().click(
+	$('#log-in').button().click(
 		
 		function() {
 			console.log("login js called");
