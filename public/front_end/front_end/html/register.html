@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		GROUP PROJECT
+	</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
+
+	<!-- Javascript and CSS files -->
+	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<script type="text/javascript" src="../js/register.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<div>
+		<ul id="nav1">
+			<li class="float-right">
+				<a href="login.html" style="text-decoration: none" class="nav-options">Log In</a>
+			</li>
+			<li class="float-right">
+				<a href="register.html" style="text-decoration: none" class="nav-options">Register</a>
+			</li>
+		</ul>
+	</div>
+
+	<div>
+	    <ul id="nav2">
+		    <li class="float-left">
+				<a href="../index.html" style="text-decoration: none" class="nav-options"><i class="fas fa-home"></i> Home</a>
+			</li>
+	    	<li class="float-left">
+				<a href="new.html" style="text-decoration: none" class="nav-options"><i class="fas fa-plus"></i> New</a>
+			</li>
+			<li class="float-left">
+				<a href="women.html" style="text-decoration: none" class="nav-options"><i class="fas fa-female"></i> Women</a>
+			</li>
+			<li class="float-left">
+				<a href="men.html" style="text-decoration: none" class="nav-options"><i class="fas fa-male"></i> Men</a>
+			</li>
+			<li class="float-left">
+				<a href="kids.html" style="text-decoration: none" class="nav-options"><i class="fas fa-child"></i> Kids</a>
+			</li>
+			<li class="float-left">
+				<a href="brands.html" style="text-decoration: none" class="nav-options"><i class="fas fa-splotch"></i> Brands</a>
+			</li>
+			
+			<li class="float-right">
+				<a href="#" style="text-decoration: none" class="nav-options"><i class="fas fa-shopping-cart"></i> View Cart</a>
+			</li>
+			<li>
+				<div id="search-bar">
+					<form action="/index.js" method="get" class="float-right">
+						<div id="search-input">
+							<input type="search" placeholder="Search" name="" required>
+							<button type="submit">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</li>
+	    </ul>
+	</div>
+
+	<div id="body-content">
+		<h2>Register</h2>
+		<hr>
+
+		<div id="information-content">
+			<div id="post-information-form">
+				<div id="form-content">
+					<form id="register-form" method="post">
+						<div>
+							<input type="text" size="40" id="firstname" placeholder="First Name" class="form-input" required>
+						</div>
+							
+						<div>
+							<input type="text" size="40" id="lastname" placeholder="Last Name" class="form-input" required>
+						</div>
+
+						<div>
+							<input type="email" size="40" id="email" placeholder="Email Address" class="form-input" required>
+						</div>
+
+						<div>
+							<input type="password" size="40" id="password" placeholder="Password" autocomplete="none" class="form-input" required>
+							<p class="progress-label">Strength:</p>
+							<progress max="100" value="0" id="strength" style="width: 79%;">Complexity</progress>
+						</div>
+
+						<div>
+							<input type="password" size="40" id="confirm_password" placeholder="Confirm Password" class="form-input" required>
+						</div>
+
+						<div id="submit">
+							<button type="button" id="create-account">Create Account</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<footer>
+		<div id="footer-content">
+			<p>Created by Darren Tong, Minping Yang, Tabitha Byrne</p>
+			<p>Contact information: 
+				<a href="mailto:tongdarr@myvuw.ac.nz">tongdarr@myvuw.ac.nz</a>
+			</p>
+		</div>
+	</footer>
+
+</body>
+
+</html>

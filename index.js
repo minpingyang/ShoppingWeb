@@ -64,6 +64,36 @@ app.post('/register', async (req, res) => {
   }
 });
 
+/* Login */
+
+app.post('/login', async (req, res) => {
+  console.log("login js called");
+  // alert("register js called");
+  try {
+    const client = await pool.connect();
+    
+    var pword= req.body.pword;
+    var email =req.body.emailadd;
+    
+    // console.log("all username:"+username);
+    // var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
+    var query_state="select * from account_table where " + pword + " == pwd AND " + email + " == email";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);   
+   
+    if (!result) {
+      return res.send('Incorrect email address or password');
+    }else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
 
 // All existing tasks on database will be shown on the corresponding position at webpage, once webpage was refreshed. 
 

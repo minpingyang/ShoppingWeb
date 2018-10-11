@@ -19,12 +19,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type='text/css'>
 
 	<!-- Javascript and CSS files -->
-	<link rel="stylesheet" type="text/css" href="../css/new.css">
-	<script type="text/javascript" src="../js/new.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/login.css">
+	<script type="text/javascript" src="../js/login.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Andada" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
 
 	<!-- Icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -32,7 +31,7 @@
 
 <body>
 
-		<div>
+	<div>
 		<ul id="nav1">
 			<li class="float-right">
 				<a href="login.html" style="text-decoration: none" class="nav-options">Log In</a>
@@ -83,32 +82,29 @@
 	</div>
 
 	<div id="body-content">
-		<div id="transparent-bg">
-			<h2>Men</h2>
-		</div>
-		
+		<h2>Log In</h2>
 		<hr>
 
-		<div id="sort">
-			<ul>
-				<li class="sort-options" onclick="sortMostPopular(this)">
-					MOST POPULAR
-				</li>
-				<li class="sort-options" onclick="sortPriceAscending(this)">
-					PRICE ASCENDING
-				</li>
-				<li class="sort-options" onclick="sortPriceDescending(this)">
-					PRICE DESCENDING
-				</li>
+		<div id="information-content">
+			<div id="post-information-form">
+				<div id="form-content">
+					<form id="register-form" method="post">
+						<div>
+							<input type="email" size="40" id="email" placeholder="Email Address" class="form-input" required>
+						</div>
 
-			</ul>
+						<div>
+							<input type="password" size="40" id="password" placeholder="Password" class="form-input" required>
+						</div>
+
+						<div id="submit">
+							<button type="submit" id="log-in">Log In</button>
+						</div>
+						
+					</form>
+				</div>
+			</div>
 		</div>
-
-		<div id="item-content">
-
-		</div>
-
-		
 	</div>
 	
 

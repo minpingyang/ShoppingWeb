@@ -58,17 +58,10 @@ ul li .nav-options {
 }
 
 footer{
-	/*margin-top: 200px;*/
+	margin-top: 200px;
 	height: 150px;
 	clear: both;
 	background-color: #222;
-	color: white;
-}
-
-#footer-content{
-	position: relative;
-	top: 25px;
-	margin-left: 150px;
 }
 
 /*search bar css*/
@@ -91,31 +84,25 @@ input[type=search] {
     width: 350px;
 }
 
-
-/*register form*/
-
-#body-content{
-	margin-bottom: 200px;
+footer{
+	height: 150px;
+	clear: both;
+	background-color: #222;
 }
 
-#body-content::after{
-	height: 1000px;
-	content: "";
-	background: url("../image/background.jpg");
-	opacity: 0.5;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;  
+/*main content of the page css*/
+
+body-content{
+	float: left;
 }
 
 h2{
 	padding-top: 30px;
+	padding-bottom: 30px;
 	text-align: center;
 	font-family: 'Playfair Display SC', serif;
 }
+
 
 hr {
 	width: 40%;
@@ -124,51 +111,58 @@ hr {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-#information-content{
-	width: 50%;
-	margin: auto;
-}
-
-#post-information-form{
+#sort{
+	text-align: center;
 	background-color: white;
-	border: 1px solid black;
-	margin-left: 10%;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	width: 80%;
-	height: 450px;
-	box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.3);
+	height: 80px;
+	border: 1px solid white;
 }
 
-#form-content{
-	position: relative;
-	margin-top: 20px;
-	margin-left: 10%;
+.sort-options{
+	display: inline-block;
+	padding: 23px;
+	font-family: 'Passion One', cursive;
+	font-size: 20px;
+	border: 1px solid white;
 }
 
-.form-input{
-	font-family: 'Lora', serif;
-	border: 2px solid rgba(190, 163, 142, 0.3);
-	width: 90%;
-	padding: 12px 16px;
-    margin: 6px 0;
-    outline: none;
-}
-
-.form-input:focus{
-	border: 2px solid rgba(190, 163, 142, 1);
-}
-
-#create-account{
-	margin-top: 40px;
-	width: 90%;
-	padding: 10px;
+.sort-options:hover{
+	outline: 1px solid black;
+	box-shadow: 0 0 5px 1px rgb(0, 0, 0);
 	cursor: pointer;
 }
-.progress-label {
-	font-size:12px;
-    float: left;
-    margin-right: 1em;
+
+
+#item-content::after{
+	content: "";
+	background: url("../image/background.jpg");
+	background-size: 100%;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: fixed;
+	z-index: -1;  
 }
 
+/* item listings in the database */
+
+#item-listings{
+	list-style: none;
+}
+
+.items{
+	display: inline-block;
+	position: relative;
+	width: 21%;
+	background-color: white;
+	text-align: center;
+	margin: 20px 23px;
+}
+
+.img-width{
+	position: relative;
+	width: 100%;
+}
 
