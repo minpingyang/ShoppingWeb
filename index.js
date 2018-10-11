@@ -82,6 +82,7 @@ app.post('/html/login.html', async (req, res) => {
     // alert(query_state);
     var result = await client.query(query_state);   
     console.log(result.rows);
+    consol.log(result.length);
     if (result.length == 0) {
       return res.send('Incorrect email address or password');
     }else{
