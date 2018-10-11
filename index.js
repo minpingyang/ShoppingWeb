@@ -78,10 +78,10 @@ app.post('/login', async (req, res) => {
     // console.log("all username:"+username);
     // var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
     var query_state="select * from account_table where pwd = '" + pword + "' AND email = '" + email + "'";
-    console.log("query state=" + query_state);
+    console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
-   
+    console.log(result);
     if (!result) {
       return res.send('Incorrect email address or password');
     }else{
