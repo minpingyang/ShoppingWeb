@@ -29,13 +29,20 @@ $(document).ready(function(e) {
 						emailadd: email
                 	}),
 	                contentType: "application/json",
-	                dataType: "json"
+	                dataType: "json",
+	                success: function(data){
+	                	console.log("data: " data);
+	      //           	if(data){
+	      //           		window.open("../index.html","_self");
+							// alert("Login Successfullly");
+	      //           	}
+	                	
+	                }
 				});
 				// window.location.href("../index.html");
 				// window.close();
 
-				window.open("../index.html","_self");
-				alert("Login Successfullly");
+				
 			}
 	});
 });
