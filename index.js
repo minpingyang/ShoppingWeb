@@ -85,7 +85,7 @@ app.post('/login', async (req, res) => {
     if (!result) {
       return res.send('Incorrect email address or password');
     }else{
-      return res.send(result.rows);
+      return res.send('Login successful');
     }
 
   } catch (err) {
