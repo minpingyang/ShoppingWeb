@@ -14,7 +14,10 @@ CREATE TABLE in_cart(
 
 CREATE TABLE items(
 	item_id serial NOT NULL,
-	name varchar(200) NOT NULL,
+	catg varchar(40) NOT NULL,
+	'new' varchar(40) NOT NULL,
+	'name' varchar(200) NOT NULL,
+	brand varchar(200) NOT NULL,
 	img varchar(200) NOT NULL,
 	price varchar(50) NOT NULL
 	PRIMARY KEY(item_id)
@@ -25,6 +28,11 @@ CREATE TABLE category(
 	category varchar(100) NOT NULL,
 	PRIMARY KEY(cat_id)
 );
+
+INSERT INTO category (cat_id, category) VALUES
+('1', 'men'),
+('2', 'women'),
+('3', 'kids');
 
 CREATE TABLE `items` (
   `catg` varchar(40) NOT NULL,
