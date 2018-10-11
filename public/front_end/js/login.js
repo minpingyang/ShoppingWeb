@@ -29,7 +29,7 @@ $(document).ready(function(e) {
 						emailadd: email
                 	}),
 	                contentType: "application/json",
-	                dataType: "json",
+	                dataType: "json"
 				});
 				// window.location.href("../index.html");
 				// window.close();

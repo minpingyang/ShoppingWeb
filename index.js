@@ -81,11 +81,11 @@ app.post('/html/login.html', async (req, res) => {
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
-    console.log(result);
+    console.log(result.rows);
     if (!result) {
       return res.send('Incorrect email address or password');
     }else{
-      return res.send('Login successful');
+      return res.send(result.rows);
     }
 
   } catch (err) {
