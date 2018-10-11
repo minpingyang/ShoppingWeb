@@ -30,18 +30,12 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 	                dataType: "json",
-	                success: function(){
-	                	window.open("../index.html","_self");
-						alert("Login Successfullly");
-	                },
-	                error: function(){
-	                	alert("Incorrect email or password");
-	                }
 				});
 				// window.location.href("../index.html");
 				// window.close();
 
-				
+				window.open("../index.html","_self");
+				alert("Login Successfullly");
 			}
 	});
 });
