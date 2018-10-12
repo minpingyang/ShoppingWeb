@@ -82,7 +82,7 @@ app.post('/html/login.html', async (req, res) => {
     // alert(query_state);
     var result = await client.query(query_state);   
     if (result.rows.length == 0) {
-      return res.send(result.rows.length);
+      return res.send('{"length": "0"}');
     }else{
       return res.send(result.rows);
     }
