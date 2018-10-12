@@ -1,8 +1,9 @@
-CREATE TABLE account_table(
-	fname text,
-	lname text,
-	email varchar(320),
-	pwd varchar(320)
+CREATE TABLE users(
+	fname varchar(200) NOT NULL,
+	lname varchar(200) NOT NULL, 
+	email varchar(200) NOT NULL,
+	pwd varchar(200) NOT NULL,
+	PRIMARY KEY(email)
 );
 
 CREATE TABLE in_cart(
@@ -16,7 +17,9 @@ CREATE TABLE items(
 	item_id serial NOT NULL,
 	name varchar(200) NOT NULL,
 	img varchar(200) NOT NULL,
-	price varchar(50) NOT NULL
+	price varchar(50) NOT NULL,
+	rating int NOT NULL,
+	CONSTRAINT CHK_items CHECK (rating <= 5), 
 	PRIMARY KEY(item_id)
 );
 
