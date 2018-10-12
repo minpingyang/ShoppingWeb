@@ -31,7 +31,7 @@ $(document).ready(function(e) {
 	                contentType: "application/json",
 	                dataType: "json",
 	                success: function(data){
-	                	console.log("data: " data);
+	                	console.log("data: " + data);
 	      //           	if(data){
 	      //           		window.open("../index.html","_self");
 							// alert("Login Successfullly");
