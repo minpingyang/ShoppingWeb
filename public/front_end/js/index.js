@@ -25,10 +25,10 @@ function changePic(n) {
 $(document).ready(function(e){
   
   $(function () {
-    console.log("************");
-    console.log("index: "+document.URL.indexOf('#login_succ'));
-    if (document.URL.indexOf('#login_succ') === -1) {
-        $('#login').text("Welcome");
+    
+    if(window.location.hash){
+      var name = window.location.hash.substring(1);
+      $('#login').text("Welcome,"+name);
     }
   });
   

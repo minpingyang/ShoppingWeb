@@ -51,7 +51,7 @@ $(document).ready(function(e) {
 function displayHTML(fname,lname){
 	// console.log("display function called");
 	// console.log("before:"+document.URL);
-	window.location.href="../index.html#login_succ";
+	window.location.href="../index.html#"+fname+" "+lname;
 	// console.log("current:"+document.URL);
 	// var login=document.getElementById("login");
 	// // console.log(text1);
