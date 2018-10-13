@@ -51,7 +51,7 @@ $(document).ready(function(e) {
 	
 });
 function displayHTML(fname,lname){
-	console("display function called");
+	console.log("display function called");
 	var text1=$('#login').text();
 	console.log(text1);
 	window.open("../index.html","_self");
