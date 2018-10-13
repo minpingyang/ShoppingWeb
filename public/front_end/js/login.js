@@ -1,6 +1,6 @@
 
 var ERROR_LOG =console.error.bind(console);
-var appAddr="https://nwen304gropproject.herokuapp.com";
+var appAddr="https://nwen304gropproject.herokuapp.com/html/login.html";
 $(document).ready(function(e) {
 
 	
