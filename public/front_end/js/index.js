@@ -29,6 +29,7 @@ $(document).ready(function(e){
     if(window.location.hash){
       var name = window.location.hash.substring(1);
       $('#login').text("Welcome,"+name);
+      $('#login').attr("href", "../index.html");
     }
   });
   
