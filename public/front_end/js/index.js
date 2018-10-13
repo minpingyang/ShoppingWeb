@@ -23,12 +23,13 @@ function changePic(n) {
 }
 
 $(document).ready(function(e){
-  function pageLoad(){
-    console.log("page load called");
-    console.log("index: "+document.URL.indexOf('#login_succ'));
-    if (document.URL.indexOf('#login_succ') === -1) {
-      $('#login').text("Welcome");
+  
+  $(function () {
+    console.log("************");
+    console.log("index: "+document.URL.indexOf('#load-stuff'));
+    if (document.URL.indexOf('#load-stuff') === -1) {
+        $('#login').text("Welcome");
     }
-  }
+  });
   
 });
