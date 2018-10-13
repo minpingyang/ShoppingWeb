@@ -47,7 +47,9 @@ $(document).ready(function(e) {
 		});
 	}
 	function displayHTML(fname,lname){
-		$('#login').text("Welcome,"+fname+" "+lname+"!");
+		var text1=$('#login').text();
+		console.log(text1);
+		// $('#login').text("Welcome,"+fname+" "+lname+"!");
 	}
 	
 });
