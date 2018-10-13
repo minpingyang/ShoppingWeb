@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 	$('#log-in').button().click(
 		
 		function() {
-			console.log("login js called");
+			console.log("login front-end called");
 		
 	
 			var password=  $('#password').val();

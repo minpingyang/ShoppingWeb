@@ -65,7 +65,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/login_account', async (req, res) => {
-  console.log("login js called");
+  console.log("login back-end called");
 
   try {
     const client = await pool.connect();    
