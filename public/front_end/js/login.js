@@ -49,16 +49,16 @@ $(document).ready(function(e) {
 	
 });
 function displayHTML(fname,lname){
-	console.log("display function called");
-	console.log("before:"+document.URL);
-	window.location.replace("../index.html");
-	console.log("current:"+document.URL);
-	var login=document.getElementById("login");
-	// console.log(text1);
-	login.innerHTML("Hi Dar");
+	// console.log("display function called");
+	// console.log("before:"+document.URL);
+	window.location.href("../index.html/#login_succ");
+	// console.log("current:"+document.URL);
+	// var login=document.getElementById("login");
+	// // console.log(text1);
+	// login.innerHTML("Hi Dar");
 	
-	// window.open("../index.html","_self");
-	// $('#login').text("Welcome,"+fname+" "+lname+"!");
+	// // window.open("../index.html","_self");
+	// // $('#login').text("Welcome,"+fname+" "+lname+"!");
 };
 
 
