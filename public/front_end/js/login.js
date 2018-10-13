@@ -47,6 +47,7 @@ $(document).ready(function(e) {
 		});
 	}
 	function displayHTML(fname,lname){
+		console("display function called");
 		var text1=$('#login').text();
 		console.log(text1);
 		// $('#login').text("Welcome,"+fname+" "+lname+"!");
