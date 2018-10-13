@@ -25,7 +25,7 @@ $(document).ready(function(e) {
 			else{
 				$.ajax({	
 					method:'GET',
-					url: appAddr+"/login",
+					url: appAddr+"/login_account",
 					data: JSON.stringify({
 						pword: password,
 						emailadd: email
