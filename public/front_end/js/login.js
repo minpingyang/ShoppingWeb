@@ -39,7 +39,7 @@ $(document).ready(function(e) {
 	});
 	function my_nextfunction(accounts){
 		//add tasks:
-		window.open("../index.html","_self");
+		
 		alert("Register Successfullly");
 		console.log("my next function called");
 		accounts.forEach(account=>{
@@ -50,6 +50,7 @@ $(document).ready(function(e) {
 		console("display function called");
 		var text1=$('#login').text();
 		console.log(text1);
+		window.open("../index.html","_self");
 		// $('#login').text("Welcome,"+fname+" "+lname+"!");
 	}
 	
