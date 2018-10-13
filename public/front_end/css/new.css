@@ -148,6 +148,13 @@ hr {
 
 /* item listings in the database */
 
+#item-content{
+	width: 90%;
+	height: 90%;
+	background-color: black;
+	margin: auto;
+}
+
 #item-listings{
 	list-style: none;
 }
@@ -158,11 +165,18 @@ hr {
 	width: 21%;
 	background-color: white;
 	text-align: center;
-	margin: 20px 23px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .img-width{
-	position: relative;
+	/*position: relative;*/
 	width: 100%;
 }
 
+.add-cart-btn{
+	width: 100%;
+	height: 50px;
+}

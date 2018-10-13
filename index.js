@@ -66,64 +66,113 @@ app.post('/register', async (req, res) => {
 
 /* Login */
 
-// app.post('/html/login.html', async (req, res) => {
-//   console.log("login js called");
-//   // alert("register js called");
-//   try {
-//     const client = await pool.connect();
+app.post('/html/login.html', async (req, res) => {
+  console.log("login js called");
+  // alert("register js called");
+  try {
+    const client = await pool.connect();
     
-//     var pword= req.body.pword;
-//     var email =req.body.emailadd;
+    var pword= req.body.pword;
+    var email =req.body.emailadd;
     
-//     // console.log("all username:"+username);
-//     // var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
-//     var query_state="select * from account_table where pwd = '" + pword + "' AND email = '" + email + "'";
-//     console.log(query_state);
-//     // alert(query_state);
-//     var result = await client.query(query_state);   
-//     if (result.rows.length == 0) {
-//       return res.send('{"length": "0"}');
-//     }else{
-//       return res.send(result.rows);
-//     }
+    // console.log("all username:"+username);
+    // var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
+    var query_state="select * from account_table where pwd = '" + pword + "' AND email = '" + email + "'";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);   
+    if (result.rows.length == 0) {
+      return res.send('No data found');
+    }
+    else{
+      return res.send(result.rows);
+    }
 
-//   } catch (err) {
-//     console.error(err);
-//     res.send("Error " + err);
-//   }
-// });
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
 
 
-// app.get('/most_popular', async (req, res) => {
-//   console.log("most_popular button pressed");
-//   // alert("register js called");
-//   try {
-//     const client = await pool.connect();
+app.get('/most_popular', async (req, res) => {
+  console.log("most_popular button pressed");
+  // alert("register js called");
+  try {
+    const client = await pool.connect();
+
     
-//     var firstname= req.body.fname;
-//     var lastname =req.body.lname;
-//     var pwd= req.body.pword;
-//     var email=req.body.emailadd;
-    
-//     // console.log("all username:"+username);
-//     var query_state="select * from items";
-//     console.log(query_state);
-//     // alert(query_state);
-//     var result = await client.query(query_state);   
+    // console.log("all username:"+username);
+    var query_state="select * from items order by " + rating + " desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);   
    
-//     if (!result) {
-//       return res.send('No data found');
-//       }else{
-//       return res.send(result.rows);
-//     }
+    if (!result) {
+      return res.send('No data found');
+    }
+    else{
+      return res.send(result.rows);
+    }
 
-//   } catch (err) {
-//     console.error(err);
-//     res.send("Error " + err);
-//   }
-// });
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
 
 
+app.get('/price_ascending', async (req, res) => {
+  console.log("price_ascending button pressed");
+  // alert("register js called");
+  try {
+    const client = await pool.connect();
+
+    
+    // console.log("all username:"+username);
+    var query_state="select * from items order by " + price + " asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);   
+   
+    if (!result) {
+      return res.send('No data found');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/price_descending', async (req, res) => {
+  console.log("price_descending button pressed");
+  // alert("register js called");
+  try {
+    const client = await pool.connect();
+
+    
+    // console.log("all username:"+username);
+    var query_state="select * from items order by " + price + " desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);   
+   
+    if (!result) {
+      return res.send('No data found');
+    }else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
 
 // All existing tasks on database will be shown on the corresponding position at webpage, once webpage was refreshed. 
 

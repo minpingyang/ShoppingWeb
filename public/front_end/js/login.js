@@ -35,7 +35,6 @@ $(document).ready(function(e) {
 	                		window.open("../index.html","_self");
 							alert("Login Successfullly");
 	                	}
-	                	
 	                }
 				});
 				// window.location.href("../index.html");
