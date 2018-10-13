@@ -10,8 +10,8 @@ $(document).ready(function(e) {
 	
 			var password=  $('#password').val();
 			var email = $('#email').val();
-            console.log("email:"+email);
-            console.log("ps"+password);
+            // console.log("email:"+email);
+            // console.log("ps"+password);
 			
 			if(email == null || email == undefined || email == ''){
                 alert("Please enter an email address");
@@ -22,21 +22,14 @@ $(document).ready(function(e) {
             }
 			else{
 				$.ajax({	
-					method:'POST',
-					url: appAddr+"/html/login.html",
+					method:'GET',
+					url: appAddr+"/login",
 					data: JSON.stringify({
 						pword: password,
 						emailadd: email
                 	}),
 	                contentType: "application/json",
-	                dataType: "json",
-	                success: function(data){
-	                	if(data.length == 0){
-	                		window.open("../index.html","_self");
-							alert("Login Successfullly");
-	                	}
-	                	
-	                }
+					dataType: "json",
 				});
 				// window.location.href("../index.html");
 				// window.close();
