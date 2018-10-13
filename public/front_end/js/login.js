@@ -1,7 +1,9 @@
+
+var ERROR_LOG =console.error.bind(console);
+var appAddr="https://nwen304gropproject.herokuapp.com";
 $(document).ready(function(e) {
 
-
-	var appAddr="https://nwen304gropproject.herokuapp.com";
+	
 	$('#log-in').button().click(
 		
 		function() {
