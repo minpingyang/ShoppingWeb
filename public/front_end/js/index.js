@@ -23,8 +23,10 @@ function changePic(n) {
 }
 
 $(document).ready(function(e){
-  
-  if (document.URL.indexOf('#login_succ') === -1) {
-    $('#login').text("Welcome");
+  function pageLoad(){
+    if (document.URL.indexOf('#login_succ') === -1) {
+      $('#login').text("Welcome");
+    }
   }
+  
 });
