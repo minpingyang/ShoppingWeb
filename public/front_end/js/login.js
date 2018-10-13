@@ -31,9 +31,12 @@ $(document).ready(function(e) {
 	                contentType: "application/json",
 	                dataType: "json",
 	                success: function(data){
-	                	if(data.length == 0){
+	                	if(data.length != 0){
 	                		window.open("../index.html","_self");
 							alert("Login Successfullly");
+	                	}
+	                	else if(data.length == 0){
+	                		alert("Incorrect email / password");
 	                	}
 	                }
 				});

@@ -81,6 +81,7 @@ app.post('/html/login.html', async (req, res) => {
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
+    
     if (result.rows.length == 0) {
       return res.send('No data found');
     }
