@@ -26,8 +26,8 @@ $(document).ready(function(e){
   
   $(function () {
     console.log("************");
-    console.log("index: "+document.URL.indexOf('#load-stuff'));
-    if (document.URL.indexOf('#load-stuff') === -1) {
+    console.log("index: "+document.URL.indexOf('#login_succ'));
+    if (document.URL.indexOf('#login_succ') === -1) {
         $('#login').text("Welcome");
     }
   });
