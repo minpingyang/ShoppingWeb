@@ -32,11 +32,25 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 					dataType: "json",
-				});
+				}).then(my_nextfunction,ERROR_LOG);
 				// window.location.href("../index.html");
-				// window.close();
-
-				
+				// window.close();	
 			}
 	});
+	function my_nextfunction(accounts){
+		//add tasks:
+		window.open("../index.html","_self");
+		alert("Register Successfullly");
+		console.log("my next function called");
+		accounts.forEach(account=>{
+			displayHTML(account.fname,account.lname);
+		});
+	}
+	function displayHTML(fname,lname){
+		$('#login').text("Welcome,"+fname+" "+lname+"!");
+	}
+	
 });
+
+
+

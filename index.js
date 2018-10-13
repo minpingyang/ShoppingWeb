@@ -76,12 +76,12 @@ app.post('/login_account', async (req, res) => {
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
-    result.rows.forEach(account=>{
-            console.log("hahaha");
-            console.log(account.fname,account.lname);
-    });
+    // result.rows.forEach(account=>{
+    //         console.log("hahaha");
+    //         console.log(account.fname,account.lname);
+    // });
     if (!result) {
-      return res.send('No data found');
+      return res.send('invalid account');
       }else{
       return res.send(result.rows);
     }
