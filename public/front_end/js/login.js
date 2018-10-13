@@ -41,24 +41,12 @@ $(document).ready(function(e) {
 		//add tasks:
 		
 		accounts.forEach(account=>{
-			// console.log("77777")
-			displayHTML(account.fname,account.lname);
+			window.location.href="../index.html#"+account.fname+"_"+account.lname;
 		});
 	}
 	
 	
 });
-function displayHTML(fname,lname){
-	// console.log("display function called");
-	// console.log("before:"+document.URL);
-	window.location.href="../index.html#"+fname+"_"+lname;
-	// console.log("current:"+document.URL);
-	// var login=document.getElementById("login");
-	// // console.log(text1);
-	// login.innerHTML("Hi Dar");
-	
-	// // window.open("../index.html","_self");
-	// // $('#login').text("Welcome,"+fname+" "+lname+"!");
-};
+
 
 
