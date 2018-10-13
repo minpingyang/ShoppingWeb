@@ -72,11 +72,14 @@ app.post('/login_account', async (req, res) => {
     var email=req.body.emailadd;
     var pwd= req.body.pword;
     // console.log("all username:"+username);
-    var query_state="SELECT fname,lname FROM account_table where email='"+email+"' and pwd='"+pwd+"'";
+    var query_state="SELECT * FROM account_table where email='"+email+"' and pwd='"+pwd+"'";
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
-    console.log("result"+result.rows[0]);
+    result.rows.forEach(account=>{
+            console.log("hahaha");
+            console.log(account.fname,account.lname);
+    });
     if (!result) {
       return res.send('No data found');
       }else{
