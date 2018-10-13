@@ -12,7 +12,7 @@ $(document).ready(function(e) {
 			var email = $('#email').val();
             // console.log("email:"+email);
             // console.log("ps"+password);
-			
+			console.log("111111");
 			if(email == null || email == undefined || email == ''){
                 alert("Please enter an email address");
                 return;
