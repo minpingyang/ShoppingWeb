@@ -40,10 +40,8 @@ $(document).ready(function(e) {
 	function my_nextfunction(accounts){
 		//add tasks:
 		
-		alert("Register Successfullly");
-		console.log("my next function called");
 		accounts.forEach(account=>{
-			console.log("77777")
+			// console.log("77777")
 			displayHTML(account.fname,account.lname);
 		});
 	}
@@ -52,8 +50,9 @@ $(document).ready(function(e) {
 });
 function displayHTML(fname,lname){
 	console.log("display function called");
-	var text1=$('#login').text();
-	console.log(text1);
+	var login=document.getElementById("login");
+	// console.log(text1);
+	login.innerHTML("Hi Dar");
 	window.open("../index.html","_self");
 	// $('#login').text("Welcome,"+fname+" "+lname+"!");
 };
