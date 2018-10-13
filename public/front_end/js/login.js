@@ -43,18 +43,19 @@ $(document).ready(function(e) {
 		alert("Register Successfullly");
 		console.log("my next function called");
 		accounts.forEach(account=>{
+			console.log("77777")
 			displayHTML(account.fname,account.lname);
 		});
 	}
-	function displayHTML(fname,lname){
-		console("display function called");
-		var text1=$('#login').text();
-		console.log(text1);
-		window.open("../index.html","_self");
-		// $('#login').text("Welcome,"+fname+" "+lname+"!");
-	}
+	
 	
 });
-
+function displayHTML(fname,lname){
+	console("display function called");
+	var text1=$('#login').text();
+	console.log(text1);
+	window.open("../index.html","_self");
+	// $('#login').text("Welcome,"+fname+" "+lname+"!");
+};
 
 
