@@ -50,10 +50,11 @@ $(document).ready(function(e) {
 });
 function displayHTML(fname,lname){
 	console.log("display function called");
+	window.location.replace("../index.html");
 	var login=document.getElementById("login");
 	// console.log(text1);
 	login.innerHTML("Hi Dar");
-	window.open("../index.html","_self");
+	// window.open("../index.html","_self");
 	// $('#login').text("Welcome,"+fname+" "+lname+"!");
 };
 
