@@ -9,7 +9,7 @@ $(document).ready(function(e) {
 		function() {
 			console.log("login front-end called");
 		
-			var salt =crypto.randomBytes(128).toString('hex');
+			
 			var password=  $('#password').val();
 			var email = $('#email').val();
             // console.log("email:"+email);
