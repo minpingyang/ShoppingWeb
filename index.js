@@ -33,11 +33,12 @@ app
   .set('view engine', 'ejs')
 app.use(bodyParser.json());
 
-
+const crypto = require('crypto');
 
 app.post('/register', async (req, res) => {
   console.log("register js called");
   // alert("register js called");
+  var salt =crypto.randomBytes(128).toString('hex');
   try {
     const client = await pool.connect();
     
@@ -45,9 +46,10 @@ app.post('/register', async (req, res) => {
     var lastname =req.body.lname;
     var pwd= req.body.pword;
     var email=req.body.emailadd;
-    
+    var hash_pwd=pbkdf2(pwd, salt, 100000, 128, 'sha512').toString('hex');
+
     // console.log("all username:"+username);
-    var query_state="insert into account_table (fname,lname,email,pwd) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+pwd+"')";
+    var query_state="insert into account_table (fname,lname,email,pwd,salt) values"+"('"+firstname+"','"+lastname+"','"+email+"','"+hash_pwd+"','"+salt+"')";
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
