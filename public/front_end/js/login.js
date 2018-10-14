@@ -31,7 +31,7 @@ $(document).ready(function(e) {
 						emailadd: email
                 	}),
 	                contentType: "application/json",
-					dataType: "json",
+					// dataType: "json",
 				}).then(my_nextfunction,ERROR_LOG);
 				// window.location.href("../index.html");
 				// window.close();	
