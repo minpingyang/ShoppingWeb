@@ -79,7 +79,7 @@ app.post('/login_account', async (req, res) => {
     var result = await client.query(query_state); 
     var salt;
     var real_pwd;
-    if(!result){
+    if(result){
       result.rows.forEach(account=>{
         // console.log("hahaha");
         salt=account.salt;
