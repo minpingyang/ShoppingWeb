@@ -73,15 +73,25 @@ app.post('/login_account', async (req, res) => {
     var email=req.body.emailadd;
     var pwd= req.body.pword;
     // console.log("all username:"+username);
-    var query_state="SELECT * FROM account_table where email='"+email+"' and pwd='"+pwd+"'";
+    var query_state="SELECT * FROM account_table where email='"+email+"'";
     console.log(query_state);
     // alert(query_state);
-    var result = await client.query(query_state);   
-    // result.rows.forEach(account=>{
-    //         console.log("hahaha");
-    //         console.log(account.fname,account.lname);
-    // });
-    if (!result) {
+    var result = await client.query(query_state); 
+    var salt;
+    var real_pwd;
+    if(!result){
+      result.rows.forEach(account=>{
+        // console.log("hahaha");
+        salt=account.salt;
+        real_pwd =account.pwd;
+        console.log(account.fname,account.lname);
+      });
+        var try_pwd = crypto.pbkdf2Sync(pwd, salt, 100000, 128, 'sha512').toString('hex');
+        var success=(try_pwd==real_pwd);
+        console.log("if success:"+success);
+    }
+    
+    if (!result||!success) {
       return res.send('invalid account');
       }else{
       return res.send(result.rows);
