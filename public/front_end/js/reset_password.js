@@ -38,7 +38,7 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 	                dataType: "json",
-				}),then(function(){
+				}).then(function(){
 					alert("reset successfully");
 				},function(error){
 					alert(error);
