@@ -1,5 +1,5 @@
 
-// var ERROR_LOG =console.error.bind(console);
+var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
 $(document).ready(function(e) {
 
@@ -32,12 +32,7 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 					// dataType: "json",
-				}).then(my_nextfunction,
-					function(err){
-						alert("fuck you");
-						alert(err);
-					}
-				);
+				}).then(my_nextfunction,ERROR_LOG);
 				// window.location.href("../index.html");
 				// window.close();	
 			}
@@ -45,7 +40,7 @@ $(document).ready(function(e) {
 	function my_nextfunction(accounts){
 		//add tasks:
 		if(typeof accounts ==="string"){
-			alert("cao ni ma de ni ma zha le");
+			alert(accounts);
 		}else{
 			accounts.forEach(account=>{
 				window.location.href="../index.html#"+account.fname+"_"+account.lname;
