@@ -38,15 +38,14 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 	                dataType: "json",
-				}).then(function(){
-					
-					alert("reset successfully");
-					window.location.href="../html/login.html";
-
-				},function(error){
-					console.log("reset ajax error:"+error);
-					alert(error);
-				});
+				}).then(function(accounts){
+					if(typeof accounts ==="string"){
+						alert(accounts);
+					}else{
+						alert("reset successfully");
+						window.location.href="../html/login.html";
+					}
+				},ERROR_LOG);
 				// window.location.href("../index.html");
 				// window.close();
 
