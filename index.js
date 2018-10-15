@@ -143,9 +143,9 @@ app.put('/reset_pwd', async (req, res) => {
     }
     
     if (!result||!success) {
-      alert("invalid account");
+      
       return res.send('invalid account');
-      }else{
+    }else{
       return res.send(result.rows);
     }
 
