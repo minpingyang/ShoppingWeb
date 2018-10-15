@@ -44,10 +44,14 @@ $(document).ready(function(e) {
 	});
 	function my_nextfunction(accounts){
 		//add tasks:
+		if(typeof(accounts)==string){
+			alert("cao ni ma de ni ma zha le");
+		}else{
+			accounts.forEach(account=>{
+				window.location.href="../index.html#"+account.fname+"_"+account.lname;
+			});
+		}
 		
-		accounts.forEach(account=>{
-			window.location.href="../index.html#"+account.fname+"_"+account.lname;
-		});
 	}
 	
 	
