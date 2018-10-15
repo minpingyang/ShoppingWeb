@@ -41,7 +41,7 @@ $(document).ready(function(e) {
 				}).then(function(){
 					
 					alert("reset successfully");
-					window.location.href="../login.html";
+					window.location.href="../html/login.html";
 
 				},function(error){
 					console.log("reset ajax error:"+error);
