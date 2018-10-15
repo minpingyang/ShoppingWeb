@@ -36,8 +36,8 @@ $(document).ready(function(e) {
 						new_pword: new_password,
 						emailadd: email
                 	}),
-	                contentType: "application/json",
-	                dataType: "json",
+	                contentType: "application/json"
+	                // dataType: "json",
 				}).then(function(accounts){
 					if(typeof accounts ==="string"){
 						alert(accounts);
