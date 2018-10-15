@@ -67,7 +67,7 @@ app.post('/register', async (req, res) => {
 
 app.post('/login_account', async (req, res) => {
   console.log("login back-end called");
-
+  
   try {
     const client = await pool.connect();    
     var email=req.body.emailadd;
@@ -79,6 +79,7 @@ app.post('/login_account', async (req, res) => {
     var result = await client.query(query_state); 
     var salt;
     var real_pwd;
+    var success=false;
     if(result){
       result.rows.forEach(account=>{
         // console.log("hahaha");
@@ -87,7 +88,7 @@ app.post('/login_account', async (req, res) => {
         console.log(account.fname,account.lname);
       });
         var try_pwd = crypto.pbkdf2Sync(pwd, salt, 100000, 128, 'sha512').toString('hex');
-        var success=(try_pwd==real_pwd);
+        success=(try_pwd==real_pwd);
         console.log("if success:"+success);
     }
     
@@ -102,6 +103,57 @@ app.post('/login_account', async (req, res) => {
     res.send("Error " + err);
   }
 });
+
+app.put('/reset_pwd', async (req, res) => {
+  console.log("reset js called");
+  var new_salt =crypto.randomBytes(128).toString('hex');
+  try {
+    const client = await pool.connect();    
+    var email=req.body.emailadd;
+    var old_pwd= req.body.old_pword;
+    var new_pwd= req.body.new_pword;
+    // console.log("all username:"+username);
+    var query_state="SELECT * FROM account_table where email='"+email+"'";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state); 
+    var old_salt;
+    var real_oldpwd;
+    var success=false;
+
+    if(result){
+      result.rows.forEach(account=>{
+        // console.log("hahaha");
+        old_salt=account.salt;
+        real_oldpwd =account.pwd;
+        // console.log(account.fname,account.lname);
+      });
+
+        var try_oldpwd_hash = crypto.pbkdf2Sync(old_pwd, old_salt, 100000, 128, 'sha512').toString('hex');
+        var success=(try_oldpwd_hash==real_oldpwd);
+        if(success){
+          var new_pwd_hash= crypto.pbkdf2Sync(new_pwd, new_salt, 100000, 128, 'sha512').toString('hex');
+          query_state="UPDATE account_table SET pwd='"+new_pwd_hash+"',salt='"+new_salt+"' where email='"+email+"'";
+          result = await client.query(query_state); 
+          console.log("reset password successfully");
+        }
+        
+    }
+    
+    if (!result||!success) {
+      return res.send('invalid account');
+      }else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+// var queryCmd = "UPDATE tasks_table SET ifcompleted='"+ifcompleted+"' where nametask='"+taskname+"' and username='"+username+"'";
 
 // All existing tasks on database will be shown on the corresponding position at webpage, once webpage was refreshed. 
 

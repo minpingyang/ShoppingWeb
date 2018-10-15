@@ -1,5 +1,5 @@
 
-var ERROR_LOG =console.error.bind(console);
+// var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
 $(document).ready(function(e) {
 
@@ -32,7 +32,7 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 					// dataType: "json",
-				}).then(my_nextfunction,ERROR_LOG);
+				}).then(my_nextfunction,function(err){alert(err)});
 				// window.location.href("../index.html");
 				// window.close();	
 			}
