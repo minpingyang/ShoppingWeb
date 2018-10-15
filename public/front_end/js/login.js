@@ -32,7 +32,9 @@ $(document).ready(function(e) {
                 	}),
 	                contentType: "application/json",
 					// dataType: "json",
-				}).then(my_nextfunction,function(err){alert(err)});
+				}).then(my_nextfunction,function(err){
+					console.log("fuck you!")
+					alert("invalid account");});
 				// window.location.href("../index.html");
 				// window.close();	
 			}

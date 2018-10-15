@@ -132,6 +132,7 @@ app.put('/reset_pwd', async (req, res) => {
         var try_oldpwd_hash = crypto.pbkdf2Sync(old_pwd, old_salt, 100000, 128, 'sha512').toString('hex');
         var success=(try_oldpwd_hash==real_oldpwd);
         if(success){
+          console.log("!!!!!!!!!!!!!!!!!ahhahahahahaha")
           var new_pwd_hash= crypto.pbkdf2Sync(new_pwd, new_salt, 100000, 128, 'sha512').toString('hex');
           query_state="UPDATE account_table SET pwd='"+new_pwd_hash+"',salt='"+new_salt+"' where email='"+email+"'";
           result = await client.query(query_state); 

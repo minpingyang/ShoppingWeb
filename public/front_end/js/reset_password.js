@@ -39,15 +39,18 @@ $(document).ready(function(e) {
 	                contentType: "application/json",
 	                dataType: "json",
 				}).then(function(){
+					
 					alert("reset successfully");
+					window.location.href="../login.html";
+
 				},function(error){
+					console.log("reset ajax error:"+error);
 					alert(error);
 				});
 				// window.location.href("../index.html");
 				// window.close();
 
-				window.open("../login.html","_self");
-				alert("Reset Successfullly");
+				
 				
 				
 
