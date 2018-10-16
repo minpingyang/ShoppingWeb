@@ -14,7 +14,9 @@
     "body-parser": "^1.18.3",
     "crypto": "^1.0.1",
     "ejs": "^2.5.6",
-    "express": "^4.15.2",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "googleapis": "^34.0.0",
     "pg": "^7.4.3"
   },
   "devDependencies": {
