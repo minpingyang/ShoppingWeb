@@ -48,6 +48,24 @@ $(document).ready(function(e) {
 		}
 		
 	}
+
+	$('#google-login').button().click(
+		function () {
+			$.ajax({	
+				method:'POST',
+				url: appAddr+"/login_google"
+				// data: JSON.stringify({
+				// 	pword: password,
+				// 	emailadd: email
+				// }),
+				// contentType: "application/json",
+				// dataType: "json",
+			}).then(loginByGoogle,ERROR_LOG);
+		}
+	);
+	function loginByGoogle(url){
+		window.location.href=url;
+	}
 	
 	
 });

@@ -110,11 +110,12 @@ app.use("/details", function (req, res) {
   })
 });
 
-app.use("/", function (req, res) {
+app.use("/login_google", function (req, res) {
   var url = getAuthUrl();
-  res.send('<h1>Authentication using google oAuth</h1><a href='
-    + url +
-    '>Login</a>')
+  // res.send('<h1>Authentication using google oAuth</h1><a href='
+  //   + url +
+  //   '>Login</a>')
+  res.send(url);
 });
 
 app.post('/register', async (req, res) => {
