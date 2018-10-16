@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var port = process.env.PORT || 3080;
+var port = process.env.PORT || 1234;
 var DATABASE_URL ="postgres://fgziyaczpjyghf:8bfdee6ef8f68d48dc35abaa5ea2ab738f816ee60bf3ff1e3a5193cafb5826ba@ec2-174-129-32-37.compute-1.amazonaws.com:5432/d549295uh1harg";
 var bodyParser = require ('body-parser');
 const path = require('path');
@@ -11,6 +11,15 @@ const pool = new Pool({
 	ssl: true 
 });
 //
+var http = require('http');
+var Session = require('express-session');
+var google = require('googleapis');
+var GoogleAuth = require('google-auth-library');
+var plus = google.plus('v1');
+var OAuth2 = google.auth.OAuth2;
+const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
+const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
+const RedirectionUrl = "http://localhost:1234/oauthCallback/";
 
 
 
@@ -34,6 +43,79 @@ app
 app.use(bodyParser.json());
 
 const crypto = require('crypto');
+
+var server = http.createServer(app);
+app.get('/', (req, res) => res.render('pages/index'));
+	// .listen(port, () => console.log('Listening on Heroku Server'))
+server.listen(port);
+server.on('listening', function () {
+      console.log('listening to ${port}');
+});
+app.use(Session({
+    secret: 'raysources-secret-19890913007',
+    resave: true,
+    saveUninitialized: true
+}));
+
+function getOAuthClient () {
+    return new OAuth2(ClientId , ClientSecret, RedirectionUrl);
+}
+
+function getAuthUrl () {
+    var oauth2Client = getOAuthClient();
+    // generate a url that asks permissions for Google+ and Google Calendar scopes
+    var scopes = [
+      'https://www.googleapis.com/auth/plus.me'
+    ];
+
+    var url = oauth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: scopes // If you only need one scope you can pass it as string
+    });
+
+    return url;
+}
+
+app.use("/oauthCallback", function (req, res) {
+    var oauth2Client = getOAuthClient();
+    var session = req.session;
+    var code = req.query.code;
+    oauth2Client.getToken(code, function(err, tokens) {
+      // Now tokens contains an access_token and an optional refresh_token. Save them.
+      if(!err) {
+        oauth2Client.setCredentials(tokens);
+        session["tokens"]=tokens;
+        res.send('<h3>Login successful!</h3><a href="/details">Go to details page</a>');
+      }
+      else{
+        res.send('<h3>Login failed!</h3>');
+      }
+    });
+});
+
+app.use("/details", function (req, res) {
+  var oauth2Client = getOAuthClient();
+  oauth2Client.setCredentials(req.session["tokens"]);
+  
+  var p = new Promise(function (resolve, reject) {
+      plus.people.get({ userId: 'me', auth: oauth2Client }, function(err, response) {
+        console.log(response)
+          resolve(response || err);
+      });
+  }).then(function (response) {
+    data = response.data;
+      res.send('<h3>Hello ' + data.name.givenName +'_'+data.name.familyName + '</h3>');
+      // res.send('<h4>'+displayName+'</h4>');
+      // res.send('<h5>'+displayName+'</h5>');
+  })
+});
+
+app.use("/", function (req, res) {
+  var url = getAuthUrl();
+  res.send('<h1>Authentication using google oAuth</h1><a href='
+    + url +
+    '>Login</a>')
+});
 
 app.post('/register', async (req, res) => {
   console.log("register js called");
@@ -295,7 +377,5 @@ app.put('/reset_pwd', async (req, res) => {
 //   }
 // }); 
 
-app.get('/', (req, res) => res.render('pages/index'))
-	.listen(port, () => console.log('Listening on Heroku Server'))
 
 
