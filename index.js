@@ -13,7 +13,7 @@ const pool = new Pool({
 //
 var http = require('http');
 var Session = require('express-session');
-var google = require('googleapis');
+var {google} = require('googleapis');
 var GoogleAuth = require('google-auth-library');
 var plus = google.plus('v1');
 var OAuth2 = google.auth.OAuth2;
