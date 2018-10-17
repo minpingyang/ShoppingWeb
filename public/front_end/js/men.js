@@ -19,3 +19,34 @@ function sortPriceAscending(element){
 function sortPriceDescending(element){
   sortButtonCss(element);
 };
+
+/* Create the database records on the html file */
+function create_items(items){
+	items.forEach(item=>{
+		var itemHTML = '<li class="items">';
+		itemHTML += '<img src="' + item.img + '" class="img-width">';
+		itemHTML += '<p>' + item.item_name + '</p>';
+		itemHTML += '<p><i class="fas fa-dollar-sign"></i>' + item.price + '</p>';
+		itemHTML += '<button class="add-cart-btn">Add to Cart</button>';
+		itemHTML += '</li>';
+
+		var $newItem = $(itemHTML);
+		$('#item-listings').prepend($newItem);
+	});
+}
+
+var ERROR_LOG =console.error.bind(console);
+var appAddr="https://privatenwen304.herokuapp.com.herokuapp.com";
+
+$(document).ready(function(e) {
+
+	$.ajax({
+		method:'GET',
+		url: "/mens",
+		contentType: "application/json",
+		dataType: "json"
+	}).then(create_items, ERROR_LOG);
+
+});
+
+
