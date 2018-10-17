@@ -60,12 +60,13 @@ $(document).ready(function(e) {
 				// }),
 				// contentType: "application/json",
 				// dataType: "json",
-			}).then(loginByGoogle,ERROR_LOG);
+			});
+			// }).then(loginByGoogle,ERROR_LOG);
 		}
 	);
-	function loginByGoogle(url){
-		window.location.href=url;
-	}
+	// function loginByGoogle(url){
+	// 	window.location.href=url;
+	// }
 	
 	
 });
