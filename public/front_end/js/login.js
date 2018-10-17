@@ -52,7 +52,7 @@ $(document).ready(function(e) {
 	$('#google-login').button().click(
 		function () {
 			$.ajax({	
-				method:'POST',
+				method:'GET',
 				url: appAddr+"/login_google"
 				// data: JSON.stringify({
 				// 	pword: password,

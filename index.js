@@ -76,7 +76,8 @@ function getAuthUrl () {
     return url;
 }
 
-app.use("/oauthCallback", function (req, res) {
+app.get("/login_google/oauthCallback", function (req, res) {
+  console.log("111");
     var oauth2Client = getOAuthClient();
     var session = req.session;
     var code = req.query.code;
@@ -110,7 +111,7 @@ app.use("/details", function (req, res) {
   })
 });
 
-app.use("/login_google", function (req, res) {
+app.get("/login_google", function (req, res) {
   console.log("1111111");
   var url = getAuthUrl();
   // res.send('<h1>Authentication using google oAuth</h1><a href='
