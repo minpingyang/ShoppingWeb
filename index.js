@@ -111,11 +111,13 @@ app.use("/details", function (req, res) {
 });
 
 app.use("/login_google", function (req, res) {
+  console.log("1111111");
   var url = getAuthUrl();
   // res.send('<h1>Authentication using google oAuth</h1><a href='
   //   + url +
   //   '>Login</a>')
-  res.send(url);
+  // res.send(url);
+  res.redirect(url);  
 });
 
 app.post('/register', async (req, res) => {
