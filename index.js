@@ -225,11 +225,20 @@ app.put('/reset_pwd', async (req, res) => {
           result = await client.query(query_state); 
           console.log("reset password successfully");
         }
-        
     }
-    
     if (!result||!success) {
       return res.send('invalid information, please try again');
+    }
+  }catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  } 
+});
+    
+    
+  
+
+
 app.get('/search', async (req, res) => {
   console.log("men's page");
 
@@ -777,29 +786,3 @@ app.get('/kids_price_descending', async (req, res) => {
 //     res.send("Error " + err);
 //   }
 // });
-
-// // when user click edit button, then the new taskname and username of the task on database will be updated.
-// app.put('/edit_task', async (req, res) => {
-//   //
-//   console.log("Edit task server part called........");
-//   try {
-//     const client = await pool.connect();
-//     var taskname =req.body.nametask;
-//     var username=req.body.username;
-//     var newname= req.body.new_nametask;
-//     var newuser= req.body.new_username;
-//     var queryCmd = "UPDATE tasks_table SET nametask='"+newname+"',username='"+newuser+"' where nametask='"+taskname+"' and username='"+username+"'";
-//     console.log(queryCmd)
-//     var result = await client.query(queryCmd);   
-   
-//     if (!result) {
-//       return res.send('No data found');
-//     }else{
-//       return res.send(result.rows);
-//     }
-
-//   } catch (err) {
-//     console.error(err);
-//     res.send("Error " + err);
-//   }
-// }); 
