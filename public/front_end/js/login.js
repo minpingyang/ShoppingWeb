@@ -1,3 +1,9 @@
+function my_nextfunction(accounts){
+	//add tasks:
+	accounts.forEach(account=>{
+		window.location.href="../index.html#"+account.fname+"_"+account.lname;
+	});
+}
 
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
@@ -37,15 +43,14 @@ $(document).ready(function(e) {
 				// window.close();	
 			}
 	});
-	function my_nextfunction(accounts){
-		//add tasks:
-		
-		accounts.forEach(account=>{
-			window.location.href="../index.html#"+account.fname+"_"+account.lname;
-		});
-	}
 	
-	
+	$("#search-btn").button().click(function(){
+		// get the input of the search bar
+		var val = $('#search').val();
+		var url = appAddr + '/html/search.html?q=' + val;
+		window.location.href = url;
+		return false;
+	});
 });
 
 

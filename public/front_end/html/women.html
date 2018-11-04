@@ -32,7 +32,7 @@
 
 <body>
 
-		<div>
+	<div class="upper-lower-nav">
 		<ul id="nav1">
 			<li class="float-right">
 				<a href="login.html" style="text-decoration: none" class="nav-options">Log In</a>
@@ -43,7 +43,7 @@
 		</ul>
 	</div>
 
-	<div>
+	<div class="upper-lower-nav">
 	    <ul id="nav2">
 		    	<li class="float-left">
 				<a href="../index.html" style="text-decoration: none" class="nav-options"><i class="fas fa-home"></i> Home</a>
@@ -65,14 +65,14 @@
 			</li>
 			
 			<li class="float-right">
-				<a href="#" style="text-decoration: none" class="nav-options"><i class="fas fa-shopping-cart"></i> View Cart</a>
+				<a href="view_cart.html" style="text-decoration: none" class="nav-options"><i class="fas fa-shopping-cart"></i> View Cart</a>
 			</li>
 			<li>
 				<div id="search-bar">
-					<form action="/index.js" method="get" class="float-right">
+					<form name="searchform" method="get" class="float-right">
 						<div id="search-input">
-							<input type="search" placeholder="Search" name="" required>
-							<button type="submit">
+							<input type="search" name="query" placeholder="Search" id="search" required>
+							<button type="submit" id="search-btn">
 								<i class="fas fa-search"></i>
 							</button>
 						</div>
@@ -106,7 +106,7 @@
 
 		<div id="item-content">
 			<ul id="item-listings">
-
+				
 			</ul>
 		</div>
 

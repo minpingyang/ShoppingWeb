@@ -76,7 +76,7 @@ function create_items(items){
 }
 
 var ERROR_LOG =console.error.bind(console);
-var appAddr="https://privatenwen304.herokuapp.com.herokuapp.com";
+var appAddr="https://nwen304gropproject.herokuapp.com";
 
 $(document).ready(function(e) {
 
@@ -90,18 +90,15 @@ $(document).ready(function(e) {
 	var searching = $('#search').val();
 
 	$("#search-btn").button().click(function(){
-		$.ajax({
-			method:'GET',
-			url: "/search",
-			contentType: "application/json",
-			dataType: "json",
-			data: JSON.stringify({
-				search: searching
-        	}),
-			success: function(items){
-				window.location.href="../search.html#result_"+items.length;
-			}
-		}).then(create_items, ERROR_LOG);
+		// get the input of the search bar
+		var val = $('#search').val();
+		var url = appAddr + '/html/search.html?q=' + val;
+		window.location.href = url;
+		return false;
+	});
+
+	$(".add-cart-btn").button.click(function(){
+		
 	});
 
 });
