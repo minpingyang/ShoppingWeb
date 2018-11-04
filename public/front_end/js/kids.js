@@ -13,7 +13,7 @@ function sortMostPopular(element){
   
 	$.ajax({
 		method:'GET',
-		url: "/mens_most_popular",
+		url: "/kids_most_popular",
 		contentType: "application/json",
 		dataType: "json",
 		success: function(){
@@ -27,7 +27,7 @@ function sortPriceAscending(element){
 
 	$.ajax({
 		method:'GET',
-		url: "/mens_price_ascending",
+		url: "/kids_price_ascending",
 		contentType: "application/json",
 		dataType: "json",
 		success: function(){
@@ -41,7 +41,7 @@ function sortPriceDescending(element){
 
 	$.ajax({
 		method:'GET',
-		url: "/mens_price_descending",
+		url: "/kids_price_descending",
 		contentType: "application/json",
 		dataType: "json",
 		success: function(){
@@ -82,7 +82,7 @@ $(document).ready(function(e) {
 
 	$.ajax({
 		method:'GET',
-		url: "/mens",
+		url: "/kids",
 		contentType: "application/json",
 		dataType: "json"
 	}).then(create_items, ERROR_LOG);

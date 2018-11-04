@@ -230,6 +230,426 @@ app.put('/reset_pwd', async (req, res) => {
     
     if (!result||!success) {
       return res.send('invalid information, please try again');
+app.get('/search', async (req, res) => {
+  console.log("men's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="SELECT * FROM items where cat_id = 1";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+/*
+The following 4 get requests will be corresponding to the new page
+and the sorting methods most popular, price ascending/descending.
+*/
+
+
+app.get('/new', async (req, res) => {
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where new = true";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/new_most_popular', async (req, res) => {
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where new = true order by rating asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/new_price_ascending', async (req, res) => {
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where new = true order by price asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/new_price_descending', async (req, res) => {
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where new = true order by price desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+/*
+The following 4 get requests will be corresponding to the mens page
+and the sorting methods most popular, price ascending/descending.
+*/
+
+app.get('/mens', async (req, res) => {
+  console.log("men's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 1";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/mens_most_popular', async (req, res) => {
+  console.log("men's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 1 order by rating asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/mens_price_ascending', async (req, res) => {
+  console.log("men's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 1 order by price asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+app.get('/mens_price_descending', async (req, res) => {
+  console.log("men's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 1 order by price desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+/*
+The following 4 get requests will be corresponding to the womens page
+and the sorting methods most popular, price ascending/descending.
+*/
+
+app.get('/womens', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 2";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+app.get('/womens_most_popular', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 2 order by rating asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/womens_price_ascending', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 2 order by price asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+app.get('/womens_price_descending', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 2 order by price desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/kids', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 3";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+app.get('/kids_most_popular', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 3 order by rating asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+
+app.get('/kids_price_ascending', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 3 order by price asc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
+    }
+    else{
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
+app.get('/kids_price_descending', async (req, res) => {
+  console.log("women's page");
+
+  try {
+    const client = await pool.connect();    
+    // console.log("all username:"+username);
+    var query_state="select * from items where cat_id = 3 order by price desc";
+    console.log(query_state);
+    // alert(query_state);
+    var result = await client.query(query_state);
+    
+    if (!result) {
+      return res.send('no records');
     }
     else{
       return res.send(result.rows);
@@ -243,6 +663,9 @@ app.put('/reset_pwd', async (req, res) => {
 
 
 // var queryCmd = "UPDATE tasks_table SET ifcompleted='"+ifcompleted+"' where nametask='"+taskname+"' and username='"+username+"'";
+
+
+
 
 // All existing tasks on database will be shown on the corresponding position at webpage, once webpage was refreshed. 
 
@@ -380,6 +803,3 @@ app.put('/reset_pwd', async (req, res) => {
 //     res.send("Error " + err);
 //   }
 // }); 
-
-
-
