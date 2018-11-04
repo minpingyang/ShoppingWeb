@@ -43,6 +43,40 @@ $(document).ready(function(e) {
 				// window.close();	
 			}
 	});
+<<<<<<< HEAD
+=======
+	function my_nextfunction(accounts){
+		//add tasks:
+		if(typeof accounts ==="string"){
+			alert(accounts);
+		}else{
+			accounts.forEach(account=>{
+				window.location.href="../index.html#"+account.fname+"_"+account.lname;
+			});
+		}
+		
+	}
+
+	$('#google-login').button().click(
+		function () {
+			$.ajax({	
+				method:'GET',
+				url: appAddr+"/login_google"
+				// data: JSON.stringify({
+				// 	pword: password,
+				// 	emailadd: email
+				// }),
+				// contentType: "application/json",
+				// dataType: "json",
+			});
+			// }).then(loginByGoogle,ERROR_LOG);
+		}
+	);
+	// function loginByGoogle(url){
+	// 	window.location.href=url;
+	// }
+	
+>>>>>>> 781c69f10a1a0188c4c374ca96077f524d029d75
 	
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
