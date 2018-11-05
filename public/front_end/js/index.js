@@ -1,3 +1,5 @@
+import { content } from "googleapis/build/src/apis/content";
+
 function changePic(n) {
     
     var slides = document.getElementsByClassName("slideshow-imgs");
@@ -26,6 +28,7 @@ var appAddr="https://nwen304gropproject.herokuapp.com";
 
 $(document).ready(function(e){
   var btn_content = $('#login').find("text").text().trim();
+  console.log("999:"+btn_content);
   $(function () {
     // var localStorage = window.localStorage;
     // if($('#login').find("text").text().trim()==="Log Out"){
