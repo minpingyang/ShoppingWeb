@@ -26,7 +26,7 @@ $(document).ready(function (e) {
 			console.log("5555");
 			alert("go to ")
 			//  window.open("/html/login.html");
-			window.location.href = "html/login.html";
+			window.location.href = "login.html";
 		}
 	});
 
