@@ -97,9 +97,9 @@ $(document).ready(function(e) {
 		return false;
 	});
 
-	$(".add-cart-btn").button.click(function(){
+	// $(".add-cart-btn").button.click(function(){
 		
-	});
+	// });
 
 });
 
