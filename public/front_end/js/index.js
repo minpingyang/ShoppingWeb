@@ -26,13 +26,30 @@ var appAddr="https://nwen304gropproject.herokuapp.com";
 
 $(document).ready(function(e){
   $(function () {
-    if(window.location.hash){
-      var name = window.location.hash.substring(1);
-      $('#login').text("Welcome, "+name);
-      $('#login').attr("href", "../index.html");
+    // var localStorage = window.localStorage;
+    // if($('#login').find("text").text().trim()==="Log Out"){
+    //     $('#login').attr("href", "../index.html");
+    // }else if(localStorage["email"]){
+    //   var name = localStorage.getItem("email")
+    //   $('#login').text("Log Out");
+      
+    // }
+    if(localStorage["email"]&&btn_content==="Log In"){
+      $('#login').text("Log Out");
     }
   });
-
+  $("#login").button().click(function(){
+    var btn_content = $('#login').find("text").text().trim();
+    if($('#login').find("text").text().trim()==="Log Out"){
+      localStorage.clear();
+      $('#login').text("Log In");
+    }
+    else{
+     alert("go to ")
+    //  window.open("/html/login.html");
+      window.location.href="html/login.html";
+    }
+  });
   $("#search-btn").button().click(function(){
     // get the input of the search bar
     var val = $('#search').val();

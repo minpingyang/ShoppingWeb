@@ -1,9 +1,4 @@
-function my_nextfunction(accounts){
-	//add tasks:
-	accounts.forEach(account=>{
-		window.location.href="../index.html#"+account.fname+"_"+account.lname;
-	});
-}
+
 
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
@@ -43,14 +38,16 @@ $(document).ready(function(e) {
 				// window.close();	
 			}
 	});
-
+	
 	function my_nextfunction(accounts){
 		//add tasks:
 		if(typeof accounts ==="string"){
 			alert(accounts);
 		}else{
 			accounts.forEach(account=>{
-				window.location.href="../index.html#"+account.fname+"_"+account.lname;
+				var myStorage = window.localStorage;
+				myStorage.setItem("email",account.email);
+				window.location.href="../index.html";
 			});
 		}
 		
@@ -75,7 +72,6 @@ $(document).ready(function(e) {
 	// 	window.location.href=url;
 	// }
 	
-
 	
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
