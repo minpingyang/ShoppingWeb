@@ -241,7 +241,7 @@ app.put('/reset_pwd', async (req, res) => {
   
 
 
-app.get('/search', async (req, res) => {
+app.post('/search', async (req, res) => {
   console.log("men's page");
 
   // var searching = req.query.q;
