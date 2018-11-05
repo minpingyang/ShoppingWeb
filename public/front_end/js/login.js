@@ -43,8 +43,7 @@ $(document).ready(function(e) {
 				// window.close();	
 			}
 	});
-<<<<<<< HEAD
-=======
+
 	function my_nextfunction(accounts){
 		//add tasks:
 		if(typeof accounts ==="string"){
@@ -76,7 +75,7 @@ $(document).ready(function(e) {
 	// 	window.location.href=url;
 	// }
 	
->>>>>>> 781c69f10a1a0188c4c374ca96077f524d029d75
+
 	
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
