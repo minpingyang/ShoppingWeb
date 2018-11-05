@@ -1,66 +1,66 @@
-function sortButtonCss(element){
-  $(".sort-options").css({
-    "background-color" : "white",
-    "color" : "black"
-  });
+function sortButtonCss(element) {
+	$(".sort-options").css({
+		"background-color": "white",
+		"color": "black"
+	});
 
-  element.style.backgroundColor = "black";
-  element.style.color = "white";
+	element.style.backgroundColor = "black";
+	element.style.color = "white";
 }
 
-function sortMostPopular(element){
-  sortButtonCss(element);
-  
+function sortMostPopular(element) {
+	sortButtonCss(element);
+
 	$.ajax({
-		method:'GET',
+		method: 'GET',
 		url: "/mens_most_popular",
 		contentType: "application/json",
 		dataType: "json",
-		success: function(){
+		success: function () {
 			$("#item-listings").empty();
 		}
 	}).then(create_items, ERROR_LOG);
 };
 
-function sortPriceAscending(element){
-  sortButtonCss(element);
+function sortPriceAscending(element) {
+	sortButtonCss(element);
 
 	$.ajax({
-		method:'GET',
+		method: 'GET',
 		url: "/mens_price_ascending",
 		contentType: "application/json",
 		dataType: "json",
-		success: function(){
+		success: function () {
 			$("#item-listings").empty();
 		}
 	}).then(create_items, ERROR_LOG);
 };
 
-function sortPriceDescending(element){
-  sortButtonCss(element);
+function sortPriceDescending(element) {
+	sortButtonCss(element);
 
 	$.ajax({
-		method:'GET',
+		method: 'GET',
 		url: "/mens_price_descending",
 		contentType: "application/json",
 		dataType: "json",
-		success: function(){
+		success: function () {
 			$("#item-listings").empty();
 		}
-	}).then(create_items, ERROR_LOG);  
+	}).then(create_items, ERROR_LOG);
 };
 
 /* Create the database records on the html file */
-function create_items(items){
-	items.forEach(item=>{
+function create_items(items) {
+	items.forEach(item => {
 		var itemHTML = '<li class="items">';
 		itemHTML += '<img src="' + item.img + '" class="img-width">';
 		itemHTML += '<p>';
-		for(var i = 0; i < 5; i++){
-			if(i < item.rating){
+		for (var i = 0; i < 5; i++) {
+			if (i < item.rating) {
 				itemHTML += '<i class="fas fa-star"></i>';
 			}
-			else{
+			else {
 				itemHTML += '<i class="far fa-star"></i>';
 			}
 		}
@@ -75,19 +75,19 @@ function create_items(items){
 	});
 }
 
-var ERROR_LOG =console.error.bind(console);
-var appAddr="https://nwen304gropproject.herokuapp.com";
+var ERROR_LOG = console.error.bind(console);
+var appAddr = "https://nwen304gropproject.herokuapp.com";
 
-$(document).ready(function(e) {
+$(document).ready(function (e) {
 
 	$.ajax({
-		method:'GET',
+		method: 'GET',
 		url: "/mens",
 		contentType: "application/json",
 		dataType: "json"
 	}).then(create_items, ERROR_LOG);
 
-	$("#search-btn").button().click(function(){
+	$("#search-btn").button().click(function () {
 		// get the input of the search bar
 		var val = $('#search').val();
 		console.log(val);
@@ -96,6 +96,32 @@ $(document).ready(function(e) {
 		return false;
 	});
 
+	var btn_content = $('#login').text().trim();
+	console.log("11111:" + btn_content);
+	var localStorage = window.localStorage;
+	console.log("storage: " + localStorage.getItem("email"));
+	$(function () {
+		if (localStorage.getItem("email") !== null && $('#login').text().trim() === "Log In") {
+			console.log("22222");
+			$('#login').text("Log Out");
+			console.log("2.11111" + $('#login').text());
+		}
+	});
+	$("#login").button().click(function () {
+		console.log("333" + $('#login').text().trim());
+		if ($('#login').text().trim() === "Log Out") {
+			console.log("4444");
+			localStorage.clear();
+			$('#login').text("Log In");
+
+		}
+		else {
+			console.log("5555");
+			alert("go to ")
+			//  window.open("/html/login.html");
+			window.location.href = "html/login.html";
+		}
+	});
 });
 
 
