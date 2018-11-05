@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 const crypto = require('crypto');
 
 var server = http.createServer(app);
-app.get('/', (req, res) => res.render('pages/index'));
+// app.get('/', (req, res) => res.render('pages/index'));
 	// .listen(port, () => console.log('Listening on Heroku Server'))
 server.listen(port);
 server.on('listening', function () {
