@@ -28,7 +28,7 @@ var appAddr="https://nwen304gropproject.herokuapp.com";
 
 $(document).ready(function(e){
   var btn_content = $('#login').text().trim();
-  console.log("999:"+btn_content);
+  console.log("11111:"+btn_content);
   $(function () {
     // var localStorage = window.localStorage;
     // if($('#login').find("text").text().trim()==="Log Out"){
@@ -39,17 +39,19 @@ $(document).ready(function(e){
       
     // }
     if(localStorage["email"]&&btn_content==="Log In"){
-      console.log("66666666");
+      console.log("22222");
       $('#login').text("Log Out");
     }
   });
   $("#login").button().click(function(){
     
     if(btn_content==="Log Out"){
+      console.log("3333");
       localStorage.clear();
       $('#login').text("Log In");
     }
     else{
+    console.log("333333");
      alert("go to ")
     //  window.open("/html/login.html");
       window.location.href="html/login.html";
