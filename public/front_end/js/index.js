@@ -45,7 +45,7 @@ $(document).ready(function(e){
   });
   $("#login").button().click(function(){
     
-    if($('#login').find("text").text().trim()==="Log Out"){
+    if(btn_content==="Log Out"){
       localStorage.clear();
       $('#login').text("Log In");
     }
