@@ -10,7 +10,10 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: true 
 });
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 013fb1911a1ff6752df9e9fa4c704856e140fdbe
 var http = require('http');
 var Session = require('express-session');
 var {google} = require('googleapis');
@@ -39,7 +42,7 @@ next();
 app
   .use (express.static(path.join(__dirname + '/public/front_end')))
   .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
+  .set('view engine', 'ejs') 
 app.use(bodyParser.json());
 // app.user(cookieParser());
 // app.use(session({secret: 'darren'}));
@@ -193,9 +196,6 @@ app.post('/login_account', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.post('/search', async (req, res) => {
-=======
 app.put('/reset_pwd', async (req, res) => {
   console.log("reset js called");
   var new_salt =crypto.randomBytes(128).toString('hex');
