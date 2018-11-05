@@ -87,8 +87,6 @@ $(document).ready(function(e) {
 		dataType: "json"
 	}).then(create_items, ERROR_LOG);
 
-	var searching = $('#search').val();
-
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
 		var val = $('#search').val();
