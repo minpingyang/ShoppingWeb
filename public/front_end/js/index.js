@@ -25,6 +25,7 @@ function changePic(n) {
 var appAddr="https://nwen304gropproject.herokuapp.com";
 
 $(document).ready(function(e){
+  var btn_content = $('#login').find("text").text().trim();
   $(function () {
     // var localStorage = window.localStorage;
     // if($('#login').find("text").text().trim()==="Log Out"){
@@ -39,7 +40,7 @@ $(document).ready(function(e){
     }
   });
   $("#login").button().click(function(){
-    var btn_content = $('#login').find("text").text().trim();
+    
     if($('#login').find("text").text().trim()==="Log Out"){
       localStorage.clear();
       $('#login').text("Log In");
