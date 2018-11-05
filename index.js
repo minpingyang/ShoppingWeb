@@ -10,8 +10,6 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: true 
 });
-<<<<<<< HEAD
-=======
 //
 var http = require('http');
 var Session = require('express-session');
@@ -22,7 +20,6 @@ var OAuth2 = google.auth.OAuth2;
 const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
 const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
 const RedirectionUrl = "http://localhost:1234/oauthCallback/";
->>>>>>> 781c69f10a1a0188c4c374ca96077f524d029d75
 
 
 
@@ -249,7 +246,6 @@ app.put('/reset_pwd', async (req, res) => {
 
 app.get('/search', async (req, res) => {
   console.log("men's page");
->>>>>>> 781c69f10a1a0188c4c374ca96077f524d029d75
 
   // var searching = req.query.q;
   var searching = req.body.q;
