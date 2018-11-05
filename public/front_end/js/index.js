@@ -46,7 +46,7 @@ $(document).ready(function(e){
     }
   });
   $("#login").button().click(function(){
-    
+    console.log("333"+btn_content);
     if(btn_content==="Log Out"){
       console.log("3333");
       localStorage.clear();
@@ -54,7 +54,7 @@ $(document).ready(function(e){
      
     }
     else{
-    console.log("333333");
+    console.log("44444");
      alert("go to ")
     //  window.open("/html/login.html");
       window.location.href="html/login.html";
