@@ -10,10 +10,7 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: true 
 });
-<<<<<<< HEAD
-//
-=======
->>>>>>> 013fb1911a1ff6752df9e9fa4c704856e140fdbe
+
 var http = require('http');
 var Session = require('express-session');
 var {google} = require('googleapis');
