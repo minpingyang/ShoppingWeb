@@ -30,7 +30,7 @@ $(document).ready(function(e){
   var btn_content = $('#login').text().trim();
   console.log("11111:"+btn_content);
   var localStorage = window.localStorage;
-  console.log("storage: "+localStorage.getItem("emmail"));
+  console.log("storage: "+localStorage.getItem("email"));
   $(function () {
     // var localStorage = window.localStorage;
     // if($('#login').find("text").text().trim()==="Log Out"){
@@ -40,7 +40,7 @@ $(document).ready(function(e){
     //   $('#login').text("Log Out");
       
     // }
-    if(localStorage["email"]&&btn_content==="Log In"){
+    if(localStorage.getItem("email")!==null&&btn_content==="Log In"){
       console.log("22222");
       $('#login').text("Log Out");
     }
