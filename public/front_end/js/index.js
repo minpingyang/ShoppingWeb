@@ -36,6 +36,7 @@ $(document).ready(function(e){
       
     // }
     if(localStorage["email"]&&btn_content==="Log In"){
+      console.log("66666666");
       $('#login').text("Log Out");
     }
   });
