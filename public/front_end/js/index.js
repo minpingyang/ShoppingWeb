@@ -29,6 +29,7 @@ var appAddr="https://nwen304gropproject.herokuapp.com";
 $(document).ready(function(e){
   var btn_content = $('#login').text().trim();
   console.log("11111:"+btn_content);
+  console.log("storage: "+localStorage);
   $(function () {
     // var localStorage = window.localStorage;
     // if($('#login').find("text").text().trim()==="Log Out"){
@@ -49,6 +50,7 @@ $(document).ready(function(e){
       console.log("3333");
       localStorage.clear();
       $('#login').text("Log In");
+     
     }
     else{
     console.log("333333");
