@@ -22,15 +22,22 @@ function changePic(n) {
     slides[n].style.display = "block"; 
 }
 
+var appAddr="https://nwen304gropproject.herokuapp.com";
+
 $(document).ready(function(e){
-  
   $(function () {
-    
     if(window.location.hash){
       var name = window.location.hash.substring(1);
-      $('#login').text("Welcome,"+name);
+      $('#login').text("Welcome, "+name);
       $('#login').attr("href", "../index.html");
     }
   });
-  
+
+  $("#search-btn").button().click(function(){
+    // get the input of the search bar
+    var val = $('#search').val();
+    var url = appAddr + '/html/search.html?q=' + val;
+    window.location.href = url;
+    return false;
+  });
 });

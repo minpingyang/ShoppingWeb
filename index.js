@@ -10,7 +10,6 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: true 
 });
-//
 var http = require('http');
 var Session = require('express-session');
 var {google} = require('googleapis');
@@ -41,6 +40,8 @@ app
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs') 
 app.use(bodyParser.json());
+// app.user(cookieParser());
+// app.use(session({secret: 'darren'}));
 
 const crypto = require('crypto');
 
@@ -138,7 +139,7 @@ app.post('/register', async (req, res) => {
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);   
-   
+    
     if (!result) {
       return res.send('No data found');
       }else{
@@ -242,10 +243,14 @@ app.put('/reset_pwd', async (req, res) => {
 app.get('/search', async (req, res) => {
   console.log("men's page");
 
+  // var searching = req.query.q;
+  var searching = req.body.q;
+  console.log('searching= ' + searching);
   try {
     const client = await pool.connect();    
     // console.log("all username:"+username);
-    var query_state="SELECT * FROM items where cat_id = 1";
+    var query_state="select * from items where item_name like '%" + searching + "%'";
+    // var query_state='select * from items where cat_id = 1';
     console.log(query_state);
     // alert(query_state);
     var result = await client.query(query_state);
@@ -254,7 +259,7 @@ app.get('/search', async (req, res) => {
       return res.send('no records');
     }
     else{
-      return res.send(result.rows);
+      return res.json(result.rows);
     }
 
   } catch (err) {

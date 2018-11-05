@@ -42,7 +42,6 @@ $(document).ready(function(e) {
 		}
 	})
 	$('#create-account').click(
-		
 		function() {
 			console.log("register js called");
 			console.log("location:"+window.location.pathname);
@@ -71,9 +70,7 @@ $(document).ready(function(e) {
 				alert("Passwords do not match");
 				return;
 			}
-			else{
-				
-				
+			else{				
 				$.ajax({	
 					method:'POST',
 					url: appAddr+"/register",
@@ -88,14 +85,16 @@ $(document).ready(function(e) {
 				});
 				// window.location.href("../index.html");
 				// window.close();
-
 				window.open("../index.html","_self");
 				alert("Register Successfullly");
-				
-				
-
 			}
-
 	});
 
+	$("#search-btn").button().click(function(){
+		// get the input of the search bar
+		var val = $('#search').val();
+		var url = appAddr + '/html/search.html?q=' + val;
+		window.location.href = url;
+		return false;
+	});
 });
