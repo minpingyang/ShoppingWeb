@@ -43,18 +43,19 @@ $(document).ready(function(e){
     if(localStorage.getItem("email")!==null&&btn_content==="Log In"){
       console.log("22222");
       $('#login').text("Log Out");
+      console.log("2.11111"+$('#login').text());
     }
   });
   $("#login").button().click(function(){
     console.log("333"+btn_content);
     if(btn_content==="Log Out"){
-      console.log("3333");
+      console.log("4444");
       localStorage.clear();
       $('#login').text("Log In");
      
     }
     else{
-    console.log("44444");
+    console.log("5555");
      alert("go to ")
     //  window.open("/html/login.html");
       window.location.href="html/login.html";
