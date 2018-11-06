@@ -116,9 +116,7 @@ app.post("/login_google", function (req, res) {
   console.log("99999999999999");
   var url = getAuthUrl();
   console.log(url);
-  res.send('<h1>Authentication using google oAuth</h1><a href='
-    + url +
-    '>Login</a>')
+  res.send(url)
   // console.log("men's page");
 
 

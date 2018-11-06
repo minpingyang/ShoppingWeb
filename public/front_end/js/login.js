@@ -90,7 +90,7 @@ $(document).ready(function (e) {
 				}),
 				contentType: "application/json",
 				// dataType: "json",
-			});
+			}).then(login_google_nextfuc,ERROR_LOG);
 			// }).then(loginByGoogle,ERROR_LOG);
 		}
 	);
@@ -98,7 +98,10 @@ $(document).ready(function (e) {
 	// 	window.location.href=url;
 	// }
 
-
+	function login_google_nextfuc(url){
+		alert(url);
+		window.location.href=url;
+	}
 	$("#search-btn").button().click(function () {
 		// get the input of the search bar
 		var val = $('#search').val();
