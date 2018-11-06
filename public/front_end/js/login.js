@@ -80,14 +80,15 @@ $(document).ready(function (e) {
 
 	$('#google-login').button().click(
 		function () {
+			console.log("888888");
 			$.ajax({
-				method: 'GET',
-				url: appAddr + "/login_google"
-				// data: JSON.stringify({
-				// 	pword: password,
-				// 	emailadd: email
-				// }),
-				// contentType: "application/json",
+				method: 'POST',
+				url: appAddr + "/login_google",
+				data: JSON.stringify({
+					pword: "11",
+					emailadd: "111"
+				}),
+				contentType: "application/json",
 				// dataType: "json",
 			});
 			// }).then(loginByGoogle,ERROR_LOG);
