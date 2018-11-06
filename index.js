@@ -113,10 +113,11 @@ app.use("/details", function (req, res) {
     // res.send('<h5>'+displayName+'</h5>');
   })
 });
-app.post("/login_google", function (req, res) {
+app.use("/login_google", function (req, res) {
   console.log("99999999999999");
   var url = getAuthUrl();
   console.log(url);
+  res.send(url);
 });
 
 // app.get("/login_google", function (req, res) {
