@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var port = process.env.PORT || 1333;
+var port = process.env.PORT || 7777;
 var DATABASE_URL = "postgres://fgziyaczpjyghf:8bfdee6ef8f68d48dc35abaa5ea2ab738f816ee60bf3ff1e3a5193cafb5826ba@ec2-174-129-32-37.compute-1.amazonaws.com:5432/d549295uh1harg";
 var bodyParser = require('body-parser');
 const path = require('path');
@@ -19,7 +19,7 @@ var plus = google.plus('v1');
 var OAuth2 = google.auth.OAuth2;
 const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
 const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
-const RedirectionUrl = "http://127.0.0.1:1333/oauthCallback/";
+const RedirectionUrl = "http://localhost:7777/oauthCallback/";
 // const RedirectionUrl = "https://nwen304gropproject.herokuapp.com/oauthCallback/";
 
 //invoke functions on a service hosted in a different location
