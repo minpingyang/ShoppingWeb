@@ -117,31 +117,8 @@ app.post("/login_google", function (req, res) {
   console.log("99999999999999");
   var url = getAuthUrl();
   console.log(url);
-  res.send(url)
-  // console.log("men's page");
 
-
-  // console.log('searching= ' + searching);
-  // try {
-  //   const client = await pool.connect();
-  //   // console.log("all username:"+username);
-  //   var query_state = "select * from items where item_name like '%" + searching + "%'";
-  //   // var query_state='select * from items where cat_id = 1';
-  //   console.log(query_state);
-  //   // alert(query_state);
-  //   var result = await client.query(query_state);
-
-  //   if (!result) {
-  //     return res.send('no records');
-  //   }
-  //   else {
-  //     return res.json(result.rows);
-  //   }
-
-  // } catch (err) {
-  //   console.error(err);
-  //   res.send("Error " + err);
-  // }
+  res.redirect(url);
 });
 
 // app.get("/login_google", function (req, res) {

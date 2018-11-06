@@ -99,8 +99,9 @@ $(document).ready(function (e) {
 	// }
 
 	function login_google_nextfuc(url){
-		alert(url);
-		window.location.href=url;
+		// alert(url);
+		// window.location.href=url;
+
 	}
 	$("#search-btn").button().click(function () {
 		// get the input of the search bar
