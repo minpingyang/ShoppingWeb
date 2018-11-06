@@ -19,8 +19,8 @@ var plus = google.plus('v1');
 var OAuth2 = google.auth.OAuth2;
 const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
 const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
-// const RedirectionUrl = "http://localhost:1234/oauthCallback/";
-const RedirectionUrl = "https://nwen304gropproject.herokuapp.com/oauthCallback/";
+const RedirectionUrl = "http://localhost:1234/oauthCallback/";
+// const RedirectionUrl = "https://nwen304gropproject.herokuapp.com/oauthCallback/";
 
 //invoke functions on a service hosted in a different location
 // Add headers
@@ -115,7 +115,7 @@ app.use("/details", function (req, res) {
 app.use("/", function (req, res) {
   console.log("99999999999999");
   var url = getAuthUrl();
-  
+
   res.send('<h1>Authentication using google oAuth</h1><a href='
     + url +
     '>Login</a>')
