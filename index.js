@@ -10,7 +10,7 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: true 
 });
-//
+//google login api
 var http = require('http');
 var Session = require('express-session');
 var {google} = require('googleapis');
@@ -19,9 +19,8 @@ var plus = google.plus('v1');
 var OAuth2 = google.auth.OAuth2;
 const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
 const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
-const RedirectionUrl = "http://localhost:1234/oauthCallback/";
-
-
+// const RedirectionUrl = "http://localhost:1234/oauthCallback/";
+const RedirectionUrl = "https://nwen304gropproject.herokuapp.com/oauthCallback/";
 
 //invoke functions on a service hosted in a different location
 // Add headers
@@ -53,6 +52,7 @@ server.listen(port);
 server.on('listening', function () {
       console.log('listening to ${port}');
 });
+//google login api
 app.use(Session({
     secret: 'raysources-secret-19890913007',
     resave: true,
@@ -78,23 +78,23 @@ function getAuthUrl () {
     return url;
 }
 
-app.get("/login_google/oauthCallback", function (req, res) {
-  console.log("111");
-    var oauth2Client = getOAuthClient();
-    var session = req.session;
-    var code = req.query.code;
-    oauth2Client.getToken(code, function(err, tokens) {
-      // Now tokens contains an access_token and an optional refresh_token. Save them.
-      if(!err) {
-        oauth2Client.setCredentials(tokens);
-        session["tokens"]=tokens;
-        res.send('<h3>Login successful!</h3><a href="/details">Go to details page</a>');
-      }
-      else{
-        res.send('<h3>Login failed!</h3>');
-      }
-    });
+app.use("/oauthCallback", function (req, res) {
+  var oauth2Client = getOAuthClient();
+  var session = req.session;
+  var code = req.query.code;
+  oauth2Client.getToken(code, function(err, tokens) {
+    // Now tokens contains an access_token and an optional refresh_token. Save them.
+    if(!err) {
+      oauth2Client.setCredentials(tokens);
+      session["tokens"]=tokens;
+      res.send('<h3>Login successful!</h3><a href="/details">Go to details page</a>');
+    }
+    else{
+      res.send('<h3>Login failed!</h3>');
+    }
+  });
 });
+
 
 app.use("/details", function (req, res) {
   var oauth2Client = getOAuthClient();
@@ -112,16 +112,22 @@ app.use("/details", function (req, res) {
       // res.send('<h5>'+displayName+'</h5>');
   })
 });
-
-app.get("/login_google", function (req, res) {
-  console.log("1111111");
+app.use("/", function (req, res) {
   var url = getAuthUrl();
-  // res.send('<h1>Authentication using google oAuth</h1><a href='
-  //   + url +
-  //   '>Login</a>')
-  // res.send(url);
-  res.redirect(url);  
+  res.send('<h1>Authentication using google oAuth</h1><a href='
+    + url +
+    '>Login</a>')
 });
+
+// app.get("/login_google", function (req, res) {
+//   console.log("1111111");
+//   var url = getAuthUrl();
+//   // res.send('<h1>Authentication using google oAuth</h1><a href='
+//   //   + url +
+//   //   '>Login</a>')
+//   // res.send(url);
+//   res.redirect(url);  
+// });
 
 app.post('/register', async (req, res) => {
   console.log("register js called");
