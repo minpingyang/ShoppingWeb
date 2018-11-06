@@ -117,8 +117,7 @@ app.post("/login_google", function (req, res) {
   console.log("99999999999999");
   var url = getAuthUrl();
   console.log(url);
-
-  res.redirect(url);
+  window.location.href=url;
 });
 
 // app.get("/login_google", function (req, res) {
