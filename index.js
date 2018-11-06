@@ -113,7 +113,9 @@ app.use("/details", function (req, res) {
   })
 });
 app.use("/", function (req, res) {
+  console.log("99999999999999");
   var url = getAuthUrl();
+  
   res.send('<h1>Authentication using google oAuth</h1><a href='
     + url +
     '>Login</a>')
