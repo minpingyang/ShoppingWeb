@@ -32,14 +32,6 @@ $(document).ready(function(e){
   var localStorage = window.localStorage;
   console.log("storage: "+localStorage.getItem("email"));
   $(function () {
-    // var localStorage = window.localStorage;
-    // if($('#login').find("text").text().trim()==="Log Out"){
-    //     $('#login').attr("href", "../index.html");
-    // }else if(localStorage["email"]){
-    //   var name = localStorage.getItem("email")
-    //   $('#login').text("Log Out");
-      
-    // }
     if(localStorage.getItem("email")!==null&&$('#login').text().trim()==="Log In"){
       console.log("22222");
       $('#login').text("Log Out");
