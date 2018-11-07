@@ -121,6 +121,7 @@ app.use("/details", function (req, res) {
 // });
 
 app.use("/", function (req, res) {
+  console.log("cao ni xue ma baozha");
   var url = getAuthUrl();
   res.send('<h1>Authentication using google oAuth</h1><a href='
     + url +
