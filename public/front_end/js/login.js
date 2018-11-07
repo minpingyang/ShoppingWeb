@@ -101,6 +101,7 @@ $(document).ready(function (e) {
 	function login_google_nextfuc(url){
 		alert(url);
 		window.location.href=url;
+		console.log(window.location.href);
 	}
 	$("#search-btn").button().click(function () {
 		// get the input of the search bar
