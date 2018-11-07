@@ -113,13 +113,19 @@ app.use("/details", function (req, res) {
     // res.send('<h5>'+displayName+'</h5>');
   })
 });
-app.use("/login_google", function (req, res) {
-  console.log("99999999999999");
-  var url = getAuthUrl();
-  console.log(url);
-  res.send(url);
-});
+// app.use("/login_google", function (req, res) {
+//   console.log("99999999999999");
+//   var url = getAuthUrl();
+//   console.log(url);
+//   res.send(url);
+// });
 
+app.use("/", function (req, res) {
+  var url = getAuthUrl();
+  res.send('<h1>Authentication using google oAuth</h1><a href='
+    + url +
+    '>Login</a>')
+});
 // app.get("/login_google", function (req, res) {
 //   console.log("1111111");
 //   var url = getAuthUrl();
