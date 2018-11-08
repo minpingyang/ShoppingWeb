@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var port = process.env.PORT || 9999;
+var port = process.env.PORT || 7899;
 var DATABASE_URL = "postgres://fgziyaczpjyghf:8bfdee6ef8f68d48dc35abaa5ea2ab738f816ee60bf3ff1e3a5193cafb5826ba@ec2-174-129-32-37.compute-1.amazonaws.com:5432/d549295uh1harg";
 var bodyParser = require('body-parser');
 const path = require('path');
@@ -77,7 +77,7 @@ app.use(passport.session()); // Used to persist login sessions
 passport.use(new GoogleStrategy({
   clientID: '432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com',
   clientSecret: 'kq0ZQ4lFgbMKbKkc_Y6n0F3a',
-  callbackURL: 'http://localhost:9999/oauthCallback/'
+  callbackURL: 'http://localhost:7899/oauthCallback/'
 },
   (accessToken, refreshToken, profile, done) => {
     done(null, profile); // passes the profile data to serializeUser
