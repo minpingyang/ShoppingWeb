@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var port = process.env.PORT || 1666;
+var port = process.env.PORT || 9999;
 var DATABASE_URL = "postgres://fgziyaczpjyghf:8bfdee6ef8f68d48dc35abaa5ea2ab738f816ee60bf3ff1e3a5193cafb5826ba@ec2-174-129-32-37.compute-1.amazonaws.com:5432/d549295uh1harg";
 var bodyParser = require('body-parser');
 const path = require('path');
@@ -12,15 +12,22 @@ const pool = new Pool({
 });
 //google login api
 var http = require('http');
-var Session = require('express-session');
-var { google } = require('googleapis');
-var GoogleAuth = require('google-auth-library');
-var plus = google.plus('v1');
-var OAuth2 = google.auth.OAuth2;
-const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
-const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
-const RedirectionUrl = "http://localhost:1666/oauthCallback/";
-// const RedirectionUrl = "https://nwen304gropproject.herokuapp.com/oauthCallback/";
+// var Session = require('express-session');
+// var { google } = require('googleapis');
+// var GoogleAuth = require('google-auth-library');
+// var plus = google.plus('v1');
+// var OAuth2 = google.auth.OAuth2;
+// const ClientId = "432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com";
+// const ClientSecret = "kq0ZQ4lFgbMKbKkc_Y6n0F3a";
+// const RedirectionUrl = "http://localhost:1666/oauthCallback/";
+
+//another way
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20');
+const cookieSession = require('cookie-session');
+const fs = require('fs');
+
+
 
 //invoke functions on a service hosted in a different location
 // Add headers
@@ -40,8 +47,7 @@ app
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
 app.use(bodyParser.json());
-// app.user(cookieParser());
-// app.use(session({secret: 'darren'}));
+
 
 const crypto = require('crypto');
 
@@ -53,89 +59,155 @@ server.on('listening', function () {
   console.log('listening to ${port}');
 });
 //google login api
-app.use(Session({
-  secret: 'raysources-secret-19890913007',
-  resave: true,
-  saveUninitialized: true
+// app.use(Session({
+//   secret: 'raysources-secret-19890913007',
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+//another way
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
+  keys: ['passport-test-app']
 }));
 
-function getOAuthClient() {
-  return new OAuth2(ClientId, ClientSecret, RedirectionUrl);
+app.use(passport.initialize()); // Used to initialize passport
+app.use(passport.session()); // Used to persist login sessions
+// Strategy config
+passport.use(new GoogleStrategy({
+  clientID: '432466061710-a5nv0o9ndkh8627lmobnign489v6fptj.apps.googleusercontent.com',
+  clientSecret: 'kq0ZQ4lFgbMKbKkc_Y6n0F3a',
+  callbackURL: 'http://localhost:9999/oauthCallback/'
+},
+  (accessToken, refreshToken, profile, done) => {
+    done(null, profile); // passes the profile data to serializeUser
+  }
+));
+
+// Used to stuff a piece of information into a cookie
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+// Used to decode the received cookie and persist session
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+// Middleware to check if the user is authenticated
+function isUserAuthenticated(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
 }
-
-function getAuthUrl() {
-  var oauth2Client = getOAuthClient();
-  // generate a url that asks permissions for Google+ and Google Calendar scopes
-  var scopes = [
-    'https://www.googleapis.com/auth/plus.me'
-  ];
-
-  var url = oauth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: scopes // If you only need one scope you can pass it as string
+// Routes
+app.get('/', (req, res) => {
+  fs.readFile('./index.html', (err, html) => {
+    if (err) {
+      throw err;
+    }
+    res.writeHeader(200, { "Content-Type": "text/html" });
+    res.write(html);
+    res.end();
   });
-
-  return url;
 }
+);
 
-app.use("/oauthCallback", function (req, res) {
-  console.log("0000000000000");
-  var oauth2Client = getOAuthClient();
-  var session = req.session;
-  var code = req.query.code;
-  oauth2Client.getToken(code, function (err, tokens) {
-    // Now tokens contains an access_token and an optional refresh_token. Save them.
-    if (!err) {
-      oauth2Client.setCredentials(tokens);
-      session["tokens"] = tokens;
-      res.send('<h3>Login successful!</h3><a href="/details">Go to details page</a>');
-    }
-    else {
-      res.send('<h3>Login failed!</h3>');
-    }
-  });
+
+// passport.authenticate middleware is used here to authenticate the request
+app.get('/login_google', passport.authenticate('google', {
+  scope: ['profile'] // Used to specify the required data
+}));
+
+// The middleware receives the data from Google and runs the function on Strategy config
+app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
+  res.redirect('/details');
+});
+
+// Secret route
+app.get('/details', isUserAuthenticated, (req, res) => {
+  res.send('<p>Welcome ' + req.user.displayName +
+    '</p> <br/> <a href="/logout">Logout</a>');
+});
+
+// Logout route
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 
-app.use("/details", function (req, res) {
-  var oauth2Client = getOAuthClient();
-  oauth2Client.setCredentials(req.session["tokens"]);
+// function getOAuthClient() {
+//   return new OAuth2(ClientId, ClientSecret, RedirectionUrl);
+// }
 
-  var p = new Promise(function (resolve, reject) {
-    plus.people.get({ userId: 'me', auth: oauth2Client }, function (err, response) {
-      console.log(response)
-      resolve(response || err);
-    });
-  }).then(function (response) {
-    data = response.data;
-    res.send('<h3>Hello ' + data.name.givenName + '_' + data.name.familyName + '</h3>');
-    // res.send('<h4>'+displayName+'</h4>');
-    // res.send('<h5>'+displayName+'</h5>');
-  })
-});
-// app.use("/login_google", function (req, res) {
-//   console.log("99999999999999");
-//   var url = getAuthUrl();
-//   console.log(url);
-//   res.send(url);
+// function getAuthUrl() {
+//   var oauth2Client = getOAuthClient();
+//   // generate a url that asks permissions for Google+ and Google Calendar scopes
+//   var scopes = [
+//     'https://www.googleapis.com/auth/plus.me'
+//   ];
+
+//   var url = oauth2Client.generateAuthUrl({
+//     access_type: 'offline',
+//     scope: scopes // If you only need one scope you can pass it as string
+//   });
+
+//   return url;
+// }
+
+// app.use("/oauthCallback", function (req, res) {
+//   console.log("0000000000000");
+//   var oauth2Client = getOAuthClient();
+//   var session = req.session;
+//   var code = req.query.code;
+//   oauth2Client.getToken(code, function (err, tokens) {
+//     // Now tokens contains an access_token and an optional refresh_token. Save them.
+//     if (!err) {
+//       oauth2Client.setCredentials(tokens);
+//       session["tokens"] = tokens;
+//       res.send('<h3>Login successful!</h3><a href="/details">Go to details page</a>');
+//     }
+//     else {
+//       res.send('<h3>Login failed!</h3>');
+//     }
+//   });
 // });
 
-app.use("/", function (req, res) {
-  console.log("cao ni xue ma baozha");
-  var url = getAuthUrl();
-  res.send('<h1>Authentication using google oAuth</h1><a href='
-    + url +
-    '>Login</a>')
-});
-// app.get("/login_google", function (req, res) {
-//   console.log("1111111");
-//   var url = getAuthUrl();
-//   // res.send('<h1>Authentication using google oAuth</h1><a href='
-//   //   + url +
-//   //   '>Login</a>')
-//   // res.send(url);
-//   res.redirect(url);  
+
+// app.use("/details", function (req, res) {
+//   var oauth2Client = getOAuthClient();
+//   oauth2Client.setCredentials(req.session["tokens"]);
+
+//   var p = new Promise(function (resolve, reject) {
+//     plus.people.get({ userId: 'me', auth: oauth2Client }, function (err, response) {
+//       console.log(response)
+//       resolve(response || err);
+//     });
+//   }).then(function (response) {
+//     data = response.data;
+//     res.send('<h3>Hello ' + data.name.givenName + '_' + data.name.familyName + '</h3>');
+//     // res.send('<h4>'+displayName+'</h4>');
+//     // res.send('<h5>'+displayName+'</h5>');
+//   })
 // });
+// // app.use("/login_google", function (req, res) {
+// //   console.log("99999999999999");
+// //   var url = getAuthUrl();
+// //   console.log(url);
+// //   res.send(url);
+// // });
+
+// app.use("/", function (req, res) {
+//   console.log("cao ni xue ma baozha");
+//   var url = getAuthUrl();
+//   res.send('<h1>Authentication using google oAuth</h1><a href='
+//     + url +
+//     '>Login</a>')
+// });
+
 
 app.post('/register', async (req, res) => {
   console.log("register js called");

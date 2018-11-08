@@ -82,7 +82,7 @@ $(document).ready(function (e) {
 		function () {
 			console.log("888888");
 			$.ajax({
-				method: 'POST',
+				method: 'GET',
 				url: appAddr + "/login_google",
 				data: JSON.stringify({
 					pword: "11",
