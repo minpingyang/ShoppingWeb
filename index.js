@@ -128,9 +128,10 @@ app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
 
 // Secret route
 app.get('/details', isUserAuthenticated, (req, res) => {
-  res.send('<p>Welcome ' + req.user.displayName +":"+req.user.emails[0]+
+  res.send('<p>Welcome ' + req.user.displayName +":"+JSON.stringify(req.user.emails)+
     '</p> <br/> <a href="/logout">Logout</a>'+'<br/> <a href="/">back to home page</a>');
   // res.send('</p> <br/> <a href="/">back to home page</a>');
+  
 });
 
 // Logout route
