@@ -130,6 +130,7 @@ app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
 app.get('/details', isUserAuthenticated, (req, res) => {
   res.send('<p>Welcome ' + req.user.displayName +
     '</p> <br/> <a href="/logout">Logout</a>');
+  res.send('</p> <br/> <a href="/">back to home page</a>');
 });
 
 // Logout route
