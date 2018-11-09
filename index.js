@@ -144,6 +144,7 @@ app.get('/details', isUserAuthenticated, async (req, res) => {
     console.log(query_state1);
     // alert(query_state);
     var result1 = await client.query(query_state1);
+    console.log("rows: "+result1.rows);
     if (!result1) {
       console.log("888888");
       var firstname = req.user.name.givenName;
