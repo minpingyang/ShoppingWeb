@@ -132,19 +132,19 @@ app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
 
 // Secret route
 app.get('/details', isUserAuthenticated, (req, res) => {
-  res.send('<p>Welcome ' + req.user.name.familyName+" "+req.user.name.givenName+":"+req.user.emails[0].value+
-    '</p> <br/> <a href="/logout_google">Logout</a>'+'<br/> <a href="/">back to home page</a>');
+  // res.send('<p>Welcome ' + req.user.name.familyName+" "+req.user.name.givenName+":"+req.user.emails[0].value+
+  //   '</p> <br/> <a href="/logout_google">Logout</a>'+'<br/> <a href="/">back to home page</a>');
 
 
   var salt = crypto.randomBytes(128).toString('hex');
   try {
     const client = await pool.connect();
-    
+
     var query_state = "SELECT * FROM account_table where email='" + email + "'";
     console.log(query_state);
     // alert(query_state);
     var result1 = await client.query(query_state);
-    if(!result1){
+    if (!result1) {
       console.log("888888");
       var firstname = req.user.name.givenName;
       var lastname = req.user.name.familyName;
@@ -156,16 +156,19 @@ app.get('/details', isUserAuthenticated, (req, res) => {
       console.log(query_state);
       // alert(query_state);
       var result = await client.query(query_state);
-  
+
       if (!result) {
         return res.send('No data found');
       } else {
-        return res.send('<p>Welcome ' + req.user.name.familyName+" "+req.user.name.givenName+":"+req.user.emails[0].value+
-        '</p> <br/> <a href="/logout_google">Logout</a>'+'<br/> <a href="/">back to home page</a>');
+        return res.send('<p>Welcome ' + req.user.name.familyName + " " + req.user.name.givenName + ":" + req.user.emails[0].value +
+          '</p> <br/> <a href="/logout_google">Logout</a>' + '<br/> <a href="/">back to home page</a>');
       }
+    } else {
+      return res.send('<p>Welcome ' + req.user.name.familyName + " " + req.user.name.givenName + ":" + req.user.emails[0].value +
+        '</p> <br/> <a href="/logout_google">Logout</a>' + '<br/> <a href="/">back to home page</a>');
     }
 
-   
+
 
   } catch (err) {
     console.error(err);
