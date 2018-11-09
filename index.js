@@ -139,24 +139,25 @@ app.get('/details', isUserAuthenticated, async (req, res) => {
   var salt = crypto.randomBytes(128).toString('hex');
   try {
     const client = await pool.connect();
-
-    var query_state = "SELECT * FROM account_table where email='" + email + "'";
-    console.log(query_state);
+    var email = req.user.emails[0].value;
+    var query_state1 = "SELECT * FROM account_table where email='" + email + "'";
+    console.log(query_state1);
     // alert(query_state);
-    var result1 = await client.query(query_state);
+    var result1 = await client.query(query_state1);
     if (!result1) {
       console.log("888888");
       var firstname = req.user.name.givenName;
       var lastname = req.user.name.familyName;
       var pwd = "123456";
       var email = req.user.emails[0].value;
+
       var hash_pwd = crypto.pbkdf2Sync(pwd, salt, 100000, 128, 'sha512').toString('hex');
       // console.log("all username:"+username);
       var query_state = "insert into account_table (fname,lname,email,pwd,salt) values" + "('" + firstname + "','" + lastname + "','" + email + "','" + hash_pwd + "','" + salt + "')";
       console.log(query_state);
       // alert(query_state);
       var result = await client.query(query_state);
-
+      console.log(query_state);
       if (!result) {
         return res.send('No data found');
       } else {
@@ -164,7 +165,7 @@ app.get('/details', isUserAuthenticated, async (req, res) => {
           '</p> <br/> <a href="/logout_google">Logout</a>' + '<br/> <a href="/">back to home page</a>');
       }
     } else {
-      return res.send('<p>Welcome ' + req.user.name.familyName + " " + req.user.name.givenName + ":" + req.user.emails[0].value +
+      return res.send('<p>Welcome ' + req.user.name.familyName + " " + req.user.name.givenName + ":" + req.user.emails[0].value +" Already Registered account by the google account"+
         '</p> <br/> <a href="/logout_google">Logout</a>' + '<br/> <a href="/">back to home page</a>');
     }
 
