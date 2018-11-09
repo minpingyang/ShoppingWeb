@@ -53,6 +53,23 @@ $(document).ready(function(e){
       window.location.href="html/login.html";
     }
   });
+  $("#login_google").button().click(function(){
+    console.log("333"+$('#login_google').text().trim());
+    if($('#login_google').text().trim()==="Log Out Gooogle"){
+      console.log("4444");
+      
+      $('#login_google').text("Log In");
+      window.location.href="/logout_google";
+     
+    }
+    else{
+    console.log("5555");
+     alert("go to ")
+    //  window.open("/html/login.html");
+      $('#login_google').text("Log Out Gooogle");
+      window.location.href="/login_google";
+    }
+  });
   $("#search-btn").button().click(function(){
     // get the input of the search bar
     var val = $('#search').val();
@@ -60,4 +77,5 @@ $(document).ready(function(e){
     window.location.href = url;
     return false;
   });
+
 });

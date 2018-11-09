@@ -128,14 +128,14 @@ app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
 
 // Secret route
 app.get('/details', isUserAuthenticated, (req, res) => {
-  res.send('<p>Welcome ' + req.user.displayName +":"+JSON.parse(req.user.emails)+
-    '</p> <br/> <a href="/logout">Logout</a>'+'<br/> <a href="/">back to home page</a>');
+  res.send('<p>Welcome ' + req.user.displayName +":"+req.user.id+
+    '</p> <br/> <a href="/logout_google">Logout</a>'+'<br/> <a href="/">back to home page</a>');
   // res.send('</p> <br/> <a href="/">back to home page</a>');
   
 });
 
 // Logout route
-app.get('/logout', (req, res) => {
+app.get('/logout_google', (req, res) => {
   req.logout();
   res.redirect('/');
 });
