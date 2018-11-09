@@ -118,7 +118,11 @@ app.get('/', (req, res) => {
 
 // passport.authenticate middleware is used here to authenticate the request
 app.get('/login_google', passport.authenticate('google', {
-  scope: ['profile'] // Used to specify the required data
+  // scope: ['profile'] // Used to specify the required data
+  scope: [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email'
+  ]
 }));
 
 // The middleware receives the data from Google and runs the function on Strategy config
@@ -128,7 +132,7 @@ app.get('/oauthCallback', passport.authenticate('google'), (req, res) => {
 
 // Secret route
 app.get('/details', isUserAuthenticated, (req, res) => {
-  res.send('<p>Welcome ' + req.user.displayName +":"+req.user.id+
+  res.send('<p>Welcome ' + req.user.displayName +":"+req.user.emails[0].value+
     '</p> <br/> <a href="/logout_google">Logout</a>'+'<br/> <a href="/">back to home page</a>');
   // res.send('</p> <br/> <a href="/">back to home page</a>');
   
