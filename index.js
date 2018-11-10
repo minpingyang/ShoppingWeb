@@ -374,7 +374,7 @@ app.post('/add', async (req, res) => {
   console.log("adding item to cart");
 
   // var searching = req.query.q;
-  var adding = req.body.data;
+  var adding = req.body.add;
   console.log('adding= ' + adding);
   try {
     const client = await pool.connect();
