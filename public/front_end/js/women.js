@@ -53,7 +53,7 @@ function sortPriceDescending(element){
 /* Create the database records on the html file */
 function create_items(items){
 	items.forEach(item=>{
-		var itemHTML = '<li class="items">';
+		var itemHTML = '<div class="items">';
 		itemHTML += '<img src="' + item.img + '" class="img-width">';
 		itemHTML += '<p>';
 		for(var i = 0; i < 5; i++){
@@ -68,7 +68,7 @@ function create_items(items){
 		itemHTML += '<p>' + item.item_name + '</p>';
 		itemHTML += '<p><i class="fas fa-dollar-sign"></i>' + item.price + '</p>';
 		itemHTML += '<button class="add-cart-btn">Add to Cart</button>';
-		itemHTML += '</li>';
+		itemHTML += '</div>';
 
 		var $newItem = $(itemHTML);
 		$('#item-listings').prepend($newItem);
