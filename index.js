@@ -391,6 +391,7 @@ app.post('/add', async (req, res) => {
     var result2 = await client.query(query_state2);
     console.log('result2=' + JSON.stringify(result2));
     console.log('result2=' + result2.rows);
+    console.log('result2=' + result2.rowCount);
 
     // // if the item is currently not in the cart
     if(!result2){
