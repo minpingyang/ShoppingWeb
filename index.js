@@ -383,17 +383,22 @@ app.post('/add', async (req, res) => {
     var query_state = "select item_id from items where item_name = '" + adding + "'";
     console.log(query_state);
     var result = await client.query(query_state);
-    // var stuff = JSON.parse(result.rows);
-    console.log('result of itemid=' + JSON.stringify(result));
-    console.log('json.parse=' + result.rows[0].item_id);
+    var id = result.rows[0].item_id;
+    
+    // check if item exists in cart
+    var query_state2 = "select * from in_cart where item_id = '" + id + "'"; 
+    console.log(query_state2);
+    var result2 = await client.query(query_state);
+    console.log('result2=' + result2);
+    
     // // if the item is currently not in the cart
-    // if(!result){
-    //   query_state = "insert into in_cart(item_id)"
-    // }
-    // // increment the number of items in the database if item exists in cart
-    // else{
+    if(!result){
+      query_state = "insert into in_cart(item_id)"
+    }
+    // increment the number of items in the database if item exists in cart
+    else{
 
-    // }
+    }
 
     if (!result) {
       return res.send('no records');
