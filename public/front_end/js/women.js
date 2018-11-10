@@ -124,6 +124,22 @@ $(document).ready(function(e) {
 			window.location.href = "login.html";
 		}
 	});
+
+	$(".add-cart-btn").click(function(){
+		var thing = $(this).siblings();
+		// grabs the item name
+		var itemName = thing[2].innerHTML;
+
+		$.ajax({
+			method:'POST',
+			url: "/add",
+			contentType: "application/json",
+			dataType: "json",
+			data: JSON.stringify({
+				add: itemName
+    		})
+		});
+	});
 });
 
 
