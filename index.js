@@ -380,11 +380,12 @@ app.post('/add', async (req, res) => {
     const client = await pool.connect();
 
     // get the item_id of the item to add
-    var query_state = "select item_id from items where item_name = " + adding;
+    var query_state = "select item_id from items where item_name = '" + adding + "'";
     console.log(query_state);
     var result = await client.query(query_state);
 
     console.log('result of itemid=' + result);
+    console.log('result.rows of itemid=' + result.rows);
     // // if the item is currently not in the cart
     // if(!result){
     //   query_state = "insert into in_cart(item_id)"

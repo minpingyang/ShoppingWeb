@@ -137,6 +137,7 @@ $(document).ready(function(e) {
 			dataType: "json",
 			data: JSON.stringify({
 				add: itemName
+				email: localStorage.getItem("email")
     		})
 		});
 	});
