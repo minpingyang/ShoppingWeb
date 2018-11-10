@@ -381,6 +381,11 @@ app.post('/view_cart', async (req, res) => {
     // generate json string containing img path, item name, price, quantity
     result.rows.forEach(row=>{
       console.log(row);
+
+      var string = row;
+
+      string.push("hello: 5");
+      console.log(string);
     });
 
     if (!result) {
