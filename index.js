@@ -388,7 +388,7 @@ app.post('/add', async (req, res) => {
     // check if item exists in cart
     var query_state2 = "select * from in_cart where item_id = '" + id + "'"; 
     console.log(query_state2);
-    var result2 = await client.query(query_state);
+    var result2 = await client.query(query_state2);
     console.log('result2=' + JSON.stringify(result2));
     console.log('result2=' + result2.rows);
 
