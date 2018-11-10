@@ -137,7 +137,7 @@ $(document).ready(function(e) {
 			contentType: "application/json",
 			dataType: "json",
 			data: JSON.stringify({
-				add: itemName
+				add: itemName,
 				email: email
     		})
 		});
