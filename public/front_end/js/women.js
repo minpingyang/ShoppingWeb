@@ -125,7 +125,7 @@ $(document).ready(function(e) {
 		}
 	});
 
-	$(".add-cart-btn").click(function(){
+	$(".add-cart-btn").button().click(function(){
 		var thing = $(this).siblings();
 		// grabs the item name
 		var itemName = thing[2].innerHTML;
