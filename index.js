@@ -390,7 +390,8 @@ app.post('/add', async (req, res) => {
     console.log(query_state2);
     var result2 = await client.query(query_state);
     console.log('result2=' + result2);
-    
+    console.log('result2=' + result2.rows);
+
     // // if the item is currently not in the cart
     if(!result){
       query_state = "insert into in_cart(item_id)"
