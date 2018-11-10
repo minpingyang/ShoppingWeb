@@ -393,8 +393,9 @@ app.post('/add', async (req, res) => {
     console.log('result2=' + result2.rows);
 
     // // if the item is currently not in the cart
-    if(!result){
-      query_state = "insert into in_cart(item_id)"
+    if(!result2){
+      query_state = "insert into in_cart(item_id)";
+      console.log('reached in result 2!')
     }
     // increment the number of items in the database if item exists in cart
     else{
