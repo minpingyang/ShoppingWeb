@@ -93,7 +93,7 @@ $(document).ready(function(e) {
 		method:'GET',
 		url: "/view_cart",
 		contentType: "application/json",
-		dataType: "json"
+		dataType: "json",
 		data: JSON.stringify({
 			email: email
 		})
