@@ -129,7 +129,7 @@ $(document).ready(function(e) {
 		var thing = $(this).siblings();
 		// grabs the item name
 		var itemName = thing[2].innerHTML;
-
+		console.log(itemName);
 		$.ajax({
 			method:'POST',
 			url: "/add",
