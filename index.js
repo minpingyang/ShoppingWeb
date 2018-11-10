@@ -383,6 +383,7 @@ app.post('/view_cart', async (req, res) => {
       console.log(row);
 
       row["hello"] = 5;
+      console.log(row);
     });
 
     if (!result) {
