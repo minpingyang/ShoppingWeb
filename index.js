@@ -384,9 +384,10 @@ app.post('/add', async (req, res) => {
     console.log(query_state);
     var result = await client.query(query_state);
     var stuff = JSON.stringify(result.rows);
+    var stuff2 = JSON.parse(stuff);
     // var stuff = JSON.parse(result.rows);
     console.log('result of itemid=' + JSON.stringify(result));
-    console.log('json.parse=' + stuff.item_id);
+    console.log('json.parse=' + stuff2);
     // // if the item is currently not in the cart
     // if(!result){
     //   query_state = "insert into in_cart(item_id)"
