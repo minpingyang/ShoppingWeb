@@ -382,10 +382,7 @@ app.post('/view_cart', async (req, res) => {
     result.rows.forEach(row=>{
       console.log(row);
 
-      var string = row;
-
-      string.push("hello: 5");
-      console.log(string);
+      row["hello"] = 5;
     });
 
     if (!result) {
