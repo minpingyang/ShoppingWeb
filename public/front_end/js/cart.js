@@ -90,7 +90,7 @@ var email = window.localStorage.getItem("email");
 $(document).ready(function(e) {
 
 	$.ajax({
-		method:'GET',
+		method:'POST',
 		url: "/view_cart",
 		contentType: "application/json",
 		dataType: "json",

@@ -369,7 +369,7 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
-app.get('/view_cart', async (req, res) => {
+app.post('/view_cart', async (req, res) => {
 
   try {
     const client = await pool.connect();
