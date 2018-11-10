@@ -131,6 +131,13 @@ $(document).ready(function(e) {
 		var itemName = thing[2].innerHTML;
 		var email = window.localStorage.getItem("email");
 		console.log(itemName);
+
+		// if user is not logged in, redirect to login page
+		if(email == null){
+			window.location.href = appAddr + "/html/login.html";
+			return false;
+		}
+		
 		$.ajax({
 			method:'POST',
 			url: "/add",

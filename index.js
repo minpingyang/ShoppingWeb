@@ -369,12 +369,39 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
+app.get('/view_cart', async (req, res) => {
+
+  try {
+    const client = await pool.connect();
+    var login_email = req.body.email;
+    var query_state = "select * from in_cart where email = '" + login_email + "'";
+    console.log(query_state);
+    var result = await client.query(query_state);
+
+    // generate json string containing img path, item name, price, quantity
+    result.rows.forEach(row=>{
+      console.log(row);
+    });
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else {
+      return res.send(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
 
 app.post('/add', async (req, res) => {
   console.log("adding item to cart");
 
   // var searching = req.query.q;
   var adding = req.body.add;
+  var login_email = req.body.email;
   console.log('adding= ' + adding);
   try {
     const client = await pool.connect();
@@ -386,21 +413,20 @@ app.post('/add', async (req, res) => {
     var id = result.rows[0].item_id;
     
     // check if item exists in cart
-    var query_state2 = "select * from in_cart where item_id = '" + id + "'"; 
+    var query_state2 = "select * from in_cart where item_id = '" + id + "' AND email = '" + login_email + "'"; 
     console.log(query_state2);
     var result2 = await client.query(query_state2);
-    console.log('result2=' + JSON.stringify(result2));
-    console.log('result2=' + result2.rows);
-    console.log('result2=' + result2.rowCount);
 
-    // // if the item is currently not in the cart
-    if(!result2){
-      query_state = "insert into in_cart(item_id)";
-      console.log('reached in result 2!')
+    // if the item is currently not in the cart, add item to the in_cart database
+    if(result2.rowCount == 0){
+      console.log('item does not exist in the cart for this user');
+      var query_state3 = "insert into in_cart(item_id, email, quantity) values(" + id + ", '" + login_email + "', 1)";
+      var result3 = await client.query(query_state3);
     }
-    // increment the number of items in the database if item exists in cart
+    // increment the quantity by 1 in the database if item exists in cart
     else{
-
+      var query_state4 = "UPDATE in_cart SET quantity = quantity + 1 WHERE item_id = '" + id + "' AND email = '" + login_email + "'"; 
+      var result4 = await client.query(query_state4);
     }
 
     if (!result) {
