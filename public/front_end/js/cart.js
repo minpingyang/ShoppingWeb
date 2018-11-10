@@ -84,7 +84,8 @@ function create_items(items){
 // </div>
 
 var ERROR_LOG =console.error.bind(console);
-var appAddr="https://privatenwen304.herokuapp.com";
+var appAddr="https://nwen304gropproject.herokuapp.com";
+var email = window.localStorage.getItem("email");
 
 $(document).ready(function(e) {
 
@@ -93,6 +94,9 @@ $(document).ready(function(e) {
 		url: "/view_cart",
 		contentType: "application/json",
 		dataType: "json"
+		data: JSON.stringify({
+			email: email
+		})
 	}).then(create_items, ERROR_LOG);
 
 	var searching = $('#search').val();
