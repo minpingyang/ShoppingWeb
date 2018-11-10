@@ -370,7 +370,42 @@ app.put('/reset_pwd', async (req, res) => {
 });
 
 
+app.post('/add', async (req, res) => {
+  console.log("adding item to cart");
 
+  // var searching = req.query.q;
+  var adding = req.body.data;
+  console.log('adding= ' + adding);
+  try {
+    const client = await pool.connect();
+
+    // get the item_id of the item to add
+    var query_state = "select item_id from items where item_name = " + adding;
+    console.log(query_state);
+    var result = await client.query(query_state);
+
+    console.log('result of itemid=' + result);
+    // // if the item is currently not in the cart
+    // if(!result){
+    //   query_state = "insert into in_cart(item_id)"
+    // }
+    // // increment the number of items in the database if item exists in cart
+    // else{
+
+    // }
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else {
+      return res.json(result.rows);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
 
 
 app.post('/search', async (req, res) => {
