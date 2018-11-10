@@ -129,7 +129,7 @@ $(document).ready(function(e) {
 		var thing = $(this).siblings();
 		// grabs the item name
 		var itemName = thing[2].innerHTML;
-		var localStorage = window.localStorage;
+		var email = window.localStorage.getItem("email");
 		console.log(itemName);
 		$.ajax({
 			method:'POST',
@@ -138,7 +138,7 @@ $(document).ready(function(e) {
 			dataType: "json",
 			data: JSON.stringify({
 				add: itemName
-				email: localStorage.getItem("email")
+				email: email
     		})
 		});
 	});
