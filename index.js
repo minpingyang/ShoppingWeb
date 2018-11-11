@@ -371,20 +371,29 @@ app.put('/reset_pwd', async (req, res) => {
 
 function generateJSON(results){
   var json = [];
+  
+  try{
+    const client = await pool.connect();
 
-  // generate json string containing img path, item name, price, quantity
-  results.forEach(async row=>{
-    var id = row.item_id;
+    // generate json string containing img path, item name, price, quantity
+    results.forEach(async row=>{
+      var id = row.item_id;
 
-    var query_state2 = "select * from items where item_id = " + id;
-    console.log(query_state2);
-    var result2 = await client.query(query_state2);
+      var query_state2 = "select * from items where item_id = " + id;
+      console.log(query_state2);
+      var result2 = await client.query(query_state2);
 
-    row["item_name"] = result2.rows[0].item_name; 
-    row["img"] = result2.rows[0].img;
-    row["price"] = result2.rows[0].price;
-    json.push(row);
-  });
+      row["item_name"] = result2.rows[0].item_name; 
+      row["img"] = result2.rows[0].img;
+      row["price"] = result2.rows[0].price;
+      json.push(row);
+    });
+    
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+  
 
   return json;
 }
