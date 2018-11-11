@@ -369,14 +369,18 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
-function generateJSON(results){
-  var json = [];
-  
-  try{
+app.post('/view_cart', async (req, res) => {
+
+  try {
     const client = await pool.connect();
+    var login_email = req.body.email;
+    var query_state = "select * from in_cart where email = '" + login_email + "'";
+    console.log(query_state);
+    var result = await client.query(query_state);
+    var json = [];
 
     // generate json string containing img path, item name, price, quantity
-    results.forEach(async row=>{
+    result.rows.forEach(async row=>{
       var id = row.item_id;
 
       var query_state2 = "select * from items where item_id = " + id;
@@ -387,37 +391,10 @@ function generateJSON(results){
       row["img"] = result2.rows[0].img;
       row["price"] = result2.rows[0].price;
       json.push(row);
+      if(json.length == result.rowCount){
+          return res.send(json);
+      }
     });
-    
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
-  
-
-  return json;
-}
-
-app.post('/view_cart', async (req, res) => {
-
-  try {
-    const client = await pool.connect();
-    var login_email = req.body.email;
-    var query_state = "select * from in_cart where email = '" + login_email + "'";
-    console.log(query_state);
-    var result = await client.query(query_state);
-
-    var json = generateJSON(result.rows);
-
-    console.log(json);
-    console.log(JSON.stringify(json));
-
-    if (!result) {
-      return res.send('no records');
-    }
-    else {
-      return res.send(JSON.stringify(json));
-    }
 
   } catch (err) {
     console.error(err);
