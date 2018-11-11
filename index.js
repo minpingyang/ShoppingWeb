@@ -388,9 +388,9 @@ app.post('/view_cart', async (req, res) => {
 
       console.log(row);
 
-      // row["item_name"] = result2.rows[0].item_name; 
-      // row["img_path"] = result2.rows[0].img_path;
-      // row["price"] = result2.rows[0].price;
+      row["item_name"] = result2.rows[0].item_name; 
+      row["img_path"] = result2.rows[0].img_path;
+      row["price"] = result2.rows[0].price;
       console.log(row);
     });
 
