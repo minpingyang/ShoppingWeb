@@ -377,7 +377,6 @@ app.post('/view_cart', async (req, res) => {
     var query_state = "select * from in_cart where email = '" + login_email + "'";
     console.log(query_state);
     var result = await client.query(query_state);
-
     var json = [];
 
     // generate json string containing img path, item name, price, quantity
@@ -392,17 +391,13 @@ app.post('/view_cart', async (req, res) => {
       row["img"] = result2.rows[0].img;
       row["price"] = result2.rows[0].price;
       json.push(row);
-      console.log(json);
     });
-
-    console.log("result.rows=" + JSON.stringify(result.rows));
-    console.log(json);
 
     if (!result) {
       return res.send('no records');
     }
     else {
-      return res.send(result.rows);
+      return res.send(json);
     }
 
   } catch (err) {

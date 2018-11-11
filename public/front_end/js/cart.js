@@ -56,14 +56,19 @@ function create_items(items){
 		var itemHTML = '<div class="product">';
 		itemHTML += '<img src="' + item.img + '" class="img-size">';
 		itemHTML += '<div class="product-description">';
-		itemHTML += 'div class="product-details">';
+		itemHTML += '<div class="product-details">';
 		itemHTML += '<p>' + item.item_name + '</p>';
-		itemHTML += '<p><i class="fas fa-dollar-sign"></i>' + item.price + '</p>';
-		itemHTML += '<p>Quantity: ' + item.quantity;
-		itemHTML += '</li>';
+		itemHTML += '<p>$' + item.price + '</p>';
+		itemHTML += '<p>Quantity: ' + item.quantity + '</p>';
+		itemHTML += '</div>';
+
+		itemHTML += '<div class="remove-item">';
+		itemHTML += '</div>';
+		itemHTML += '</div>';
+		itemHTML += '</div>';
 
 		var $newItem = $(itemHTML);
-		$('#item-listings').prepend($newItem);
+		$('#product-list').prepend($newItem);
 	});
 }
 
