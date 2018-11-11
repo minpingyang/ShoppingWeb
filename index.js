@@ -391,7 +391,7 @@ app.post('/view_cart', async (req, res) => {
       row["price"] = result2.rows[0].price;
     });
 
-    console.log("result.rows=" + result.rows);
+    console.log("result.rows=" + JSON.stringify(result.rows));
 
     if (!result) {
       return res.send('no records');
