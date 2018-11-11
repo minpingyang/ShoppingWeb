@@ -384,13 +384,13 @@ app.post('/view_cart', async (req, res) => {
 
       var query_state2 = "select * from items where item_id = " + id;
       console.log(query_state2);
-      var result2 = await client.query(query_state2);
+      var result2 = await client.query(query_state);
 
       console.log(row);
 
-      row["item_name"] = result2.rows[0].item_name; 
-      row["img_path"] = result2.rows[0].img_path;
-      row["price"] = result2.rows[0].price;
+      // row["item_name"] = result2.rows[0].item_name; 
+      // row["img_path"] = result2.rows[0].img_path;
+      // row["price"] = result2.rows[0].price;
       console.log(row);
     });
 
