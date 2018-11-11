@@ -393,7 +393,7 @@ app.post('/view_cart', async (req, res) => {
       json.push(row);
     });
 
-    
+    console.log(json);
     console.log(JSON.stringify(json));
 
     if (!result) {
