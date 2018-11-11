@@ -378,6 +378,8 @@ app.post('/view_cart', async (req, res) => {
     console.log(query_state);
     var result = await client.query(query_state);
 
+    var json = [];
+
     // generate json string containing img path, item name, price, quantity
     result.rows.forEach(async row=>{
       var id = row.item_id;
@@ -389,9 +391,12 @@ app.post('/view_cart', async (req, res) => {
       row["item_name"] = result2.rows[0].item_name; 
       row["img"] = result2.rows[0].img;
       row["price"] = result2.rows[0].price;
+      json.push(row);
+      console.log(json);
     });
 
     console.log("result.rows=" + JSON.stringify(result.rows));
+    console.log(json);
 
     if (!result) {
       return res.send('no records');
