@@ -52,6 +52,7 @@ function sortPriceDescending(element){
 
 /* Create the database records on the html file */
 function create_items(items){
+	console.log('items=' + items);
 	items.forEach(item=>{
 		var itemHTML = '<div class="product">';
 		itemHTML += '<img src="' + item.img + '" class="img-size">';
