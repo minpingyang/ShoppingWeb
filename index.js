@@ -397,7 +397,7 @@ app.post('/view_cart', async (req, res) => {
       return res.send('no records');
     }
     else {
-      return res.send(json);
+      return res.send(JSON.stringify(json));
     }
 
   } catch (err) {
