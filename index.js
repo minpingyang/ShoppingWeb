@@ -379,13 +379,12 @@ app.post('/view_cart', async (req, res) => {
     var result = await client.query(query_state);
 
     // generate json string containing img path, item name, price, quantity
-    result.rows.forEach(row=>{
+    result.rows.forEach(async row=>{
       var id = row.item_id;
 
       var query_state2 = "select * from items where item_id = " + id;
       console.log(query_state2);
       var result2 = await client.query(query_state2);
-      // var result2 = await client.query(query_state2);
 
       console.log(row);
 
