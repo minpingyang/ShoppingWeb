@@ -391,6 +391,7 @@ app.post('/view_cart', async (req, res) => {
       row["img"] = result2.rows[0].img;
       row["price"] = result2.rows[0].price;
       json.push(row);
+      console.log(json);
     });
 
     console.log(json);
