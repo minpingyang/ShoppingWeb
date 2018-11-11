@@ -28,6 +28,19 @@ CREATE TABLE items(
 	FOREIGN KEY(cat_id) REFERENCES category(cat_id)
 );
 
+-- CREATE TABLE order(
+-- 	order_id serial NOT NULL,
+-- 	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+
+
+-- );
+-- CREATE TABLE order_details(
+-- 	orderdetail_id int NOT NULL,
+	
+-- 	FOREIGN KEY(order_id) REFERENCES order_details(order_id),
+-- );
+
+
 
 -- INSERT INTO items (cat_id, new, item_name, brand, img, price, rating) VALUES
 -- (1, TRUE, 'Old Skool Black', 'Adidas', '../image/M-Boots.jpg', '$150.00', 5),
