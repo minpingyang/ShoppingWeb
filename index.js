@@ -384,6 +384,7 @@ app.post('/view_cart', async (req, res) => {
 
       var query_state2 = "select * from items where item_id = " + id;
       console.log(query_state2);
+      var result2 = await client.query(query_state2);
       // var result2 = await client.query(query_state2);
 
       console.log(row);
