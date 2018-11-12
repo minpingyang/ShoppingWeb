@@ -119,7 +119,7 @@ $(document).ready(function(e) {
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
 		var json = {};
-		json[] = 
+		// json[] = 
 
 
 		$.ajax({
