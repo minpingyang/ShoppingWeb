@@ -64,7 +64,7 @@ $(document).ready(function (e) {
 	  }
 	
 	  // add into session
-	  function sessionSet(key, value, expirationInMin = 1) {
+	  function sessionSet(key, value, expirationInMin = 60) {
 		let expirationDate = new Date(new Date().getTime() + (60000 * expirationInMin))
 		let newValue = {
 		  value: value,

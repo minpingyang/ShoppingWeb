@@ -43,7 +43,7 @@ $(document).ready(function (e) {
   }
 
   // add into session
-  function sessionSet(key, value, expirationInMin = 1) {
+  function sessionSet(key, value, expirationInMin = 60) {
     let expirationDate = new Date(new Date().getTime() + (60000 * expirationInMin))
     let newValue = {
       value: value,
@@ -67,14 +67,14 @@ $(document).ready(function (e) {
     if (sessionGet("google") === "true") {
       $('#login_google').text("Log Out Gooogle");
      //
-      timeOutFunc(1000*60);
+      timeOutFunc(1000*60*60);
     } else if (sessionGet("google") === "false") {
       $('#login_google').text("Log In by Gooogle");
     }
     console.log("session get email: "+sessionGet("email"));
     if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
       console.log("log In...........");
-      timeOutFunc(1000*60);
+      timeOutFunc(1000*60*60);
       $('#login').text("Log Out");
     }
 
