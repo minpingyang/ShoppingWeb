@@ -370,6 +370,7 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
+console.time('view cart');
 app.post('/view_cart', async (req, res) => {
 
   try {
@@ -402,6 +403,7 @@ app.post('/view_cart', async (req, res) => {
     res.send("Error " + err);
   }
 });
+console.timeEnd('view cart');
 
 app.post('/add', async (req, res) => {
   console.log("adding item to cart");
