@@ -73,22 +73,6 @@ function create_items(items){
 	});
 }
 
-// <div class="product">
-// 	<img src="../image/W-Boots1.jpg" class="img-size">
-// 	<div class="product-description">
-// 		<div class="product-details">
-// 			<p>Product Name</p>
-// 			<p>Price: $30</p>
-// 			<p>Quantity: 5</p>
-// 		</div>
-		
-
-// 		<div class="remove-item">
-			
-// 		</div>
-// 	</div>
-// </div>
-
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
 var email = window.localStorage.getItem("email");
