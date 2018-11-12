@@ -57,7 +57,7 @@ $(document).ready(function (e) {
       alert("Time out need to login again");
       sessionSet("google", "false");
       sessionSet("email",null);
-      location.reload();
+      window.location.reload();
     },timeExpir
     );
   }

@@ -87,7 +87,7 @@ $(document).ready(function(e) {
 				// window.close();
 				// window.open("../index.html","_self");
 				alert("Register Successfullly");
-				window.location.href("../html/login.html");
+				window.location.href("/login.html");
 			}
 	});
 
