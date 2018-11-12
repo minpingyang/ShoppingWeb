@@ -66,7 +66,7 @@ $(document).ready(function (e) {
   $(function () {
     if (sessionGet("google") === "true") {
       $('#login_google').text("Log Out Gooogle");
-    
+     //
       timeOutFunc(1000*60);
     } else if (sessionGet("google") === "false") {
       $('#login_google').text("Log In by Gooogle");
