@@ -9,7 +9,7 @@ $(document).ready(function (e) {
 	console.log("storage: " + localStorage.getItem("email"));
 	$(function () {
 		if (localStorage.getItem("email") !== null && $('#login').text().trim() === "Log In") {
-			console.log("22222");
+			console.log("log in page dectected");
 			$('#login').text("Log Out");
 			console.log("2.11111" + $('#login').text());
 		}
@@ -29,7 +29,39 @@ $(document).ready(function (e) {
 			window.location.href = "login.html";
 		}
 	});
-
+	function sessionGet(key) {
+		let stringValue = window.sessionStorage.getItem(key)
+		if (stringValue !== null) {
+		  let value = JSON.parse(stringValue)
+		  let expirationDate = new Date(value.expirationDate)
+		  if (expirationDate > new Date()) {
+			return value.value
+		  } else {
+			window.sessionStorage.removeItem(key)
+		  }
+		}
+		return null
+	  }
+	
+	  // add into session
+	  function sessionSet(key, value, expirationInMin = 1) {
+		let expirationDate = new Date(new Date().getTime() + (60000 * expirationInMin))
+		let newValue = {
+		  value: value,
+		  expirationDate: expirationDate.toISOString()
+		}
+		window.sessionStorage.setItem(key, JSON.stringify(newValue))
+		timeOutFunc(expirationInMin*1000*60);
+	  }
+	  function timeOutFunc(timeExpir){
+		setTimeout(function(){
+		  alert("Time out need to login again");
+		  sessionSet("google", "false");
+		  sessionSet("email",null);
+		  window.location.reload();
+		},timeExpir
+		);
+	  }
 	$('#log-in').button().click(
 
 		function () {
@@ -70,39 +102,40 @@ $(document).ready(function (e) {
 			alert(accounts);
 		} else {
 			accounts.forEach(account => {
-				var myStorage = window.localStorage;
-				myStorage.setItem("email", account.email);
+				// var myStorage = window.localStorage;
+				// myStorage.setItem("email", account.email);
+				sessionSet("email",account.email);
 				window.location.href = "../index.html";
 			});
 		}
 
 	}
 
-	$('#google-login').button().click(
-		function () {
-			console.log("888888");
-			$.ajax({
-				method: 'GET',
-				url: appAddr + "/login_google",
-				data: JSON.stringify({
-					pword: "11",
-					emailadd: "111"
-				}),
-				contentType: "application/json",
-				// dataType: "json",
-			}).then(login_google_nextfuc,ERROR_LOG);
-			// }).then(loginByGoogle,ERROR_LOG);
-		}
-	);
-	// function loginByGoogle(url){
-	// 	window.location.href=url;
-	// }
+	// $('#google-login').button().click(
+	// 	function () {
+	// 		console.log("888888");
+	// 		$.ajax({
+	// 			method: 'GET',
+	// 			url: appAddr + "/login_google",
+	// 			data: JSON.stringify({
+	// 				pword: "11",
+	// 				emailadd: "111"
+	// 			}),
+	// 			contentType: "application/json",
+	// 			// dataType: "json",
+	// 		}).then(login_google_nextfuc,ERROR_LOG);
+	// 		// }).then(loginByGoogle,ERROR_LOG);
+	// 	}
+	// );
+	// // function loginByGoogle(url){
+	// // 	window.location.href=url;
+	// // }
 
-	function login_google_nextfuc(url){
-		alert(url);
-		window.location.href=url;
-		console.log(window.location.href);
-	}
+	// function login_google_nextfuc(url){
+	// 	alert(url);
+	// 	window.location.href=url;
+	// 	console.log(window.location.href);
+	// }
 	$("#search-btn").button().click(function () {
 		// get the input of the search bar
 		var val = $('#search').val();

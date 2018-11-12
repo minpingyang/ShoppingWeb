@@ -69,6 +69,7 @@ $(document).ready(function (e) {
     } else if (sessionGet("google") === "false") {
       $('#login_google').text("Log In by Gooogle");
     }
+    console.log("session get email: "+sessionGet("email"));
     if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
       console.log("log In...........");
       $('#login').text("Log Out");
