@@ -162,10 +162,7 @@ $(document).ready(function(e) {
 			data: JSON.stringify({
 				add: itemName,
 				email: email
-    		}),
-    		success: function(){
-    			location.reload();
-    		}
+    		})
 		});
 	});
 });
