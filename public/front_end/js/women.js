@@ -75,9 +75,26 @@ function create_items(items){
 	});
 }
 
+function sessionGet(key) {
+    let stringValue = window.sessionStorage.getItem(key)
+    if (stringValue !== null) {
+      let value = JSON.parse(stringValue)
+      let expirationDate = new Date(value.expirationDate)
+      if (expirationDate > new Date()) {
+        return value.value
+      } else {
+        window.sessionStorage.removeItem(key)
+      }
+    }
+    return null
+  }
+
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
+var email = sessionGet('email');
 
+
+  
 $(document).ready(function(e) {
 
 	$.ajax({
@@ -129,7 +146,6 @@ $(document).ready(function(e) {
 		var thing = $(this).siblings();
 		// grabs the item name
 		var itemName = thing[2].innerHTML;
-		var email = window.localStorage.getItem("email");
 		console.log(itemName);
 
 		// if user is not logged in, redirect to login page

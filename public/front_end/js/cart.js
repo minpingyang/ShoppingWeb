@@ -87,6 +87,8 @@ function sessionGet(key) {
     return null
   }
 
+  var email = sessionGet('email');
+
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
 // var email = window.localStorage.getItem("email");
