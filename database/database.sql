@@ -10,7 +10,7 @@ CREATE TABLE account_table(
 CREATE TABLE in_cart(
 	item_id int NOT NULL, 
 	user_id int NOT NULL,
-	count int NOT NULL,
+	quantity int NOT NULL,
 	FOREIGN KEY(item_id) REFERENCES items(item_id)
 );
 
@@ -28,17 +28,20 @@ CREATE TABLE items(
 	FOREIGN KEY(cat_id) REFERENCES category(cat_id)
 );
 
--- CREATE TABLE order(
--- 	order_id serial NOT NULL,
--- 	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-
-
--- );
--- CREATE TABLE order_details(
--- 	orderdetail_id int NOT NULL,
-	
--- 	FOREIGN KEY(order_id) REFERENCES order_details(order_id),
--- );
+CREATE TABLE order(
+	order_id serial NOT NULL,
+	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+	orderdetail_id int NOT NULL,
+	PRIMARY KEY(order_id),
+	FOREIGN KEY(orderdetail_id) REFERENCES order_details(orderdetail_id)
+);
+CREATE TABLE order_details(
+	orderdetail_id int NOT NULL,
+	item_name varchar(200) NOT NULL,
+	price double precision NOT NULL,
+	FOREIGN KEY(item_name) REFERENCES items(item_name),
+	FOREIGN KEY(price) REFERENCES items(price)
+);
 
 
 
@@ -58,7 +61,7 @@ CREATE TABLE items(
 -- This is the same as above but with price as an integer, not a varchar
 INSERT INTO items (cat_id, new, item_name, brand, img, price, rating) VALUES
 (1, TRUE, 'Old Skool Black', 'Adidas', '../image/M-Boots.jpg', 150.00, 5),
-(1, TRUE, 'Gazelle', 'Adidas', '../image/M-Boots2.jpg', 99.99, 4),
+(1, TRUE, 'Bob', 'Adidas', '../image/M-Boots2.jpg', 99.99, 4),
 (1, FALSE, 'Swift Run', 'Nike', '../image/M-Boots3.jpg', 149.99, 4),
 (1, TRUE, 'Chuck Taylor All Star', 'New Balance', '../image/M-Sandals1.jpg', 139.99, 1),
 (1, FALSE, 'Old Skool White', 'Nike', '../image/M-Sandals2.jpg', 100.00, 3),

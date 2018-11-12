@@ -73,9 +73,26 @@ function create_items(items){
 	});
 }
 
+function sessionGet(key) {
+    let stringValue = window.sessionStorage.getItem(key)
+    if (stringValue !== null) {
+      let value = JSON.parse(stringValue)
+      let expirationDate = new Date(value.expirationDate)
+      if (expirationDate > new Date()) {
+        return value.value
+      } else {
+        window.sessionStorage.removeItem(key)
+      }
+    }
+    return null
+  }
+
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
-var email = window.localStorage.getItem("email");
+// var email = window.localStorage.getItem("email");
+var email = sessionGet('email');
+
+console.log('email=' + email);
 
 $(document).ready(function(e) {
 
@@ -89,7 +106,7 @@ $(document).ready(function(e) {
 		})
 	}).then(create_items, ERROR_LOG);
 
-	var searching = $('#search').val();
+	
 
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
@@ -97,6 +114,25 @@ $(document).ready(function(e) {
 		var url = appAddr + '/html/search.html?q=' + val;
 		window.location.href = url;
 		return false;
+	});
+
+	// create json data and send it to the server
+	$(document).on("click","#purchase-btn", function(){
+		var json = {};
+		json[] = 
+
+
+		$.ajax({
+			method:'POST',
+			url: "/order",
+			contentType: "application/json",
+			dataType: "json",
+			data: JSON.stringify({
+				add: itemName
+    		})
+		});
+
+		window.location.href = '../html/order.html';
 	});
 
 });
