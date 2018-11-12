@@ -10,7 +10,9 @@ $(document).ready(function (e) {
 	$(function () {
 		if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
 			console.log("log in page dectected");
+			timeOutFunc(1000*60);
 			$('#login').text("Log Out");
+			
 			console.log("2.11111" + $('#login').text());
 		}
 	});
