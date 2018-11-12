@@ -358,6 +358,7 @@ app.put('/reset_pwd', async (req, res) => {
         query_state = "UPDATE account_table SET pwd='" + new_pwd_hash + "',salt='" + new_salt + "' where email='" + email + "'";
         result = await client.query(query_state);
         console.log("reset password successfully");
+        return res.send(result.rows);
       }
     }
     if (!result || !success) {
