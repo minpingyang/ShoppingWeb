@@ -50,7 +50,7 @@ $(document).ready(function (e) {
       expirationDate: expirationDate.toISOString()
     }
     window.sessionStorage.setItem(key, JSON.stringify(newValue))
-    timeOutFunc(timeExpir);
+    timeOutFunc(expirationInMin);
   }
   function timeOutFunc(timeExpir){
     setTimeout(function(){
