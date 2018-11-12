@@ -370,9 +370,9 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
-console.time('view cart');
-app.post('/view_cart', async (req, res) => {
 
+app.post('/view_cart', async (req, res) => {
+  console.time('view cart');
   try {
     const client = await pool.connect();
     var login_email = req.body.email;
@@ -402,8 +402,9 @@ app.post('/view_cart', async (req, res) => {
     console.error(err);
     res.send("Error " + err);
   }
+  console.timeEnd('view cart');
 });
-console.timeEnd('view cart');
+
 
 app.post('/add', async (req, res) => {
   console.log("adding item to cart");
