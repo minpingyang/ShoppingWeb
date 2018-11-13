@@ -370,6 +370,30 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
+app.get('/order', async (req, res) => {
+
+  try {
+    const client = await pool.connect();
+    var login_email = req.body.email
+
+    var query_state = "select * from orders where email = '" + login_email + "'";
+    console.log(query_state);
+    var result = await client.query(query_state);
+    
+
+    if (!result) {
+      return res.send('no records');
+    }
+    else {
+      return res.json(result.rows);
+    }
+
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+});
+
 app.post('/order', async (req, res) => {
 
   try {
@@ -382,11 +406,17 @@ app.post('/order', async (req, res) => {
     console.log(query_state);
     var result = await client.query(query_state);
     
+    if (!result) {
+      return res.send('no records');
+    }
+    else {
+      return res.json(result.rows);
+    }
 
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
 });
 
 
