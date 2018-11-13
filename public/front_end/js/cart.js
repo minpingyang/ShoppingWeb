@@ -72,8 +72,8 @@ $(document).ready(function(e) {
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
 		var products = $('.product');
-		console.log(thing);
-		console.log(thing[0]);
+		// console.log(products);
+		console.log(products[0]);
 		// products.forEach(product=>{
 
 
