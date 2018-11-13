@@ -84,17 +84,13 @@ $(document).ready(function(e) {
 			json.push(row);
 		});
 
-		console.log(json);
-		
-
-
-		// $.ajax({
-		// 	method:'POST',
-		// 	url: "/order",
-		// 	contentType: "application/json",
-		// 	dataType: "json",
-		// 	data: json
-		// });
+		$.ajax({
+			method:'POST',
+			url: "/order",
+			contentType: "application/json",
+			dataType: "json",
+			data: json
+		});
 
 		// window.location.href = '../html/order.html';
 	});

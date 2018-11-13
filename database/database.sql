@@ -30,18 +30,36 @@ CREATE TABLE items(
 
 CREATE TABLE order(
 	order_id serial NOT NULL,
-	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-	orderdetail_id int NOT NULL,
-	PRIMARY KEY(order_id),
-	FOREIGN KEY(orderdetail_id) REFERENCES order_details(orderdetail_id)
-);
-CREATE TABLE order_details(
-	orderdetail_id int NOT NULL,
+	order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	item_name varchar(200) NOT NULL,
 	price double precision NOT NULL,
-	FOREIGN KEY(item_name) REFERENCES items(item_name),
-	FOREIGN KEY(price) REFERENCES items(price)
+	quantity int NOT NULL,
+	status varchar(200) NOT NULL,
+	PRIMARY KEY(order_id)
 );
+
+-- CREATE TABLE order_details(
+-- 	orderdetail_id int NOT NULL,
+-- 	item_name varchar(200) NOT NULL,
+-- 	price double precision NOT NULL,
+-- 	FOREIGN KEY(item_name) REFERENCES items(item_name),
+-- 	FOREIGN KEY(price) REFERENCES items(price)
+-- );
+
+-- CREATE TABLE order(
+-- 	order_id serial NOT NULL,
+-- 	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+-- 	orderdetail_id int NOT NULL,
+-- 	PRIMARY KEY(order_id),
+-- 	FOREIGN KEY(orderdetail_id) REFERENCES order_details(orderdetail_id)
+-- );
+-- CREATE TABLE order_details(
+-- 	orderdetail_id int NOT NULL,
+-- 	item_name varchar(200) NOT NULL,
+-- 	price double precision NOT NULL,
+-- 	FOREIGN KEY(item_name) REFERENCES items(item_name),
+-- 	FOREIGN KEY(price) REFERENCES items(price)
+-- );
 
 
 

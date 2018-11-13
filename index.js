@@ -370,6 +370,42 @@ app.put('/reset_pwd', async (req, res) => {
   }
 });
 
+app.post('/order', async (req, res) => {
+
+  try {
+    const client = await pool.connect();
+    var item_name = req.body.item_name; 
+    var price = req.body.price;
+    var quantity = req.body.quantity;
+
+    var query_state = "insert into ";
+    console.log(query_state);
+    var result = await client.query(query_state);
+    var json = [];
+
+    // generate json string containing img path, item name, price, quantity
+    result.rows.forEach(async row=>{
+      var id = row.item_id;
+
+      var query_state2 = "select * from items where item_id = " + id;
+      console.log(query_state2);
+      var result2 = await client.query(query_state2);
+
+      row["item_name"] = result2.rows[0].item_name; 
+      row["img"] = result2.rows[0].img;
+      row["price"] = result2.rows[0].price;
+      json.push(row);
+      if(json.length == result.rowCount){
+          return res.send(json);
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
+});
+
 
 app.post('/view_cart', async (req, res) => {
 
