@@ -79,8 +79,8 @@ $(document).ready(function(e) {
 			var quantity = product.children[2].innerHTML;
 			var row = {};
 			row['item_name'] = itemName;
-			row['price'] = price.substring(1, price.length-1);
-			row['quantity'] = quantity.substring(quantity.length-2, quantity.length-1); 
+			row['price'] = price.substring(1, price.length);
+			row['quantity'] = quantity.substring(quantity.length-1, quantity.length); 
 			json.push(row);
 		});
 
