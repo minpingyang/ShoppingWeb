@@ -1,55 +1,3 @@
-function sortButtonCss(element){
-  $(".sort-options").css({
-    "background-color" : "white",
-    "color" : "black"
-  });
-
-  element.style.backgroundColor = "black";
-  element.style.color = "white";
-}
-
-function sortMostPopular(element){
-  sortButtonCss(element);
-  
-	$.ajax({
-		method:'GET',
-		url: "/womens_most_popular",
-		contentType: "application/json",
-		dataType: "json",
-		success: function(){
-			$("#item-listings").empty();
-		}
-	}).then(create_items, ERROR_LOG);
-};
-
-function sortPriceAscending(element){
-  sortButtonCss(element);
-
-	$.ajax({
-		method:'GET',
-		url: "/womens_price_ascending",
-		contentType: "application/json",
-		dataType: "json",
-		success: function(){
-			$("#item-listings").empty();
-		}
-	}).then(create_items, ERROR_LOG);
-};
-
-function sortPriceDescending(element){
-  sortButtonCss(element);
-
-	$.ajax({
-		method:'GET',
-		url: "/womens_price_descending",
-		contentType: "application/json",
-		dataType: "json",
-		success: function(){
-			$("#item-listings").empty();
-		}
-	}).then(create_items, ERROR_LOG);  
-};
-
 /* Create the database records on the html file */
 function create_items(items){
 	console.log('items=' + items);
@@ -118,10 +66,15 @@ $(document).ready(function(e) {
 		return false;
 	});
 
+		
+
+
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
+		var thing = $('.product');
+		console.log(thing);
 		var json = {};
-		// json[] = 
+		json
 
 
 		$.ajax({
