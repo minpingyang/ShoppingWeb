@@ -378,12 +378,9 @@ app.post('/order', async (req, res) => {
     var price = req.body.price;
     var quantity = req.body.quantity;
 
-    // var query_state = "insert into orders(item_name, price, quantity, status) values('" +  + "'" ")";
+    var query_state = "insert into orders(item_name, price, quantity, status) values('" + item_name + "', " + price + ", " + quantity + ")";
     console.log(query_state);
     var result = await client.query(query_state);
-    var json = [];
-
-    // generate json string containing img path, item name, price, quantity
     
 
   } catch (err) {
@@ -419,8 +416,7 @@ app.post('/view_cart', async (req, res) => {
           return res.send(json);
       }
     });
-    //asd
-    
+
   } catch (err) {
     console.error(err);
     res.send("Error " + err);
