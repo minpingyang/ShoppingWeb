@@ -77,15 +77,15 @@ $(document).ready(function(e) {
 		json
 
 
-		$.ajax({
-			method:'POST',
-			url: "/order",
-			contentType: "application/json",
-			dataType: "json",
-			data: JSON.stringify({
-				add: itemName
-    		})
-		});
+		// $.ajax({
+		// 	method:'POST',
+		// 	url: "/order",
+		// 	contentType: "application/json",
+		// 	dataType: "json",
+		// 	data: JSON.stringify({
+		// 		add: itemName
+  //   		})
+		// });
 
 		window.location.href = '../html/order.html';
 	});
