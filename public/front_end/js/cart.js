@@ -74,9 +74,9 @@ $(document).ready(function(e) {
 		var json = {};
 		var products = $('.product-details').toArray();
 		products.forEach(product=>{
-			var itemName = product[0].innerHTML;
-			var price = product[1].innerHTML;
-			var quantity = product[2].innerHTML;
+			var itemName = product.children[0].innerHTML;
+			var price = product.children[1].innerHTML;
+			var quantity = product.children[2].innerHTML;
 			var row = {};
 			row['item_name'] = itemName;
 			row['price'] = price;
