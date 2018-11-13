@@ -72,7 +72,7 @@ $(document).ready(function(e) {
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
 		var json = {};
-		var products = $('.product-details').children;
+		var products = $('.product-details').toArray();
 		// products.forEach(product=>{
 		// 	var itemName = product[0].innerHTML;
 		// 	var price = product[1].innerHTML;
