@@ -72,7 +72,7 @@ $(document).ready(function(e) {
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
 		var json = {};
-		// var products = $('.product-details');
+		var products = $('.product-details');
 		// products.forEach(product=>{
 		// 	var itemName = product.children[0].innerHTML;
 		// 	var price = product.children[1].innerHTML;
@@ -84,7 +84,7 @@ $(document).ready(function(e) {
 		// 	json.push(row);
 		// });
 
-		jQuery.each( $('.product-details'), function(product){
+		$.each( products, function(product){
 			// var itemName = product.children[0].innerHTML;
 			// var price = product.children[1].innerHTML;
 			// var quantity = product.children[2].innerHTML;
