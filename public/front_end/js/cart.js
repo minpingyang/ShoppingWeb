@@ -79,11 +79,10 @@ $(document).ready(function(e) {
 			var quantity = product.children[2].innerHTML;
 			var row = {};
 			row['item_name'] = itemName;
-			row['price'] = price;
-			row['quantity'] = quantity; 
+			row['price'] = price.substring(1, price.length-1);
+			row['quantity'] = quantity.substring(quantity.length-2, quantity.length-1); 
 			json.push(row);
 		});
-		console.log(products);
 
 		console.log(json);
 		
