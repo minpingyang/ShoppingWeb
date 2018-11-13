@@ -73,7 +73,7 @@ $(document).ready(function(e) {
 	$(document).on("click","#purchase-btn", function(){
 		var products = $('.product');
 		// console.log(products);
-		console.log(products[0]);
+		console.log(products[0].children);
 		// products.forEach(product=>{
 
 
