@@ -378,7 +378,7 @@ app.post('/order', async (req, res) => {
     var price = req.body.price;
     var quantity = req.body.quantity;
 
-    var query_state = "insert into orders(item_name, price, quantity, status) values('" +  + "'" ")";
+    // var query_state = "insert into orders(item_name, price, quantity, status) values('" +  + "'" ")";
     console.log(query_state);
     var result = await client.query(query_state);
     var json = [];
