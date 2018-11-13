@@ -73,16 +73,17 @@ $(document).ready(function(e) {
 	$(document).on("click","#purchase-btn", function(){
 		var json = {};
 		var products = $('.product-details').children;
-		products.forEach(product=>{
-			var itemName = product[0].innerHTML;
-			var price = product[1].innerHTML;
-			var quantity = product[2].innerHTML;
-			var row = {};
-			row['item_name'] = itemName;
-			row['price'] = price;
-			row['quantity'] = quantity; 
-			json.push(row);
-		});
+		// products.forEach(product=>{
+		// 	var itemName = product[0].innerHTML;
+		// 	var price = product[1].innerHTML;
+		// 	var quantity = product[2].innerHTML;
+		// 	var row = {};
+		// 	row['item_name'] = itemName;
+		// 	row['price'] = price;
+		// 	row['quantity'] = quantity; 
+		// 	json.push(row);
+		// });
+		console.log(products);
 
 		console.log(json);
 		
