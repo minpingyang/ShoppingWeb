@@ -71,15 +71,21 @@ $(document).ready(function(e) {
 
 	// create json data and send it to the server
 	$(document).on("click","#purchase-btn", function(){
-		var products = $('.product-details');
-		console.log(products);
-		// console.log(products[0].children.children);
-		// products.forEach(product=>{
-
-
-		// }
-
 		var json = {};
+		var products = $('.product-details');
+		products.forEach(product=>{
+			var itemName = product.children[0].innerHTML;
+			var price = product.children[1].innerHTML;
+			var quantity = product.children[2].innerHTML;
+			var row = {};
+			row['item_name'] = itemName;
+			row['price'] = price;
+			row['quantity'] = quantity; 
+			json.push(row);
+		}
+
+		console.log(json);
+		
 
 
 		// $.ajax({
@@ -87,9 +93,7 @@ $(document).ready(function(e) {
 		// 	url: "/order",
 		// 	contentType: "application/json",
 		// 	dataType: "json",
-		// 	data: JSON.stringify({
-		// 		add: itemName
-  //   		})
+		// 	data: json
 		// });
 
 		// window.location.href = '../html/order.html';
