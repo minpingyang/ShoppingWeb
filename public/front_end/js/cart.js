@@ -85,17 +85,18 @@ $(document).ready(function(e) {
 		// });
 
 		jQuery.each( $('.product-details'), function(product){
-			var itemName = product.children[0].innerHTML;
-			var price = product.children[1].innerHTML;
-			var quantity = product.children[2].innerHTML;
-			var row = {};
-			row['item_name'] = itemName;
-			row['price'] = price;
-			row['quantity'] = quantity; 
-			json.push(row);
+			// var itemName = product.children[0].innerHTML;
+			// var price = product.children[1].innerHTML;
+			// var quantity = product.children[2].innerHTML;
+			// var row = {};
+			// row['item_name'] = itemName;
+			// row['price'] = price;
+			// row['quantity'] = quantity; 
+			// json.push(row);
+			console.log(product);
 		});
 
-		console.log(json);
+		// console.log(json);
 		
 
 
