@@ -84,7 +84,7 @@ $(document).ready(function(e) {
 		// 	json.push(row);
 		// });
 
-		$.each( products, function(product){
+		$('.product-details').each(function(product){
 			// var itemName = product.children[0].innerHTML;
 			// var price = product.children[1].innerHTML;
 			// var quantity = product.children[2].innerHTML;
