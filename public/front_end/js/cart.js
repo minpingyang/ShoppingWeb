@@ -82,7 +82,7 @@ $(document).ready(function(e) {
 			row['price'] = price;
 			row['quantity'] = quantity; 
 			json.push(row);
-		}
+		});
 
 		console.log(json);
 		
