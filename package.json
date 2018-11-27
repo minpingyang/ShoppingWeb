@@ -18,6 +18,10 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "googleapis": "^34.0.0",
+    "jwt-decode": "^2.2.0",
+    "jwt-simple": "^0.5.5",
+    "method-override": "^3.0.0",
+    "nodemailer": "^4.6.8",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "pg": "^7.4.3"

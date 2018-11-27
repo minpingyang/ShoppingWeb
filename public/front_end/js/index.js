@@ -69,7 +69,7 @@ $(document).ready(function (e) {
      //
       timeOutFunc(1000*60*60);
     } else if (sessionGet("google") === "false") {
-      $('#login_google').text("Log In by Gooogle");
+      $('#login_google').text("signup by Gooogle");
     }
     console.log("session get email: "+sessionGet("email"));
     if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
@@ -125,12 +125,18 @@ $(document).ready(function (e) {
   });
 
   // add the order history button if user is logged in
-  if(window.localStorage != null) {
+  if(sessionGet('email') != null) {
     var html = '<li class="float-right">';
     html += '<a href="html/order.html">Order History</a>';
     html += '</li>';
     var button = $(html);
     $('#nav1').prepend(button);
+
+    var html2 = '<li class="float-right">';
+    html2 += '<a href="html/recommendation.html">Recommendations</a>';
+    html2 += '</li>';
+    var button2 = $(html2);
+    $('#nav1').prepend(button2);
   }
 
 }); 

@@ -4,7 +4,16 @@
 
 
 $(document).ready(function(e) {
+	
 	var appAddr="https://nwen304gropproject.herokuapp.com";
+	$('input#myCheck').click(function () {
+		$('#create-account').toggle();
+		// if($(this).is(':checked')){
+		// 	// alert("Checked");
+		// }else{
+		// 	// alert("not checked");
+		// }
+	});
 	$('#password').keyup(function () {
 		var password=  $('#password').val();
 		var strengthBar =document.getElementById("strength")
@@ -90,7 +99,39 @@ $(document).ready(function(e) {
 				window.location.href="../html/login.html";
 			}
 	});
+	function sessionGet(key) {
+		let stringValue = window.sessionStorage.getItem(key)
+		if (stringValue !== null) {
+			let value = JSON.parse(stringValue)
+			let expirationDate = new Date(value.expirationDate)
+			if (expirationDate > new Date()) {
+				return value.value
+			} else {
+				window.sessionStorage.removeItem(key)
+			}
+		}
+		return null
+	}
 
+	// add into session
+	function sessionSet(key, value, expirationInMin = 60) {
+		let expirationDate = new Date(new Date().getTime() + (60000 * expirationInMin))
+		let newValue = {
+			value: value,
+			expirationDate: expirationDate.toISOString()
+		}
+		window.sessionStorage.setItem(key, JSON.stringify(newValue))
+		timeOutFunc(expirationInMin * 1000 * 60);
+	}
+	function timeOutFunc(timeExpir){
+		setTimeout(function(){
+		  alert("Time out need to login again");
+		  sessionSet("google", "false");
+		  sessionSet("email",null);
+		  window.location.reload();
+		},timeExpir
+		);
+	  }
 	$("#search-btn").button().click(function(){
 		// get the input of the search bar
 		var val = $('#search').val();
@@ -98,12 +139,17 @@ $(document).ready(function(e) {
 		window.location.href = url;
 		return false;
 	});
-	var btn_content = $('#login').text().trim();
-	console.log("11111:" + btn_content);
-	var localStorage = window.localStorage;
-	console.log("storage: " + localStorage.getItem("email"));
+	// var btn_content = $('#login').text().trim();
+	// console.log("11111:" + btn_content);
+	// var localStorage = window.localStorage;
+	// console.log("storage: " + localStorage.getItem("email"));
 	$(function () {
-		if (localStorage.getItem("email") !== null && $('#login').text().trim() === "Log In") {
+		if(!$('input#myCheck').is(':checked')){
+			console.log("hide register ");
+			$('#create-account').hide()
+		}
+
+		if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
 			console.log("22222");
 			$('#login').text("Log Out");
 			console.log("2.11111" + $('#login').text());
@@ -113,9 +159,9 @@ $(document).ready(function(e) {
 		console.log("333" + $('#login').text().trim());
 		if ($('#login').text().trim() === "Log Out") {
 			console.log("4444");
-			localStorage.clear();
+			// localStorage.clear();
+			sessionSet("email",null);
 			$('#login').text("Log In");
-
 		}
 		else {
 			console.log("5555");

@@ -11,8 +11,7 @@ function create_items(items){
 		itemHTML += '<p>Quantity: ' + item.quantity + '</p>';
 		itemHTML += '</div>';
 
-		itemHTML += '<div class="remove-item">';
-		itemHTML += '</div>';
+		itemHTML += '<div class="remove-item"><button type="submit" id="cancel-btn">Cancel</button></div>';
 		itemHTML += '</div>';
 		itemHTML += '</div>';
 
@@ -34,12 +33,9 @@ function sessionGet(key) {
     }
     return null
   }
-
-  var email = sessionGet('email');
-
+  
 var ERROR_LOG =console.error.bind(console);
 var appAddr="https://nwen304gropproject.herokuapp.com";
-// var email = window.localStorage.getItem("email");
 var email = sessionGet('email');
 
 console.log('email=' + email);
@@ -79,22 +75,44 @@ $(document).ready(function(e) {
 			var quantity = product.children[2].innerHTML;
 			var row = {};
 			row['item_name'] = itemName;
-			row['price'] = price.substring(1, price.length);
-			row['quantity'] = quantity.substring(quantity.length-1, quantity.length); 
+			row['price'] = Number(price.substring(1, price.length));
+			row['quantity'] = Number(quantity.substring(quantity.length-1, quantity.length)); 
+			row['email'] = email;
 			json.push(row);
 		});
 
 		$.ajax({
 			method:'POST',
-			url: "/order",
+			url: "/create_order",
 			contentType: "application/json",
 			dataType: "json",
-			data: json
+			data: JSON.stringify(json)
 		});
 
 		// window.location.href = '../html/order.html';
 	});
+	   $(document).on("click","#cancel-btn", function(){
+	  	var row = $(this).parent().siblings().children();
+	  	console.log(row);
+	  	var json = [];
+	  	var data = {};
+	  	data['item_name'] = row[0].innerHTML;
+	  	data['email'] = email;
+	  	json.push(data);
+	  	console.log('json=' + JSON.stringify(json));
 
+	  	$.ajax({
+			method:'DELETE',
+			url: "/delete_item",
+			contentType: "application/json",
+			dataType: "json",
+			data: JSON.stringify(json),
+			success: function(){
+				console.log('reached success');
+				location.reload();
+			}
+		});
+	  });
 });
 
 

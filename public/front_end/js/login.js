@@ -10,78 +10,78 @@ $(document).ready(function (e) {
 	$(function () {
 		if (sessionGet("email") !== null && $('#login').text().trim() === "Log In") {
 			console.log("log in page dectected");
-			timeOutFunc(1000*60);
+			timeOutFunc(1000 * 60);
 			$('#login').text("Log Out");
-			
+
 			console.log("2.11111" + $('#login').text());
 		}
 	});
 	$("#login").button().click(function () {
-    console.log("333" + $('#login').text().trim());
-    if ($('#login').text().trim() === "Log Out") {
-      console.log("4444");
-      // localStorage.clear();
-      sessionSet("email",null);
-      $('#login').text("Log In");
+		console.log("333" + $('#login').text().trim());
+		if ($('#login').text().trim() === "Log Out") {
+			console.log("4444");
+			// localStorage.clear();
+			sessionSet("email", null);
+			$('#login').text("Log In");
 
-    }
-    else {
-      console.log("5555");
-      alert("go to ")
-      //  window.open("/html/login.html");
-      window.location.href = "login.html";
-    }
-  });
+		}
+		else {
+			console.log("5555");
+			alert("go to ")
+			//  window.open("/html/login.html");
+			window.location.href = "login.html";
+		}
+	});
 
 	$("#login").button().click(function () {
-    console.log("333" + $('#login').text().trim());
-    if ($('#login').text().trim() === "Log Out") {
-      console.log("4444");
-      // localStorage.clear();
-      sessionSet("email",null);
-      $('#login').text("Log In");
+		console.log("333" + $('#login').text().trim());
+		if ($('#login').text().trim() === "Log Out") {
+			console.log("4444");
+			// localStorage.clear();
+			sessionSet("email", null);
+			$('#login').text("Log In");
 
-    }
-    else {
-      console.log("5555");
-      alert("go to ")
-      //  window.open("/html/login.html");
-      window.location.href = "html/login.html";
-    }
-  });
+		}
+		else {
+			console.log("5555");
+			alert("go to ")
+			//  window.open("/html/login.html");
+			window.location.href = "login.html";
+		}
+	});
 	function sessionGet(key) {
 		let stringValue = window.sessionStorage.getItem(key)
 		if (stringValue !== null) {
-		  let value = JSON.parse(stringValue)
-		  let expirationDate = new Date(value.expirationDate)
-		  if (expirationDate > new Date()) {
-			return value.value
-		  } else {
-			window.sessionStorage.removeItem(key)
-		  }
+			let value = JSON.parse(stringValue)
+			let expirationDate = new Date(value.expirationDate)
+			if (expirationDate > new Date()) {
+				return value.value
+			} else {
+				window.sessionStorage.removeItem(key)
+			}
 		}
 		return null
-	  }
-	
-	  // add into session
-	  function sessionSet(key, value, expirationInMin = 60) {
+	}
+
+	// add into session
+	function sessionSet(key, value, expirationInMin = 60) {
 		let expirationDate = new Date(new Date().getTime() + (60000 * expirationInMin))
 		let newValue = {
-		  value: value,
-		  expirationDate: expirationDate.toISOString()
+			value: value,
+			expirationDate: expirationDate.toISOString()
 		}
 		window.sessionStorage.setItem(key, JSON.stringify(newValue))
-		timeOutFunc(expirationInMin*1000*60);
-	  }
-	  function timeOutFunc(timeExpir){
-		setTimeout(function(){
-		  alert("Time out need to login again");
-		  sessionSet("google", "false");
-		  sessionSet("email",null);
-		  window.location.reload();
-		},timeExpir
+		timeOutFunc(expirationInMin * 1000 * 60);
+	}
+	function timeOutFunc(timeExpir) {
+		setTimeout(function () {
+			alert("Time out need to login again");
+			sessionSet("google", "false");
+			sessionSet("email", null);
+			window.location.reload();
+		}, timeExpir
 		);
-	  }
+	}
 	$('#log-in').button().click(
 
 		function () {
@@ -124,7 +124,7 @@ $(document).ready(function (e) {
 			accounts.forEach(account => {
 				// var myStorage = window.localStorage;
 				// myStorage.setItem("email", account.email);
-				sessionSet("email",account.email);
+				sessionSet("email", account.email);
 				window.location.href = "../index.html";
 			});
 		}

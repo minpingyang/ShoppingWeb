@@ -1,16 +1,19 @@
 CREATE TABLE account_table(
+	user_id serial NOT NULL,
 	fname varchar(200) NOT NULL,
 	lname varchar(200) NOT NULL, 
 	email varchar(200) NOT NULL,
-	pwd varchar(200) NOT NULL,
-	salt varchar(200) NOT NULL,
-	PRIMARY KEY(email)
+	pwd varchar(500) NOT NULL,
+	salt varchar(500) NOT NULL,
+	PRIMARY KEY(user_id, email)
 );
 
 CREATE TABLE in_cart(
 	item_id int NOT NULL, 
 	user_id int NOT NULL,
+	email varchar(200) NOT NULL,
 	quantity int NOT NULL,
+	FOREIGN KEY(user_id, email) REFERENCES account_table(user_id, email),
 	FOREIGN KEY(item_id) REFERENCES items(item_id)
 );
 
@@ -31,37 +34,22 @@ CREATE TABLE items(
 CREATE TABLE orders(
 	order_id serial NOT NULL,
 	order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	item_name varchar(200) NOT NULL,
-	price double precision NOT NULL,
-	quantity int NOT NULL,
-	status varchar(200) NOT NULL,
+	email varchar(200) NOT NULL,
+	status varchar(200) NOT NULL DEFAULT 'Shipped',
 	PRIMARY KEY(order_id)
 );
 
--- CREATE TABLE order_details(
--- 	orderdetail_id int NOT NULL,
--- 	item_name varchar(200) NOT NULL,
--- 	price double precision NOT NULL,
--- 	FOREIGN KEY(item_name) REFERENCES items(item_name),
--- 	FOREIGN KEY(price) REFERENCES items(price)
--- );
+CREATE TABLE order_details(
+	orderdetail_id serial NOT NULL,
+	order_id int NOT NULL,
+	item_id int NOT NULL,
+	quantity int NOT NULL,
+	PRIMARY KEY(orderdetail_id),
+	FOREIGN KEY(order_id) REFERENCES orders(order_id)
+		ON DELETE CASCADE,
+	FOREIGN KEY(item_id) REFERENCES items(item_id)
+);
 
--- CREATE TABLE order(
--- 	order_id serial NOT NULL,
--- 	order_date DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP,
--- 	orderdetail_id int NOT NULL,
--- 	PRIMARY KEY(order_id),
--- 	FOREIGN KEY(orderdetail_id) REFERENCES order_details(orderdetail_id)
--- );
--- CREATE TABLE order_details(
--- 	orderdetail_id int NOT NULL,
--- 	item_name varchar(200) NOT NULL,
--- 	price double precision NOT NULL,
--- 	FOREIGN KEY(item_name) REFERENCES items(item_name),
--- 	FOREIGN KEY(price) REFERENCES items(price)
--- );
-
--- This is the same as above but with price as an integer, not a varchar
 INSERT INTO items (cat_id, new, item_name, brand, img, price, rating) VALUES
 (1, TRUE, 'Old Skool Black', 'Adidas', '../image/M-Boots.jpg', 150.00, 5),
 (1, TRUE, 'Bob', 'Adidas', '../image/M-Boots2.jpg', 99.99, 4),
